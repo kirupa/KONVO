@@ -1,6 +1,6 @@
 # Evals
 
-This folder contains evaluation suites for Humanish skills.
+This folder contains evaluation suites for GRASP skills.
 
 The goal of these evals is not just to check whether a skill can produce output that "looks good." The goal is to verify that the skill creates a measurable improvement over a baseline response and that it activates only when it should.
 

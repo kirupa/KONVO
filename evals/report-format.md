@@ -128,7 +128,7 @@ For generation cases:
 Example:
 
 ```json
-["tc_reg_001", "tc_reg_007"]
+["grasp_reg_001", "grasp_reg_007"]
 ```
 
 ## Summary Fields

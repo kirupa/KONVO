@@ -2,7 +2,7 @@ version: 1
 skill: grasp
 eval_type: trigger
 cases:
-  - id: tc_trigger_001
+  - id: grasp_trigger_001
     should_trigger: true
     title: Vector clocks explainer
     prompt: |
@@ -13,7 +13,7 @@ cases:
       - intuition-building is important
       - a concrete example would help
 
-  - id: tc_trigger_002
+  - id: grasp_trigger_002
     should_trigger: true
     title: Reference counting walkthrough
     prompt: |
@@ -22,7 +22,7 @@ cases:
       - walkthrough-based teaching prompt
       - visual explanation is requested directly
 
-  - id: tc_trigger_003
+  - id: grasp_trigger_003
     should_trigger: true
     title: Base64 tutorial
     prompt: |
@@ -32,7 +32,7 @@ cases:
       - concept benefits from model-based explanation
       - tone request matches the skill
 
-  - id: tc_trigger_004
+  - id: grasp_trigger_004
     should_trigger: true
     title: Cache invalidation tradeoff explainer
     prompt: |
@@ -41,7 +41,7 @@ cases:
       - engineering tradeoffs
       - concept is abstract but teachable through examples
 
-  - id: tc_trigger_009
+  - id: grasp_trigger_009
     should_trigger: true
     title: Rear differential explainer
     prompt: |
@@ -51,7 +51,7 @@ cases:
       - mechanical system with inspectable moving parts
       - the topic benefits from a step-by-step visual explanation
 
-  - id: tc_trigger_010
+  - id: grasp_trigger_010
     should_trigger: true
     title: Three-phase power walkthrough
     prompt: |
@@ -61,7 +61,7 @@ cases:
       - electrical concept with evolving state
       - asks for intuition-first teaching explicitly
 
-  - id: tc_trigger_011
+  - id: grasp_trigger_011
     should_trigger: true
     title: Standard deviation intuition guide
     prompt: |
@@ -70,7 +70,7 @@ cases:
       - math topic that benefits from a stable teaching anchor
       - the requested tone and structure match the skill
 
-  - id: tc_trigger_012
+  - id: grasp_trigger_012
     should_trigger: true
     title: Injection molding process explainer
     prompt: |
@@ -79,7 +79,7 @@ cases:
       - manufacturing process with clear stages
       - a visual walkthrough is a natural fit
 
-  - id: tc_trigger_005
+  - id: grasp_trigger_005
     should_trigger: false
     title: API reference request
     prompt: |
@@ -88,7 +88,7 @@ cases:
       - reference docs, not an explainer
       - the skill should stay out of the way
 
-  - id: tc_trigger_006
+  - id: grasp_trigger_006
     should_trigger: false
     title: Release notes request
     prompt: |
@@ -97,7 +97,7 @@ cases:
       - changelog format
       - no need for the teaching pattern
 
-  - id: tc_trigger_007
+  - id: grasp_trigger_007
     should_trigger: false
     title: Formal abstract request
     prompt: |
@@ -106,7 +106,7 @@ cases:
       - formal register requested
       - the casual voice is a bad fit
 
-  - id: tc_trigger_008
+  - id: grasp_trigger_008
     should_trigger: false
     title: One-paragraph summary request
     prompt: |
@@ -115,7 +115,7 @@ cases:
       - concise summary task
       - no room for the skill's full structure
 
-  - id: tc_trigger_013
+  - id: grasp_trigger_013
     should_trigger: false
     title: Steam engine history essay
     prompt: |
@@ -124,7 +124,7 @@ cases:
       - history topic
       - interpretation and context matter more than mechanism
 
-  - id: tc_trigger_014
+  - id: grasp_trigger_014
     should_trigger: false
     title: Philosophy of mathematics prompt
     prompt: |
@@ -133,7 +133,7 @@ cases:
       - philosophy topic
       - not an inspectable technical mechanism explainer
 
-  - id: tc_trigger_015
+  - id: grasp_trigger_015
     should_trigger: false
     title: Manufacturing SOP checklist
     prompt: |

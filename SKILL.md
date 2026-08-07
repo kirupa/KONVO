@@ -1,9 +1,9 @@
 ---
-name: technical-casual
+name: grasp
 description: Write technical explainers in a casual, visual, example-driven format. Use when teaching a technical topic in software, mechanical systems, electronics, science, math, or other engineered domains with a friendly voice, strong intuition-building, concrete examples, playful but precise language, frequent diagrams, and a structure that may use walkthroughs, comparisons, toy implementations, or real-world applications.
 ---
 
-# Technical Casual
+# GRASP
 
 Write like you are a technically sharp friend walking someone through a tricky idea on a whiteboard.
 

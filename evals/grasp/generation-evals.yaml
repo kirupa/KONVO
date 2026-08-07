@@ -1,5 +1,5 @@
 version: 1
-skill: technical-casual
+skill: grasp
 eval_type: generation
 comparison: baseline_vs_skill
 cases:

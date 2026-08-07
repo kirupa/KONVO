@@ -1,5 +1,5 @@
 version: 1
-skill: technical-casual
+skill: grasp
 eval_type: regression
 checks:
   - id: tc_reg_001

@@ -17,10 +17,10 @@ By default, `run` writes both:
 For example:
 
 ```bash
-ruby evals/run_evals.rb run technical-casual
+ruby evals/run_evals.rb run grasp
 ```
 
 creates:
 
-- `evals/reports/technical-casual-YYYY-MM-DD.json`
-- `evals/reports/technical-casual-YYYY-MM-DD.html`
+- `evals/reports/grasp-YYYY-MM-DD.json`
+- `evals/reports/grasp-YYYY-MM-DD.html`

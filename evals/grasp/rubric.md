@@ -1,4 +1,4 @@
-# Technical Casual Rubric
+# GRASP Rubric
 
 Score each dimension from `0` to `2`.
 

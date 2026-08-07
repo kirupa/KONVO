@@ -8,6 +8,19 @@ GRASP is an agent skill designed to help AI write like a great human writer.
 
 The goal is simple: make AI writing feel sharper, more natural, more specific, and less like it was assembled from familiar patterns.
 
+## Where This Comes From
+
+GRASP is not a writing style somebody guessed at over a weekend. It is distilled from about 30 years of [Kirupa](https://www.kirupa.com)'s published writing, which turns out to be a genuinely unreasonable amount of material:
+
+- roughly 1,700 [articles and tutorials](https://www.kirupa.com/learn/index.htm)
+- 9 [published books](https://www.kirupa.com/book/index.htm)
+- around 15,000 [forum posts](https://forum.kirupa.com)
+- thousands of emails, which are staying right where they are, thanks
+
+That is three decades of explaining technical things to people who did not understand them yet, then finding out in real time whether the explanation landed. Forum posts are especially good teachers here, because a confused reply is instant, unambiguous feedback that your explanation did not work.
+
+The point was never to clone one person's voice. It was to find the moves that kept working across all that material and turn them into a pattern any agent can follow.
+
 ## What This Repo Holds
 
 This repo is the skill. `SKILL.md` sits at the root, which means you can install it by pointing your agent straight at a clone.

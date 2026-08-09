@@ -40,6 +40,15 @@ Maximum score: `16`
 - `1`: some visual support, but not well integrated
 - `2`: diagrams, image directions, or state framing noticeably improve comprehension
 
+### 5b. Visual Planning
+
+Scored only when the piece calls for images at all. A code-carried article that
+correctly runs light on visuals should not be penalized here.
+
+- `0`: images are gestured at in prose, mistyped, or dumped at the end
+- `1`: markers are present and roughly in the right places, but vague, uncaptioned by any setup sentence, or over-budget on levity
+- `2`: each marker is placed inline, introduced by the sentence before it, specific enough to build, correctly typed as teaching or levity, and carries alt text
+
 ### 6. Tone and Readability
 
 - `0`: stiff, generic, hypey, or obviously AI-sounding
@@ -60,12 +69,14 @@ Maximum score: `16`
 
 ## Pass Guidance
 
-Suggested interpretation:
+Dimension 5b only applies when the piece calls for images, so the maximum is 18
+when it is scored and 16 when it is not. Judge against the share of the
+available total rather than a fixed number:
 
-- `13-16`: strong value add
-- `10-12`: useful, but should be refined
-- `7-9`: weak value
-- `0-6`: likely not helping
+- `80%+` (`15/18` or `13/16`): strong value add
+- `60-79%` (`11/18` or `10/16`): useful, but should be refined
+- `40-59%` (`8/18` or `7/16`): weak value
+- below `40%`: likely not helping
 
 ## A/B Comparison Rule
 

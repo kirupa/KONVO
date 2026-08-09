@@ -107,11 +107,17 @@ The score keys are:
 - `teaching_anchor`
 - `structure_and_flow`
 - `visual_thinking`
+- `visual_planning` (optional)
 - `tone_and_readability`
 - `technical_precision`
 - `rule_compliance`
 
 Each score must be an integer from `0` to `2`.
+
+`visual_planning` is scored only when the piece calls for images. Omit the key
+entirely when it does not apply, rather than recording a `0`, so a correctly
+code-carried article is not penalized. `total` is the sum of whichever keys are
+present, giving a maximum of `18` with `visual_planning` and `16` without.
 
 ## Decision Semantics
 

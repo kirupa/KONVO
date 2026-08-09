@@ -100,7 +100,7 @@ Two answers, two behaviors.
 
 **Placeholders.** Call out every image inline where it belongs and describe what it should show, using the marker format in the visual rules below. Do not generate the image itself.
 
-**Generate.** Produce the visuals as well, with whatever image generation is available, keeping one consistent visual language across a sequence. If generation is unavailable or fails, fall back to markers and say so rather than quietly dropping the visual.
+**Generate.** Produce the visuals as well, with whatever image generation is available, keeping one consistent visual language across a sequence. Still write the marker, so the draft carries its own visual plan and the intent survives if an image is later replaced. If generation is unavailable or fails, fall back to markers and say so rather than quietly dropping the visual.
 
 Either way, every image gets called out. On placeholder mode the draft should be handable to a designer without them needing to ask a single follow-up question.
 
@@ -527,6 +527,42 @@ In this style, images often do at least eight jobs:
 
 Your article should use visuals the same way.
 
+### Marking Where Images Go
+
+You are writing the article, not producing the art. Every image you would want
+gets called out inline, in place, so the visual plan ships with the draft.
+
+Use two markers:
+
+`[Diagram: what it shows]` for anything that teaches.
+
+`[Levity: what it shows]` for anything that exists to let the reader exhale.
+
+Write them where the image belongs in the flow, not collected at the end. Keep
+each to one or two sentences, concrete enough that a designer or image model
+could build it without asking a follow-up question.
+
+Good:
+
+`[Diagram: the same 4-node graph as before. Node C now filled green, its distance label updated from infinity to 7. Edge B-C highlighted to show which path produced the update. Everything else unchanged.]`
+
+Too vague to build:
+
+`[Diagram: a picture of the algorithm working]`
+
+The two markers are not interchangeable, and the split is the point: it makes
+the humor budget visible. If a draft has six `[Levity:]` markers, that is
+visible on the page rather than buried in the prose.
+
+End each marker with `Alt:` and a one-line description of what the image
+conveys, so the alt text is written by the person who knows what the image is
+for rather than bolted on later.
+
+`[Diagram: three-column layout comparing shallow, partial, and full clone sizes. Alt: bar chart showing full clone at roughly ten times the size of a shallow clone.]`
+
+For a `[Levity:]` marker, the alt text describes the joke plainly. A reader
+using a screen reader should get the gag, not a note that they missed one.
+
 ### Preferred Visual Patterns
 
 This style commonly uses one of these patterns:
@@ -563,6 +599,18 @@ Add a visual whenever one of these happens:
 
 If two or three paragraphs introduce a meaningful new state and there is no visual, you are probably drifting away from the format.
 
+Code blocks count as visual breaks. An article carried by code can run with few
+images or none and still be well paced. The rule is that no more than about
+three prose-only paragraphs pass without something breaking the column, whether
+that is an image, a code block, or a table.
+
+Order matters: prose, then image, then code. Show the idea visually, then show
+the implementation. Do not explain in code and then illustrate.
+
+A useful density target for a full explainer is four to six images per thousand
+words, but treat that as a description of what well-paced articles happen to
+look like rather than a quota to hit.
+
 ### Visual Style Guidelines
 
 Favor visuals that are:
@@ -581,6 +629,12 @@ Avoid visuals that are:
 - crowded
 - unlabeled when labels would help
 - conceptually noisy
+
+Match the image type to the article type. Explainers and tutorials want custom
+diagrams built for the point being made. Essays, opinion pieces, and tooling
+writeups want real screenshots of the actual thing. Mixing them reads as
+padding: a hand-drawn diagram in an opinion piece looks like filler, and a
+stock screenshot in a walkthrough looks like the diagram you did not make.
 
 ### Reusable Visual Moves
 
@@ -608,40 +662,58 @@ A gag image should:
 - hang loosely off the topic's own vocabulary
 - cost the reader nothing if they skip it
 
-Placement matters more than the joke. Put gag images at seams:
+Placement matters more than the joke. There are two reliable slots.
 
-- after a payoff the reader just earned
-- between two major sections
-- after a run of mechanical detail
+The first is the opening, before any technical content. Find the sentence where
+you concede the topic is strange, counterintuitive, or not how a reasonable
+person would expect the world to work. The gag goes there. It sets tone before
+the reader has committed to anything hard, and it signals that the article
+knows the topic is odd.
+
+The second is the first curveball: the moment the mechanism does something the
+reader did not order. A negative remainder that is not allowed to exist. An
+answer that comes back "yes-ish." Put the gag on the confusion, not after it
+resolves.
+
+Beyond those two, gags can sit at seams between major sections or after a run
+of mechanical detail.
 
 Never put one inside a step sequence. If the reader is tracking state across
 frames, a joke image breaks the chain and they have to re-enter the sequence
 cold.
 
-Frequency is roughly one gag per eight to ten explanatory visuals. A long
-article might carry two or three. At that ratio the joke reads as punctuation.
-Past it, it reads as a tic, and the explanatory visuals start losing authority
-by association.
+Budget one to three per article, weighted toward the front. This is an absolute
+count, not a ratio to explanatory visuals. A short piece with eight visuals can
+carry three gags. A long walkthrough with twenty-six carries about the same.
+Past three, the joke reads as a tic, and the explanatory visuals start losing
+authority by association.
 
 Two shapes that work:
 
 - a pun on a term the article already uses heavily, cashed in once the term is
   familiar
-- a reaction image placed on a conclusion, never on a step
+- a reaction image on a moment of confusion or a conclusion, never on a step
 
 Test: delete the image. If the explanation is now incomplete, it was never a
 gag image and it belongs in the explanatory sequence. If nothing is lost except
 the breather, it is doing its job.
 
-### If You Cannot Generate Images
+### Every Image Is Introduced
 
-When you cannot create actual diagrams, write explicit image directions inline.
+No image arrives unannounced. The sentence immediately before it says that
+something is about to be shown, and usually ends in a colon.
 
-Use a format like:
+- "Here is the weighted graph we will use:"
+- "If we had to represent the number 42, it would look as follows:"
+- "This is what the tree looks like after the third file changes:"
 
-`[Diagram: side-by-side local folder and server folder. Same files on both sides. Green check marks on both panels. Use one highlighted file to show the next state change.]`
+This holds for gag images too. The joke is set up by the sentence before it the
+same way a diagram is.
 
-These directions should be specific enough that a designer or image model could implement them.
+Two consequences. The sentence before the image carries the caption's job, so
+do not write captions. And after the image, the prose picks up from what the
+image established rather than narrating it back. "As you can see in the figure
+above" is a tell that the setup sentence was not doing its job.
 
 ## Explanation Tactics
 
@@ -805,10 +877,11 @@ When asked to write in this format, follow this working order:
 5. Choose the article mode that best fits the topic.
 6. Decide whether failed or partial approaches help.
 7. Introduce the core mechanic through stages, examples, or a walkthrough.
-8. Attach a diagram idea to each important conceptual shift.
-9. Add a code, algorithm summary, optimization, or performance section when relevant.
-10. Add real-world applications if they genuinely strengthen the article.
-11. End with a crisp recap.
+8. Attach a diagram idea to each important conceptual shift, written as an inline marker with a setup sentence leading into it.
+9. Place the levity images: one at the opening strangeness admission, and at most one or two more on the first real curveball or at a section seam.
+10. Add a code, algorithm summary, optimization, or performance section when relevant.
+11. Add real-world applications if they genuinely strengthen the article.
+12. End with a crisp recap.
 
 ## Default Article Template
 
@@ -869,6 +942,10 @@ Before delivering, verify:
 - the article has a clear before-state and after-state
 - alternative approaches were considered when appropriate
 - every major conceptual jump has a corresponding visual or diagram direction
+- every image marker is set up by the sentence before it, and no image arrives unannounced
+- no captions sit under image markers, and no "as you can see above" back-references
+- levity markers number three or fewer and none sits inside a step sequence
+- image markers are specific enough to build without a follow-up question, and each carries alt text
 - the voice sounds like a human teacher, not product copy
 - jargon appears after intuition, not before
 - the conclusion reconnects to the main mental model

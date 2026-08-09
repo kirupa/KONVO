@@ -277,3 +277,38 @@ cases:
       - markdown headings, bold, or backticks
       - article-length output
       - burying the point below several paragraphs of setup
+
+  - id: grasp_gen_018
+    mode: visual_walkthrough
+    title: Counterintuitive topic drives image placement
+    prompt: |
+      Write a technical explainer teaching how negative-base number systems work,
+      for developers comfortable with binary. Goal is for them to be able to convert
+      a decimal number by hand. Long-form article, placeholder images.
+    should_demonstrate:
+      - a levity marker near the opening, hung on an admission that the topic is strange
+      - explanatory markers placed inline, each introduced by a setup sentence ending in a colon
+      - a sequence of conversion diagrams sharing one visual language, one change per frame
+      - no levity marker interrupting that conversion sequence
+      - every marker carries alt text
+    should_avoid:
+      - captions written under image markers
+      - back-references such as as you can see in the figure above
+      - more than three levity markers
+      - image descriptions too vague to build from
+      - all markers collected at the end instead of placed inline
+
+  - id: grasp_gen_019
+    mode: code_carried
+    title: Code-heavy topic negative control
+    prompt: |
+      Write a technical explainer showing how to animate CSS grid layouts, for front-end
+      developers. Goal is for them to ship one. Long-form article, placeholder images.
+    should_demonstrate:
+      - code blocks carry the rhythm, with few or no diagram markers forced in
+      - visuals appear only where they teach something code cannot show
+      - prose sets up an idea before the code implements it
+    should_avoid:
+      - a diagram marker attached to every code block to satisfy a quota
+      - a code block explaining a mechanism followed by a diagram illustrating the same thing
+      - padding the article with decorative images

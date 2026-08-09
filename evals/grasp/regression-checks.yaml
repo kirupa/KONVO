@@ -115,3 +115,65 @@ checks:
       - placeholder mode was chosen but images are described only vaguely in prose instead of called out as markers
       - generate mode was chosen but only markers were produced, with no explanation of why generation was skipped
       - image callouts are collected at the end instead of placed inline where each image belongs
+
+  - id: grasp_reg_013
+    name: images_are_introduced
+    priority: high
+    description: No image arrives unannounced. The sentence before it says something is about to be shown.
+    failure_signals:
+      - an image marker with no lead-in sentence
+      - the lead-in sentence describes the image rather than pointing at it
+      - a marker dropped between two unrelated paragraphs with no connective setup
+    preferred_fix:
+      - add a short declarative setup sentence, usually ending in a colon
+      - if no honest setup can be written, the image is probably not needed
+
+  - id: grasp_reg_014
+    name: no_captions_or_backreferences
+    priority: medium
+    description: The setup sentence does the caption's job, so the space under an image stays empty and prose does not narrate the image back.
+    failure_signals:
+      - an italic or bold caption line directly under an image marker
+      - an "as you can see in the figure above" back-reference, or any equivalent
+      - the paragraph after an image restates what the image already showed
+    preferred_fix:
+      - delete the caption and fold anything load-bearing into the setup sentence
+      - have the following paragraph build on the image rather than recap it
+
+  - id: grasp_reg_015
+    name: levity_budget_and_placement
+    priority: high
+    description: Levity is rationed and front-weighted, and never interrupts a sequence the reader is tracking.
+    failure_signals:
+      - four or more levity markers in one article
+      - a levity marker between two steps of a numbered or sequential walkthrough
+      - no levity marker anywhere near the opening on a topic the article itself calls strange
+      - every levity marker clustered at the conclusion
+    preferred_fix:
+      - move the first gag up to the sentence conceding the topic is odd
+      - cut down to three or fewer, keeping the earliest ones
+
+  - id: grasp_reg_016
+    name: markers_are_buildable
+    priority: high
+    description: An image marker should be executable by a designer or image model without a follow-up question.
+    failure_signals:
+      - a marker that only names a subject, such as a picture of the algorithm working
+      - a marker in a sequence that does not say what changed from the previous frame
+      - a marker with no alt text
+      - markers collected at the end of the draft instead of placed inline
+    preferred_fix:
+      - state the scene, what is labeled, and the single thing that changed
+      - carry the same viewpoint and visual language across a sequence
+
+  - id: grasp_reg_017
+    name: visual_rhythm_and_order
+    priority: medium
+    description: Something breaks the column regularly, and visuals precede the code that implements them.
+    failure_signals:
+      - four or more consecutive prose-only paragraphs with no image, code block, or table
+      - a code block explaining a mechanism followed by a diagram illustrating the same thing
+      - diagrams forced into a code-carried article that was already well paced
+    preferred_fix:
+      - treat code blocks and tables as legitimate rhythm breaks
+      - reorder to prose, then image, then code

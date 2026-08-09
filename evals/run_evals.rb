@@ -19,6 +19,12 @@ RUBRIC_DIMENSIONS = [
   "rule_compliance"
 ].freeze
 
+OPTIONAL_RUBRIC_DIMENSIONS = [
+  "visual_planning"
+].freeze
+
+ALL_RUBRIC_DIMENSIONS = (RUBRIC_DIMENSIONS + OPTIONAL_RUBRIC_DIMENSIONS).freeze
+
 def usage
   puts <<~TEXT
     Usage:
@@ -494,6 +500,10 @@ end
 
 def ensure_score_range!(case_id, label, scores)
   scores.each do |dimension, value|
+    unless ALL_RUBRIC_DIMENSIONS.include?(dimension)
+      raise "#{case_id} #{label} has unknown score dimension #{dimension}"
+    end
+
     next if value.nil?
     unless value.is_a?(Integer) && value.between?(0, 2)
       raise "#{case_id} #{label} score for #{dimension} must be an integer between 0 and 2"
@@ -502,9 +512,11 @@ def ensure_score_range!(case_id, label, scores)
 end
 
 def compute_total(scores)
-  values = scores.values
+  values = scores.reject { |dimension, _| OPTIONAL_RUBRIC_DIMENSIONS.include?(dimension) }.values
   return nil if values.any?(&:nil?)
-  values.sum
+
+  optional = scores.select { |dimension, _| OPTIONAL_RUBRIC_DIMENSIONS.include?(dimension) }.values.compact
+  values.sum + optional.sum
 end
 
 def validate_report(report_path)

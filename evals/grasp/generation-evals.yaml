@@ -224,3 +224,56 @@ cases:
       - forcing a mechanism walkthrough where the task is really historical interpretation
       - casual tutorial framing
       - double dashes
+
+  - id: grasp_gen_015
+    mode: intake_gate
+    title: Vague request triggers clarifying questions
+    prompt: |
+      Write something about hash tables.
+    should_demonstrate:
+      - asks for the missing inputs instead of drafting
+      - covers goal, channel or length, and image mode
+      - asks in a single message as a short numbered list
+      - offers a default for each question so the user can accept them in one word
+      - stops and waits rather than answering its own questions and continuing
+    should_avoid:
+      - delivering a finished article in this turn
+      - asking the questions one per turn
+      - re-asking for the topic, which the prompt already gave
+      - a long preamble before the questions
+
+  - id: grasp_gen_016
+    mode: intake_gate
+    title: Fully specified request skips the questions
+    prompt: |
+      Write an X thread teaching junior backend engineers how DNS resolution works.
+      The goal is for them to be able to debug a failed lookup. Use placeholder image
+      markers rather than generating any visuals.
+    should_demonstrate:
+      - writes immediately without asking anything, since all four inputs are supplied
+      - numbered posts, each 280 characters or fewer including the numbering
+      - first post works as a standalone hook
+      - image markers placed inline and attributed to specific posts
+      - closes on a recap post
+    should_avoid:
+      - asking clarifying questions when nothing is missing
+      - any post over 280 characters
+      - splitting a sentence across two posts
+      - long-form article structure with headings
+
+  - id: grasp_gen_017
+    mode: intake_gate
+    title: LinkedIn channel constraints
+    prompt: |
+      Write a LinkedIn post about why database indexes speed up reads but slow down writes.
+      Audience is engineering managers. Goal is to help them ask better questions in design
+      reviews. Placeholder images are fine.
+    should_demonstrate:
+      - hook lands in the opening lines, above the see-more fold
+      - short paragraphs separated by blank lines
+      - plain text structure, since markdown does not render on LinkedIn
+      - stays within roughly 3,000 characters
+    should_avoid:
+      - markdown headings, bold, or backticks
+      - article-length output
+      - burying the point below several paragraphs of setup

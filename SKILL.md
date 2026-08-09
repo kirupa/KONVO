@@ -1,6 +1,6 @@
 ---
 name: grasp
-description: Write technical explainers in a casual, visual, example-driven format. Use when teaching a technical topic in software, mechanical systems, electronics, science, math, or other engineered domains with a friendly voice, strong intuition-building, concrete examples, playful but precise language, frequent diagrams, and a structure that may use walkthroughs, comparisons, toy implementations, or real-world applications.
+description: Write technical explainers in a casual, visual, example-driven format. Use when teaching a technical topic in software, mechanical systems, electronics, science, math, or other engineered domains with a friendly voice, strong intuition-building, concrete examples, playful but precise language, frequent diagrams, and a structure that may use walkthroughs, comparisons, toy implementations, or real-world applications. Always begins by confirming topic, goal, target length or channel, and whether images should be placeholder markers or generated visuals, asking the user for any of those the request does not already answer.
 ---
 
 # GRASP
@@ -46,6 +46,63 @@ Do not use this skill for:
 - topics where interpretation matters more than mechanism
 
 This skill is for technical subjects with inspectable moving parts, not softer topics that rely mostly on interpretation, argument, or historical context.
+
+## Before You Write Anything
+
+This skill produces very different artifacts depending on four inputs. Guessing them wastes a whole draft, so collect them first.
+
+Ask about any of these the prompt has not already answered:
+
+1. **Topic.** What is the piece actually about, and for whom? "Explain caching" is not enough to start on. "Why cache invalidation is hard, for backend engineers who have used a cache but never designed one" is.
+2. **Goal.** What should the reader be able to do or believe when they finish? Teach a mechanism, argue a position, announce a thing, win an argument they keep having at work.
+3. **Length and channel.** See the table below. This choice changes the structure more than any other, so never assume it.
+4. **Images.** Placeholder markers only, or should you generate the visuals too?
+
+Ask only for what is missing. If the prompt already says "write a LinkedIn post about B-trees for junior devs," you have the topic, the channel, and the audience. Ask about the goal and the images, and nothing else.
+
+Ask everything you still need in a single message, as a short numbered list, then stop and wait. Do not ask them one at a time across several turns, and do not bury them under a paragraph of preamble.
+
+Offer a default with each one so the whole thing can be accepted in a word:
+
+> Before I start, four quick things:
+>
+> 1. Topic: B-trees specifically, or database indexing more broadly?
+> 2. Goal: teach the mechanism, or argue for a particular index choice?
+> 3. Length: long-form article (default), LinkedIn post, or X thread?
+> 4. Images: placeholder markers (default), or should I generate the visuals?
+>
+> Say "defaults" and I will write it long-form with placeholder markers.
+
+Do not start drafting until these are answered. Writing against guessed constraints is not a head start, because the channel decision alone can invalidate the entire structure and force a rewrite from scratch.
+
+One exception: if the user explicitly says to skip the questions and just write, do that. State the assumptions you are making in one line, then go.
+
+### Channel Formats
+
+| Channel | Shape |
+| --- | --- |
+| Long-form article | The full format. Headings, walkthroughs, code, image markers. |
+| X thread | Numbered posts, each 280 characters or fewer. |
+| X article | Long-form, no per-post limit. Use the article format. |
+| LinkedIn post | Short, plain text, hook above the fold. |
+
+**X thread.** Every post must be 280 characters or fewer, counted with the numbering included. Number them `1/`, `2/`, and so on, or `1/9` when you know the length up front. Post 1 is the hook and has to work alone, because for most readers it is the only one they will see. One idea per post. Never split a sentence across a post boundary. Images attach to specific posts, so say which post each one belongs to. Close on a recap post instead of trailing off.
+
+Count the characters. Do not eyeball them. A 300-character post is not a near miss, it is unpublishable.
+
+**LinkedIn post.** Only the first couple of lines show before the "see more" fold, so the hook goes there and has to earn the expand. Short paragraphs, one to three sentences, blank line between them. Markdown does not render on LinkedIn: no `#` headings, no `**bold**`, no backticks. Use line breaks and plain capitalized labels for structure instead. Keep it to roughly 3,000 characters. Past that it wants to be a LinkedIn article or a real article.
+
+**Long-form.** Everything else in this document applies as written.
+
+### Image Mode
+
+Two answers, two behaviors.
+
+**Placeholders.** Call out every image inline where it belongs and describe what it should show, using the marker format in the visual rules below. Do not generate the image itself.
+
+**Generate.** Produce the visuals as well, with whatever image generation is available, keeping one consistent visual language across a sequence. If generation is unavailable or fails, fall back to markers and say so rather than quietly dropping the visual.
+
+Either way, every image gets called out. On placeholder mode the draft should be handable to a designer without them needing to ask a single follow-up question.
 
 ## Core Writing Goal
 
@@ -741,16 +798,17 @@ Do not:
 
 When asked to write in this format, follow this working order:
 
-1. Identify the concept's job in plain English.
-2. Pick the best teaching anchor: running example, analogy, toy implementation, or repeated conversion model.
-3. Define the clean starting state.
-4. Choose the article mode that best fits the topic.
-5. Decide whether failed or partial approaches help.
-6. Introduce the core mechanic through stages, examples, or a walkthrough.
-7. Attach a diagram idea to each important conceptual shift.
-8. Add a code, algorithm summary, optimization, or performance section when relevant.
-9. Add real-world applications if they genuinely strengthen the article.
-10. End with a crisp recap.
+1. Confirm topic, goal, channel, and image mode. Do not skip to step 2 with any of them guessed.
+2. Identify the concept's job in plain English.
+3. Pick the best teaching anchor: running example, analogy, toy implementation, or repeated conversion model.
+4. Define the clean starting state.
+5. Choose the article mode that best fits the topic.
+6. Decide whether failed or partial approaches help.
+7. Introduce the core mechanic through stages, examples, or a walkthrough.
+8. Attach a diagram idea to each important conceptual shift.
+9. Add a code, algorithm summary, optimization, or performance section when relevant.
+10. Add real-world applications if they genuinely strengthen the article.
+11. End with a crisp recap.
 
 ## Default Article Template
 
@@ -805,6 +863,8 @@ Or:
 
 Before delivering, verify:
 
+- topic, goal, channel, and image mode were confirmed rather than assumed
+- the piece obeys its channel's constraints, including character limits
 - the concept is grounded in one stable teaching anchor
 - the article has a clear before-state and after-state
 - alternative approaches were considered when appropriate

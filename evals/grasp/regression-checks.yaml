@@ -68,3 +68,50 @@ checks:
       - a mechanical, electrical, math, or manufacturing prompt gets reframed around apps, APIs, or backend systems
       - software metaphors replace clearer domain-native examples
       - the explanation sounds like a coder talking about code instead of the requested subject
+
+  - id: grasp_reg_009
+    name: intake_gate_respected
+    priority: high
+    description: A vague request should produce clarifying questions, not a full draft written against guessed constraints.
+    failure_signals:
+      - a complete article is delivered when topic, goal, channel, or image mode were never specified
+      - the channel is assumed to be long-form without asking
+      - image mode is assumed without asking
+      - questions are asked but a full draft is delivered in the same turn anyway
+    preferred_fix:
+      - ask only for the missing inputs, in one message, with defaults offered
+      - stop and wait for the answer before drafting
+
+  - id: grasp_reg_010
+    name: intake_not_over_asked
+    priority: medium
+    description: The gate should not re-ask for details the prompt already supplied, and should not spread questions across turns.
+    failure_signals:
+      - asks for the topic when the prompt already names it
+      - asks the four questions one per turn instead of together
+      - asks clarifying questions after the user explicitly said to skip them and write
+      - no defaults offered, forcing the user to answer every question manually
+
+  - id: grasp_reg_011
+    name: channel_limits_respected
+    priority: high
+    description: Output must obey the constraints of the channel it was written for.
+    failure_signals:
+      - an X thread post exceeds 280 characters including its numbering
+      - a sentence is split across two posts in a thread
+      - thread posts are unnumbered
+      - a LinkedIn post uses markdown headings, bold, or backticks, none of which render there
+      - a LinkedIn post buries the hook below the first couple of lines
+    preferred_fix:
+      - count characters per post rather than estimating
+      - move the hook into the opening lines
+      - replace markdown structure with line breaks and plain capitalized labels
+
+  - id: grasp_reg_012
+    name: image_mode_honored
+    priority: high
+    description: The answer to the image question should visibly change the output.
+    failure_signals:
+      - placeholder mode was chosen but images are described only vaguely in prose instead of called out as markers
+      - generate mode was chosen but only markers were produced, with no explanation of why generation was skipped
+      - image callouts are collected at the end instead of placed inline where each image belongs

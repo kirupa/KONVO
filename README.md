@@ -1,6 +1,10 @@
 # ✍️ GRASP
 
-**G**enerative **R**ewriter for **A**wesomely **S**implified **P**rose.
+**G**enerative
+**R**ewriter for 
+**A**wesomely 
+**S**implified 
+**P**rose.
 
 Yes, the acronym came first. No, we are not sorry.
 

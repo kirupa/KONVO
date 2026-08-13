@@ -172,14 +172,18 @@ Do not use "insight announcer" phrases like "Here's the tell," "Here's the thing
 - Instead of "Here's the thing: caching is hard," write "Caching is hard, and here is why."
 - If a sentence's only job is to promise that the next sentence is interesting, delete it.
 
+Treat that last line as the actual rule and the phrase list as examples. The failure is a sentence that rates the surrounding content instead of adding to it, and it shows up in wording nobody has blocklisted yet. "For it is doing a lot of quiet work" contains none of the banned phrases and is the same mistake.
+
 ### Reader Address
 
 Speak to the reader directly when useful:
 
 - "Imagine we are building..."
-- "Take a mental snapshot of this moment..."
+- "Take a mental snapshot of these values, we will compare against them shortly"
 - "Do you know why?"
 - "What happens next is..."
+
+Each of these asks for a specific mental action. Direct address stops working the moment it asks for a mood instead, as in "take a moment to appreciate this." See the applause lines section below.
 
 This format often uses:
 
@@ -203,8 +207,7 @@ Examples of the move, not the exact wording:
 
 - clarifying a name with a joke
 - "not to get too X on you"
-- "things are about to get interesting"
-- "neat, right?"
+- "neat, right?" as a brief reaction after the reader has seen something work
 
 Personality should relieve pressure, not hijack the lesson.
 
@@ -213,9 +216,46 @@ Common personality markers in this style:
 - controlled exaggeration like `very VERY`, `ridiculously`, or `bazillion`
 - playful parentheticals
 - slightly goofy phrasing that still preserves clarity
-- a short rhetorical flourish before a walkthrough or payoff
+
+Each of these hands the reader warmth or humor. None of them is a flourish whose job is to make the next paragraph feel important, which is a different move and is covered under applause lines above.
 
 When revising or ghost-writing for a specific author, preserve their existing tics: pet phrases, casual hedges like "sorta," signature sign-offs, emoji habits. Casual should sound like that particular person being casual, not like generic-casual. Sanding the voice down to neutral is a regression even when each individual edit looks like a cleanup.
+
+### Applause Lines
+
+The reader decides what is impressive. Your job is to put the thing in front of them clearly enough that they notice on their own.
+
+An applause line is a sentence whose only job is to signal that the idea nearby is clever. It carries no information. It is the written equivalent of laughing at your own joke.
+
+The test: delete the sentence. If the only thing lost is the impression that the idea was impressive, it was applause. Cut it.
+
+Four shapes to watch for.
+
+**Instructing the reader to admire.** "Take a few moments to appreciate what this is doing." "Sit with that for a second." "Notice how elegant this is." These ask for a feeling instead of pointing at a fact.
+
+Asking the reader to do something specific is fine, and is a different move: "Take a mental snapshot of these four values, because we will compare against them in a moment" requests a concrete action that pays off later. "Take a few moments to understand what this array is doing" requests reverence and names nothing to look at.
+
+**Rating your own example.** "This is doing a lot of quiet work." "This little function is deceptively powerful." "There is more happening here than it looks." The elegance either survives contact with the reader or it does not, and narrating it does not help. Show the four pairs, then show them working on a grid a thousand times larger. The reader gets there without being escorted.
+
+**Archaic register reached for as gravitas.** "for" used to mean "because," along with "thus," "hence," "indeed," and "one might say." These are a costume. A sentence that would sound ridiculous said out loud to a coworker is not more serious, it is just older.
+
+**The verbless mic drop.** "Four pairs of numbers, any size world." A fragment compressed into a slogan and parked at the end of a paragraph for cadence. One of these in a long article can land. A habit of them turns every paragraph into a curtain call, and the reader stops believing any of them.
+
+A related failure is saying the same thing twice in one paragraph, once plainly and once as a slogan. If a paragraph opens with "those four pairs describe every connection" and closes with "four pairs of numbers, any size world," it has not advanced. It has circled and taken a bow.
+
+This is not a rule against personality. A joke, an aside, a bit of exaggeration, or a pop-culture reference each hand the reader something they did not have before. An applause line hands them nothing except the suggestion that they should be impressed. Keep the first kind. The question is whether the sentence carries information, warmth, or humor, rather than a rating of the surrounding content.
+
+Reacting to your own example is allowed when it is brief and lands after the demonstration. "Neat, right?" costs three words and arrives once the reader has already seen the thing work. A full sentence of admiration placed before the demonstration is doing the reader's job for them, and doing it worse.
+
+A worked example. Before:
+
+> Take a few moments to understand what this array is doing, for it is doing a lot of quiet work. Those four pairs describe every connection on our floor. They would also describe every connection on a thousand-by-thousand map, which has nearly two million of them. Four pairs of numbers, any size world.
+
+Four sentences, one idea, and two of them are applause. Sentence one instructs the reader to be impressed without naming anything to look at. Sentence four restates sentence two as a slogan, so the paragraph ends where it started. After:
+
+> Those four pairs describe every connection on our floor. They also describe every connection on a thousand-by-thousand map, where there are nearly two million connections to cover.
+
+Nothing was lost except the applause, and the scaling jump hits harder because the numbers deliver it instead of an adjective.
 
 ### Jargon Handling
 
@@ -860,11 +900,14 @@ Do not:
 - explain only the correct approach without showing why it is needed when the topic benefits from tradeoffs or contrast
 - use double dashes when a comma or shorter sentence would be clearer
 - announce insight with stock phrases like "Here's the tell," "Here's the thing," or "The secret is"
+- write applause lines that rate your own explanation instead of adding to it
+- instruct the reader to appreciate, admire, or sit with something
+- use "for" to mean "because," or reach for "thus," "hence," or "indeed"
 - use images as generic filler
 - overdo humor
 - sound like marketing copy
 - rely on vague praise like "powerful," "revolutionary," or "game-changing"
-- turn every paragraph into a dramatic mic drop
+- close a paragraph on a verbless slogan, or restate a point as one after already making it plainly
 
 ## Output Recipe
 
@@ -947,6 +990,8 @@ Before delivering, verify:
 - levity markers number three or fewer and none sits inside a step sequence
 - image markers are specific enough to build without a follow-up question, and each carries alt text
 - the voice sounds like a human teacher, not product copy
+- no sentence exists only to rate how clever the surrounding content is
+- personality is intact, with humor and warmth left in rather than sanded to neutral
 - jargon appears after intuition, not before
 - the conclusion reconnects to the main mental model
 - the tone has some personality without turning into a bit

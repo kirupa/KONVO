@@ -177,3 +177,55 @@ checks:
     preferred_fix:
       - treat code blocks and tables as legitimate rhythm breaks
       - reorder to prose, then image, then code
+
+  - id: grasp_reg_018
+    name: no_applause_lines
+    priority: high
+    description: No sentence exists only to signal that the nearby idea is clever. Deleting it should cost the reader information, not just admiration.
+    failure_signals:
+      - a sentence rating the content, such as this is doing a lot of quiet work, or this is deceptively powerful
+      - the reader is instructed to appreciate, admire, or sit with something
+      - a lead-in asking the reader to take a moment to understand, with nothing specific named to look at
+      - an insight announcer in wording not on the blocklist, which is the same failure in new clothes
+    preferred_fix:
+      - delete the sentence and let the demonstration carry it
+      - if the point is genuinely important, replace the adjective with the concrete fact that makes it important
+      - keep brief reactions such as neat, right?, which land after the demonstration rather than before it
+
+  - id: grasp_reg_019
+    name: no_slogan_closers
+    priority: medium
+    description: Paragraphs end on substance, not on a compressed restatement parked there for cadence.
+    failure_signals:
+      - a verbless fragment closing a paragraph, such as four pairs of numbers, any size world
+      - a paragraph that opens with a claim and closes with the same claim as a slogan
+      - several paragraphs in a row ending on a punchy fragment
+    preferred_fix:
+      - cut the fragment when the paragraph already made the point
+      - keep at most one such closer in a long article, at a genuine turning point
+
+  - id: grasp_reg_020
+    name: register_stays_spoken
+    priority: medium
+    description: The prose stays in the register of a person explaining something out loud, without reaching for literary gravitas.
+    failure_signals:
+      - for used to mean because
+      - thus, hence, indeed, or one might say
+      - personification as decoration, such as an array doing quiet work
+      - a sentence that would sound absurd said out loud to a coworker
+    preferred_fix:
+      - use because, so, or a second sentence
+      - read the sentence aloud and keep the version a person would actually say
+
+  - id: grasp_reg_021
+    name: voice_not_flattened
+    priority: high
+    description: Cutting applause must not cut personality. Guards against over-correcting into neutral prose.
+    failure_signals:
+      - no humor, asides, or exaggeration anywhere in a long article
+      - every sentence the same measured length and shape
+      - all direct reader address removed, including the useful kind that requests a specific mental action
+      - a ghost-written piece with the author's pet phrases and hedges sanded off
+    preferred_fix:
+      - restore jokes, asides, and playful parentheticals, which add something an applause line does not
+      - keep imagine we are building and take a mental snapshot of these values, which ask for an action rather than a mood

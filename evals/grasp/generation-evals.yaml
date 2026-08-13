@@ -312,3 +312,46 @@ cases:
       - a diagram marker attached to every code block to satisfy a quota
       - a code block explaining a mechanism followed by a diagram illustrating the same thing
       - padding the article with decorative images
+
+  - id: grasp_gen_020
+    mode: elegance_trap
+    title: Elegant construct invites applause
+    prompt: |
+      Write a section of a technical explainer for developers teaching how the four
+      direction offsets used in grid pathfinding work, and why the same four pairs
+      handle a grid of any size. Long-form article, placeholder images.
+    should_demonstrate:
+      - the scaling point is delivered through concrete numbers rather than adjectives
+      - the reader is left to notice the elegance without being told it is elegant
+      - paragraphs end on substance
+      - personality survives, with at least some warmth, humor, or playful phrasing
+    should_avoid:
+      - a sentence rating the code, such as doing a lot of quiet work
+      - instructing the reader to take a moment to appreciate or understand
+      - for used to mean because, or thus, hence, or indeed
+      - a verbless slogan closing a paragraph
+      - restating the same claim twice in one paragraph for cadence
+
+  - id: grasp_gen_021
+    mode: revision
+    title: Strip applause without flattening voice
+    prompt: |
+      Revise this paragraph so it earns its emphasis instead of announcing it, while
+      keeping the writing warm and human rather than neutral:
+
+      Take a few moments to understand what this array is doing, for it is doing a lot
+      of quiet work. Those four pairs describe every connection on our floor. They would
+      also describe every connection on a thousand-by-thousand map, which has nearly two
+      million of them. Four pairs of numbers, any size world.
+    should_demonstrate:
+      - the instruction to admire is gone
+      - the archaic for is gone
+      - the closing slogan is gone or replaced with something that advances the point
+      - the concrete scaling comparison is kept, since that is the actual content
+      - the result is shorter than the original
+      - the tone is still conversational rather than clinical
+    should_avoid:
+      - swapping one applause line for another
+      - deleting the two million comparison, which is the part doing real work
+      - flattening into stiff neutral prose with no personality at all
+      - adding new hype words such as powerful or elegant

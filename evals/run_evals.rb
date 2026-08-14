@@ -34,10 +34,10 @@ def usage
       ruby evals/run_evals.rb summarize <report.json> [output.md] [output.html]
 
     Examples:
-      ruby evals/run_evals.rb run grasp
-      ruby evals/run_evals.rb scaffold grasp
-      ruby evals/run_evals.rb validate evals/reports/grasp-2026-07-11.json
-      ruby evals/run_evals.rb summarize evals/reports/grasp-2026-07-11.json
+      ruby evals/run_evals.rb run konvo
+      ruby evals/run_evals.rb scaffold konvo
+      ruby evals/run_evals.rb validate evals/reports/konvo-2026-07-11.json
+      ruby evals/run_evals.rb summarize evals/reports/konvo-2026-07-11.json
   TEXT
 end
 

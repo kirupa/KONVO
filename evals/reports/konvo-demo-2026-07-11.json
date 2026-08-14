@@ -1,6 +1,6 @@
 {
   "meta": {
-    "skill": "grasp",
+    "skill": "konvo",
     "generated_at": "2026-07-11T14:05:00-07:00",
     "report_version": 1,
     "status": "completed",
@@ -8,7 +8,7 @@
   },
   "trigger_results": [
     {
-      "id": "grasp_trigger_001",
+      "id": "konvo_trigger_001",
       "title": "Vector clocks explainer",
       "expected_trigger": true,
       "actual_trigger": true,
@@ -16,7 +16,7 @@
       "notes": "Long-form explainer request with explicit need for a concrete example."
     },
     {
-      "id": "grasp_trigger_002",
+      "id": "konvo_trigger_002",
       "title": "Reference counting walkthrough",
       "expected_trigger": true,
       "actual_trigger": true,
@@ -24,7 +24,7 @@
       "notes": "The request explicitly asks for a visual step-by-step explanation."
     },
     {
-      "id": "grasp_trigger_003",
+      "id": "konvo_trigger_003",
       "title": "Base64 tutorial",
       "expected_trigger": true,
       "actual_trigger": true,
@@ -32,7 +32,7 @@
       "notes": "Model-based tutorial request, good fit for intuition-first structure."
     },
     {
-      "id": "grasp_trigger_004",
+      "id": "konvo_trigger_004",
       "title": "Cache invalidation tradeoff explainer",
       "expected_trigger": true,
       "actual_trigger": true,
@@ -40,7 +40,7 @@
       "notes": "Tradeoff-heavy backend topic that benefits from structure and examples."
     },
     {
-      "id": "grasp_trigger_005",
+      "id": "konvo_trigger_005",
       "title": "API reference request",
       "expected_trigger": false,
       "actual_trigger": false,
@@ -48,7 +48,7 @@
       "notes": "Reference docs should remain concise and neutral."
     },
     {
-      "id": "grasp_trigger_006",
+      "id": "konvo_trigger_006",
       "title": "Release notes request",
       "expected_trigger": false,
       "actual_trigger": false,
@@ -56,7 +56,7 @@
       "notes": "Release notes should not be rewritten as explainers."
     },
     {
-      "id": "grasp_trigger_007",
+      "id": "konvo_trigger_007",
       "title": "Formal abstract request",
       "expected_trigger": false,
       "actual_trigger": false,
@@ -64,7 +64,7 @@
       "notes": "The prompt asks for an academic register."
     },
     {
-      "id": "grasp_trigger_008",
+      "id": "konvo_trigger_008",
       "title": "One-paragraph summary request",
       "expected_trigger": false,
       "actual_trigger": false,
@@ -74,7 +74,7 @@
   ],
   "generation_results": [
     {
-      "id": "grasp_gen_001",
+      "id": "konvo_gen_001",
       "title": "Cache invalidation",
       "mode": "design_tradeoff",
       "baseline": {
@@ -107,12 +107,14 @@
         "notes": "Strong improvement. The skill version gives the topic a concrete storefront/CMS example, explains why naive TTL-only approaches hurt, and stages the solution choices clearly.",
         "output_excerpt": "Imagine you run an online store. A product page is fast because its title, price, and inventory are cached. Then someone in the admin panel changes the price from $39 to $29. If the cache keeps serving the old version, your site is now fast and wrong, which is a bad combo. That tension is the whole cache invalidation problem.\n\nThe easiest fix is to let cached data expire after a fixed amount of time. That works, until you notice the awkward window where the source of truth has changed but the cache has not. Now we have a real tradeoff to work through."
       },
-      "regression_failures": [],
+      "regression_failures": [
+
+      ],
       "decision": "win",
       "notes": "Representative strong-fit case."
     },
     {
-      "id": "grasp_gen_002",
+      "id": "konvo_gen_002",
       "title": "Reference counting memory management",
       "mode": "visual_walkthrough",
       "baseline": {
@@ -145,12 +147,14 @@
         "notes": "The skill version stages object creation, assignment, unassignment, and cleanup in a visual way. The cycle limitation also lands more clearly because the anchor stays stable.",
         "output_excerpt": "Think of each object as carrying a little sticky note with a number on it. That number tells us how many live references still point at the object. If the number is 3, three different places still care about it. If the number drops to 0, nobody is using it anymore, so we can clean it up.\n\nStart with one object named `UserProfile`. A variable points to it, so the count is 1. Pass that object into a cache, and the count becomes 2. Drop the original variable, and the count falls back to 1. Once the cache lets go too, the count reaches 0 and cleanup can happen."
       },
-      "regression_failures": [],
+      "regression_failures": [
+
+      ],
       "decision": "win",
       "notes": "Strong visual-walkthrough win."
     },
     {
-      "id": "grasp_gen_003",
+      "id": "konvo_gen_003",
       "title": "Base64 encoding",
       "mode": "conversion_model",
       "baseline": {
@@ -183,12 +187,14 @@
         "notes": "The skill version gives the reader a stable transformation model and a stronger plain-language bridge before the formal bit math.",
         "output_excerpt": "Base64 is what you reach for when you need to move raw bytes through a system that behaves better with plain text. The bytes are still the real payload. Base64 just repackages them into a safer-looking alphabet.\n\nThe easiest way to picture it is this: take 3 bytes, line them up into one 24-bit strip, then cut that strip into 4 equal 6-bit pieces. Those 6-bit pieces are small enough to map cleanly into a 64-character alphabet. Once you see that repacking step, the rest of Base64 feels much less mysterious."
       },
-      "regression_failures": [],
+      "regression_failures": [
+
+      ],
       "decision": "win",
       "notes": "Good model-based improvement."
     },
     {
-      "id": "grasp_gen_004",
+      "id": "konvo_gen_004",
       "title": "Checksum vs cryptographic hash",
       "mode": "toy_implementation",
       "baseline": {
@@ -221,12 +227,14 @@
         "notes": "Good toy-first framing. The only reason visual_thinking is a 1 instead of 2 is that the sample stayed compact.",
         "output_excerpt": "Start with the laziest possible integrity check: add up the byte values in a file and keep the result. That gives you a checksum. It is cheap, and it will catch some accidental damage. It is also easy to fool. Different inputs can land on the same sum without much effort.\n\nA cryptographic hash is trying to solve a much harsher problem. It should still be deterministic and fast, but it should also make collisions hard to find and the original input hard to reconstruct. The toy version teaches the idea. The stronger version is what you trust when the stakes go up."
       },
-      "regression_failures": [],
+      "regression_failures": [
+
+      ],
       "decision": "win",
       "notes": "Useful but slightly less visual than the top cases."
     },
     {
-      "id": "grasp_gen_005",
+      "id": "konvo_gen_005",
       "title": "Rate limiting",
       "mode": "design_tradeoff",
       "baseline": {
@@ -259,12 +267,14 @@
         "notes": "The skill framing helps because rate limiting is fundamentally a tradeoff topic.",
         "output_excerpt": ""
       },
-      "regression_failures": [],
+      "regression_failures": [
+
+      ],
       "decision": "win",
       "notes": "Strong mode fit."
     },
     {
-      "id": "grasp_gen_006",
+      "id": "konvo_gen_006",
       "title": "B-tree indexing",
       "mode": "visual_walkthrough",
       "baseline": {
@@ -297,12 +307,14 @@
         "notes": "The page-based visual anchor improves this topic a lot.",
         "output_excerpt": ""
       },
-      "regression_failures": [],
+      "regression_failures": [
+
+      ],
       "decision": "win",
       "notes": "Clear win."
     },
     {
-      "id": "grasp_gen_007",
+      "id": "konvo_gen_007",
       "title": "Debounce vs throttle",
       "mode": "boundary_concise",
       "baseline": {
@@ -335,12 +347,14 @@
         "notes": "The skill still helps, but the gain is smaller because the prompt wants compactness.",
         "output_excerpt": ""
       },
-      "regression_failures": [],
+      "regression_failures": [
+
+      ],
       "decision": "win",
       "notes": "Boundary case with modest upside."
     },
     {
-      "id": "grasp_gen_008",
+      "id": "konvo_gen_008",
       "title": "API docs control",
       "mode": "negative_fit_guard",
       "baseline": {
@@ -373,7 +387,9 @@
         "notes": "The skill makes the output more article-like than the task wants. This is a healthy negative control.",
         "output_excerpt": "If you have ever needed to give someone temporary access to a file without exposing your storage credentials, `makeSignedUrl` is the helper that does the heavy lifting. It takes a URL plus signing options and returns a time-limited link."
       },
-      "regression_failures": [],
+      "regression_failures": [
+
+      ],
       "decision": "loss",
       "notes": "Important negative control. The skill should not dominate terse reference writing."
     }
@@ -381,7 +397,9 @@
   "summary": {
     "trigger_pass_rate": 100.0,
     "generation_success_rate": 87.5,
-    "high_priority_regression_failures": [],
+    "high_priority_regression_failures": [
+
+    ],
     "overall_notes": "The smoke test suggests strong value on long-form explainers, especially tradeoff and walkthrough topics. The negative control behaves correctly: the style is a poor fit for terse API reference docs."
   }
 }

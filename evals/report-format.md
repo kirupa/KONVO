@@ -7,24 +7,24 @@ The eval runner uses a JSON report file as the source of truth and generates a m
 1. Run the suite:
 
 ```bash
-ruby evals/run_evals.rb run grasp
+ruby evals/run_evals.rb run konvo
 ```
 
 By default, this creates:
 
-- `evals/reports/grasp-YYYY-MM-DD.json`
-- `evals/reports/grasp-YYYY-MM-DD.html`
+- `evals/reports/konvo-YYYY-MM-DD.json`
+- `evals/reports/konvo-YYYY-MM-DD.html`
 
 You can also provide your own output base:
 
 ```bash
-ruby evals/run_evals.rb run grasp evals/reports/grasp-demo
+ruby evals/run_evals.rb run konvo evals/reports/konvo-demo
 ```
 
 That creates:
 
-- `evals/reports/grasp-demo.json`
-- `evals/reports/grasp-demo.html`
+- `evals/reports/konvo-demo.json`
+- `evals/reports/konvo-demo.html`
 
 2. Fill in the JSON report by hand or with a separate automation step:
 
@@ -36,13 +36,13 @@ That creates:
 3. Validate the report:
 
 ```bash
-ruby evals/run_evals.rb validate evals/reports/grasp-YYYY-MM-DD.json
+ruby evals/run_evals.rb validate evals/reports/konvo-YYYY-MM-DD.json
 ```
 
 4. Summarize the report:
 
 ```bash
-ruby evals/run_evals.rb summarize evals/reports/grasp-YYYY-MM-DD.json
+ruby evals/run_evals.rb summarize evals/reports/konvo-YYYY-MM-DD.json
 ```
 
 This updates the JSON summary fields and regenerates the matching HTML report.
@@ -50,13 +50,13 @@ This updates the JSON summary fields and regenerates the matching HTML report.
 Optionally write a Markdown scorecard too:
 
 ```bash
-ruby evals/run_evals.rb summarize evals/reports/grasp-YYYY-MM-DD.json evals/reports/grasp-YYYY-MM-DD.md
+ruby evals/run_evals.rb summarize evals/reports/konvo-YYYY-MM-DD.json evals/reports/konvo-YYYY-MM-DD.md
 ```
 
 If you want to use the lower-level scaffold step directly, it also writes both artifacts:
 
 ```bash
-ruby evals/run_evals.rb scaffold grasp
+ruby evals/run_evals.rb scaffold konvo
 ```
 
 That command creates a draft JSON report and a matching draft HTML view.
@@ -134,7 +134,7 @@ For generation cases:
 Example:
 
 ```json
-["grasp_reg_001", "grasp_reg_007"]
+["konvo_reg_001", "konvo_reg_007"]
 ```
 
 ## Summary Fields

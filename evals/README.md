@@ -1,6 +1,6 @@
 # Evals
 
-This folder contains the evaluation suites for the `grasp` skill.
+This folder contains the evaluation suites for the `konvo` skill.
 
 The goal of these evals is not just to check whether the skill can produce output that "looks good." The goal is to verify that the skill creates a measurable improvement over a baseline response and that it activates only when it should.
 
@@ -37,41 +37,41 @@ The skill is providing value when:
 The default entry point is:
 
 ```bash
-ruby evals/run_evals.rb run grasp
+ruby evals/run_evals.rb run konvo
 ```
 
 That command now always produces both of these files by default:
 
-- `evals/reports/grasp-YYYY-MM-DD.json`
-- `evals/reports/grasp-YYYY-MM-DD.html`
+- `evals/reports/konvo-YYYY-MM-DD.json`
+- `evals/reports/konvo-YYYY-MM-DD.html`
 
 The JSON file is the source of truth for the report data. The HTML file is the browser-ready rendered view of that same report.
 
 If you want to choose the filename base yourself, pass an output base or a JSON path:
 
 ```bash
-ruby evals/run_evals.rb run grasp evals/reports/grasp-demo
-ruby evals/run_evals.rb run grasp evals/reports/grasp-demo.json
+ruby evals/run_evals.rb run konvo evals/reports/konvo-demo
+ruby evals/run_evals.rb run konvo evals/reports/konvo-demo.json
 ```
 
 Both commands will create:
 
-- `evals/reports/grasp-demo.json`
-- `evals/reports/grasp-demo.html`
+- `evals/reports/konvo-demo.json`
+- `evals/reports/konvo-demo.html`
 
 You can still use the lower-level commands directly:
 
 ```bash
-ruby evals/run_evals.rb scaffold grasp
-ruby evals/run_evals.rb validate evals/reports/grasp-YYYY-MM-DD.json
-ruby evals/run_evals.rb summarize evals/reports/grasp-YYYY-MM-DD.json
+ruby evals/run_evals.rb scaffold konvo
+ruby evals/run_evals.rb validate evals/reports/konvo-YYYY-MM-DD.json
+ruby evals/run_evals.rb summarize evals/reports/konvo-YYYY-MM-DD.json
 ```
 
 `summarize` now regenerates the HTML report automatically, so the browser view stays in sync with the JSON report.
 
 ## Folder Layout
 
-`evals/grasp/` contains:
+`evals/konvo/` contains:
 
 - `README.md`: suite overview and evaluation philosophy
 - `rubric.md`: scoring dimensions and pass criteria

@@ -1,4 +1,4 @@
-# GRASP Rubric
+# KONVO Rubric
 
 Score each dimension from `0` to `2`.
 

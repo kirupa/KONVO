@@ -1,6 +1,6 @@
-# GRASP Evals
+# KONVO Evals
 
-This suite evaluates whether the `grasp` skill actually improves technical writing in the ways it promises.
+This suite evaluates whether the `konvo` skill actually improves technical writing in the ways it promises.
 
 The suite is intentionally broad. It covers both computer topics and non-computer technical topics so we can verify that the skill generalizes across technical domains instead of quietly collapsing back into developer-only writing.
 
@@ -36,13 +36,13 @@ We want to know:
 The easiest way to start is:
 
 ```bash
-ruby evals/run_evals.rb run grasp
+ruby evals/run_evals.rb run konvo
 ```
 
 That command always creates both:
 
-- `evals/reports/grasp-YYYY-MM-DD.json`
-- `evals/reports/grasp-YYYY-MM-DD.html`
+- `evals/reports/konvo-YYYY-MM-DD.json`
+- `evals/reports/konvo-YYYY-MM-DD.html`
 
 The JSON file is the editable report data. The HTML file is the rendered browser view of the same report.
 
@@ -56,8 +56,8 @@ For each generation eval:
 After scoring the results, validate and summarize with:
 
 ```bash
-ruby evals/run_evals.rb validate evals/reports/grasp-YYYY-MM-DD.json
-ruby evals/run_evals.rb summarize evals/reports/grasp-YYYY-MM-DD.json
+ruby evals/run_evals.rb validate evals/reports/konvo-YYYY-MM-DD.json
+ruby evals/run_evals.rb summarize evals/reports/konvo-YYYY-MM-DD.json
 ```
 
 `summarize` recalculates the summary fields and refreshes the HTML output automatically.

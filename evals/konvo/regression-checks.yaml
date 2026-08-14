@@ -229,3 +229,94 @@ checks:
     preferred_fix:
       - restore jokes, asides, and playful parentheticals, which add something an applause line does not
       - keep imagine we are building and take a mental snapshot of these values, which ask for an action rather than a mood
+
+  - id: konvo_reg_022
+    name: no_machine_vocabulary
+    priority: high
+    description: The high-frequency generated-text vocabulary must not appear unless the literal meaning is required.
+    failure_signals:
+      - verbs such as delve, leverage, utilize, harness, foster, streamline, unlock, or showcase
+      - nouns such as tapestry, realm, landscape, ecosystem, paradigm, journey, or intricacies used figuratively
+      - adjectives such as pivotal, crucial, seamless, robust, intricate, nuanced, or transformative
+      - stock phrases such as in today's fast-paced world, it's important to note, at its core, or when it comes to
+      - three or more of the allowed-alone words such as comprehensive, key, powerful, or quietly stacked in a single sentence
+    preferred_fix:
+      - use the plain verb, so utilize becomes use and leverage becomes use
+      - keep literal uses, since an ecosystem that lost its otters is a real ecosystem
+      - delete the adjective rather than replacing it with a fancier one
+
+  - id: konvo_reg_023
+    name: no_structural_padding
+    priority: high
+    description: Previews, recaps, conclusions, and prompt echoes that carry no information must not appear.
+    failure_signals:
+      - a section preview such as in this section we'll look at three things
+      - a mid-article recap such as as we've seen
+      - a paragraph opening with in conclusion, in summary, or overall
+      - a closing pep talk such as as we move forward, embracing these patterns will be key
+      - a prompt echo such as this article will explore how hash maps work
+      - the first reason is, the second reason is, the third reason is, where the ideas actually connect
+    preferred_fix:
+      - keep exactly one recap, at the end, as described under End With a Compact Recap
+      - end on the last concrete point instead of announcing the ending
+      - open with the thing itself rather than a description of the article
+
+  - id: konvo_reg_024
+    name: no_empty_negative_parallelism
+    priority: medium
+    description: The it's not X, it's Y construction must carry a real contrast rather than supply cadence.
+    failure_signals:
+      - both halves are abstractions, as in it's not about speed, it's about clarity
+      - deleting the first half would lose no information
+      - the construction appears more than once in a single article
+      - over-simplified openers such as most people think or we've all been there
+    preferred_fix:
+      - state the second half directly and delete the setup
+      - keep the construction when both halves are concrete and the contrast is doing work
+
+  - id: konvo_reg_025
+    name: formatting_not_machine_shaped
+    priority: medium
+    description: Article formatting must not carry the visual signature of generated output.
+    failure_signals:
+      - bullets opening with a bolded label and a colon, such as Security: it matters
+      - decorative emoji used as bullet markers or heading ornaments
+      - headings in Title Case, or colon-split titles such as The power of caching: why it works
+      - curly quotes or unrendered markdown in plain-text channels
+      - a semicolon where a period would read better
+    preferred_fix:
+      - write each bullet as a sentence
+      - use sentence case for headings
+      - keep emoji only where the author's own voice or the channel already uses them
+
+  - id: konvo_reg_026
+    name: register_and_stance_intact
+    priority: high
+    description: Prose must keep contractions, specifics, and a point of view rather than defaulting to formal, uniformly positive text.
+    failure_signals:
+      - no contractions anywhere in a long article
+      - every claim immediately balanced by its counterpoint
+      - nothing in the piece is criticized, tedious, or unresolved
+      - generic actors such as a client, a certain tool, or a major city where a name would work
+      - invented character names defaulting to Emily or Sarah
+      - an anecdote with no detail that fails to serve the point
+    preferred_fix:
+      - restore contractions such as don't, you'll, and here's
+      - name at least one thing that is annoying, tedious, or still unsolved
+      - replace category words with specific named things and textured numbers such as v2 or 11 months
+
+  - id: konvo_reg_027
+    name: no_leaked_machinery
+    priority: high
+    description: Assistant scaffolding and fabricated support must never reach the output.
+    failure_signals:
+      - conversational scaffolding such as Certainly! Here's the article or I hope this helps
+      - self-reference such as as an AI language model, or a mention of a knowledge cutoff
+      - unfilled placeholders such as insert example here
+      - tracking parameters such as utm_source on a link
+      - invented citations, statistics, benchmarks, or quotes
+      - Best regards or a similar sign-off outside an actual email
+    preferred_fix:
+      - deliver the article body alone, with no preamble and no offer to revise
+      - omit the number entirely when no real number is available
+      - keep the deliberate Diagram and Levity markers, which are output rather than placeholders

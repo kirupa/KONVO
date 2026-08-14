@@ -275,6 +275,104 @@ Example pattern:
 
 Do not lead with terminology unless the user explicitly asked for a dense expert treatment.
 
+## Avoiding AI Tells
+
+Readers recognize generated prose by a small set of habits. Most of them are not errors. They are ordinary words and shapes that show up far more often in machine text than in human text, which is what makes them a signature.
+
+The rule that matters is not the list below. It is this: when a sentence exists to sound finished rather than to say something, cut it. Blocklists lose to paraphrase, so treat the specific words as symptoms and the principle as the test.
+
+### Words That Cluster in Machine Text
+
+Avoid these unless you mean them literally.
+
+**Verbs.** delve, leverage, underscore, harness, foster, navigate (figurative), utilize, facilitate, streamline, bolster, illuminate, showcase, embark, elevate, empower, unleash, unlock (figurative), uncover, optimize, garner, resonate, revolutionize, shed light on, synthesize, elucidate, transcend, reimagine, intertwine, grapple with, exemplify, underpin.
+
+**Nouns.** tapestry, landscape (figurative), realm, ecosystem (figurative), paradigm, synergy, testament, beacon, journey (figurative), interplay, intricacies, symphony, quest (figurative), roadmap (figurative), endeavor, myriad, plethora, advancements, trajectory (figurative).
+
+**Adjectives and adverbs.** pivotal, crucial, seamless, robust, vibrant, intricate, meticulous, nuanced, cutting-edge, transformative, game-changing, groundbreaking, unparalleled, invaluable, multifaceted, commendable, poignant, profound, relentless, tireless, unwavering, timeless, ever-evolving, fast-paced.
+
+**Stock phrases.** "in today's fast-paced world," "it's important to note," "plays a pivotal role in," "stands as a testament to," "navigate the complexities of," "in conclusion," "in summary," "at its core," "that being said," "a key takeaway," "paving the way for," "valuable insights," "a deeper understanding of," "when it comes to," "look no further," "let's dive into," "let's unpack," "furthermore," "moreover," and sentence-initial "additionally."
+
+Literal use is fine. "Utilize" is dead weight for "use," but "the ecosystem lost its otters" is a real sentence about otters, and "optimize" is correct when you mean the compiler pass. Judge by whether the word carries meaning or carries tone.
+
+A second group is fine alone and suspicious in packs: comprehensive, essential, critical, key, dynamic, powerful, vital, explore, ensure, highlight, insights, framework, approach, challenges, potential, impact, quietly. One every few paragraphs reads normal. Three in a sentence reads generated. Watch "quiet" and "quietly" especially, since "does a lot of quiet work" is the exact shape covered under Applause Lines.
+
+### Constructions That Cluster in Machine Text
+
+**Negative parallelism.** "It's not about speed, it's about clarity." The construction is fine when the contrast is real and both halves are concrete. It is a tell when both halves are abstractions and the sentence exists for cadence. If deleting the first half loses nothing, delete both.
+
+**Over-simplified openers.** "Most people think X." "We've all been there." You do not know what most people think, and the reader knows you do not.
+
+**Fractal summaries.** Previews and recaps at every level, like "in this section we'll look at three things" followed later by "as we've seen." One recap at the end of the article is the plan. Section-level previews and recaps are padding.
+
+**Signposted conclusions.** "In conclusion," plus a restatement, plus an uplift. End on the last concrete thing you have to say. If the recap section covers it, you are already done.
+
+**Pep-talk endings.** "As we move forward, embracing these patterns will be key to success." Delete on sight. Nothing is being said.
+
+**Prompt echo.** "This article will explore how hash maps work." Start with the thing, not with a description of the article.
+
+**Listicles wearing a trenchcoat.** "The first reason is. The second reason is. The third reason is." If the ideas connect, connect them. If they do not, use an actual list.
+
+**Uniform staccato.** "Rust is fast. Rust is safe. Rust is strict." Three sentences, one shape. Vary them or merge them.
+
+### Formatting Tells
+
+These apply to article output, not to reference documents like this one.
+
+- Do not use em dashes or double dashes. Already covered under Sentence Rhythm, and it is the single most recognized tell.
+- Do not open bullets with a bolded label and a colon, as in "**Security:** it matters." Write the bullet as a sentence.
+- Do not decorate bullets or headings with emoji like check marks, brains, or blue diamonds. Emoji are fine when the author's own voice uses them, and fine on social channels where they are native. Decorative emoji added for structure are the tell.
+- Write headings in sentence case. Avoid Title Case, and avoid the colon-split title, as in "The power of caching: why it works."
+- Do not use curly quotes in plain-text contexts, and do not leave markdown syntax where it will not render. See the LinkedIn and X guidance under Channel Formats.
+- Prefer a period where you were about to use a semicolon.
+- The Oxford comma is house style, not a tell by itself. Stay consistent in technical lists, where ambiguity costs the reader something real.
+
+### Voice Tells
+
+**Uniform positivity.** Generated text is measurably more certain and more upbeat than human writing. Let something be annoying. Name the part of the API that is badly designed, the step that is tedious, the edge case nobody has solved. An article where everything is great reads like a brochure.
+
+**Both-sidesing.** Every claim balanced by its counterpoint leaves the reader with nothing. Have an opinion and say it. Tradeoffs are worth naming once, not bolted onto every sentence as insurance.
+
+**Register scrubbing.** Use contractions. Don't, you'll, it's, here's. Formal register is the default failure mode, and it is the fastest way to lose the reader.
+
+**Generic actors.** "A client," "a certain tool," "a major city." Name it. This extends the rule about giving recurring actors human names. When you invent a name, skip Emily and Sarah, which generated text reaches for constantly.
+
+**Suspiciously tidy anecdotes.** Real stories carry a detail that does not serve the point. If you tell a story, let it keep one loose thread.
+
+### Leaked Machinery
+
+Never emit any of these:
+
+- Conversational scaffolding like "Certainly! Here's the article," "I hope this helps," or "Let me know if you'd like me to adjust anything."
+- Self-reference like "as an AI language model," or any mention of a knowledge cutoff.
+- Unfilled placeholder text like "[insert example here]." This is different from the deliberate `[Diagram:]` and `[Levity:]` markers under Visual Teaching Rules, which are part of the output.
+- Tracking parameters like `utm_source=chatgpt.com` on any link.
+- Invented citations, statistics, benchmarks, or quotes. If you do not have a real number, do not print a number.
+- "Best regards" and similar sign-offs outside of actual email.
+
+### Human Markers Worth Adding
+
+Removing tells is half the work. Flat, tell-free prose still reads as generated. Add back:
+
+- contractions
+- a number with texture, like 4:30am, v2, 11 months, or $43, instead of a round approximation
+- a specific named thing instead of a category
+- one parenthetical aside with an attitude in it
+- one sentence that starts with And, But, or Because
+- one single-sentence paragraph, used once and not as a habit
+- a mild complaint, or an edge case you are leaving unresolved
+- one irrelevant but true detail inside any anecdote
+- a question the reader is actually asking at that moment
+
+### Do Not Overcorrect
+
+The goal is writing that sounds like a person, not writing that evades a classifier.
+
+- Do not swap ordinary words for unusual ones to look human. "Utilize" to "use" is a fix. "Use" to "wield" is not.
+- Do not add typos or broken grammar. Errors have to read as casualness, never as carelessness.
+- Do not shorten every long sentence. Variety is the point, and a 30-word sentence next to a 4-word one is the shape you want.
+- Do not strip personality along with the tells. A piece with no jokes, no opinions, and no specifics is still machine-shaped, and now it is boring too.
+
 ## Common Article Modes
 
 This skill does not assume one rigid structure for every topic. Pick the mode that best fits the material.
@@ -349,7 +447,7 @@ Common pattern:
 Best for topics where:
 
 - a simple version can teach the core concept
-- the production-grade version is much more nuanced
+- the production-grade version has more moving parts
 - understanding the failure of the toy version is part of the lesson
 
 ## Structural Blueprint
@@ -907,6 +1005,8 @@ Do not:
 - overdo humor
 - sound like marketing copy
 - rely on vague praise like "powerful," "revolutionary," or "game-changing"
+- reach for the machine vocabulary, padding structures, or formatting habits catalogued under Avoiding AI Tells
+- strip the voice while removing those tells, since flat and correct is still machine-shaped
 - close a paragraph on a verbless slogan, or restate a point as one after already making it plainly
 
 ## Output Recipe
@@ -991,6 +1091,10 @@ Before delivering, verify:
 - image markers are specific enough to build without a follow-up question, and each carries alt text
 - the voice sounds like a human teacher, not product copy
 - no sentence exists only to rate how clever the surrounding content is
+- the draft is clean of the words, constructions, and formatting listed under Avoiding AI Tells
+- sentence lengths vary, with at least one short sentence and one long one per section
+- contractions are present, at least one thing is left unresolved or criticized, and specific names and textured numbers appear instead of categories and round approximations
+- headings are sentence case, bullets do not open with bolded labels, and no decorative emoji were added
 - personality is intact, with humor and warmth left in rather than sanded to neutral
 - jargon appears after intuition, not before
 - the conclusion reconnects to the main mental model

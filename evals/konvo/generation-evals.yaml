@@ -355,3 +355,85 @@ cases:
       - deleting the two million comparison, which is the part doing real work
       - flattening into stiff neutral prose with no personality at all
       - adding new hype words such as powerful or elegant
+
+  - id: konvo_gen_022
+    mode: revision
+    title: Strip machine vocabulary without going stiff
+    prompt: >
+      Revise this paragraph so it follows the skill. Keep the meaning and keep the
+      conversational tone. Paragraph: "In today's fast-paced development landscape,
+      caching plays a pivotal role in delivering seamless user experiences. By
+      leveraging a robust caching layer, teams can unlock significant performance
+      gains and navigate the complexities of modern scale. It's important to note
+      that a comprehensive strategy is essential."
+    should_demonstrate:
+      - every listed machine-vocabulary word is gone, including leveraging, pivotal, seamless, robust, unlock, and navigate the complexities
+      - the opening fast-paced landscape clause is deleted rather than reworded
+      - the surviving text says something concrete about what caching actually does
+      - contractions appear
+      - the result is noticeably shorter than the original
+    should_avoid:
+      - substituting an equally inflated synonym, such as harness for leverage
+      - replacing the hype with flat neutral prose that has no voice at all
+      - inventing a performance number to make the paragraph feel concrete
+      - keeping it's important to note in a reworded form
+
+  - id: konvo_gen_023
+    mode: revision
+    title: Remove structural padding from a drafted article
+    prompt: >
+      Revise this article skeleton so it follows the skill. Skeleton: "This article
+      will explore how hash maps work. In this section, we'll look at three things:
+      storage, collisions, and resizing. [body] As we've seen, hash maps store
+      key-value pairs. In conclusion, hash maps are a crucial data structure, and as
+      we move forward, understanding them will be key to writing better code."
+    should_demonstrate:
+      - the prompt echo opening is replaced with the subject itself
+      - the section preview listing three things is deleted
+      - the mid-article as we've seen recap is deleted
+      - the in conclusion paragraph and the pep-talk ending are both gone
+      - at most one recap survives, at the end, and it adds something rather than restating
+    should_avoid:
+      - replacing in conclusion with a differently worded signpost such as to wrap up
+      - deleting the body content along with the padding
+      - leaving the article with no ending at all when a compact recap would serve the reader
+
+  - id: konvo_gen_024
+    mode: design_tradeoff
+    title: Write with a stance rather than uniform positivity
+    prompt: >
+      Write a short explainer comparing REST and GraphQL for a team building an
+      internal dashboard. Long-form article, placeholder images.
+    should_demonstrate:
+      - a clear recommendation rather than a balanced non-answer
+      - at least one thing named as annoying, tedious, or still unsolved
+      - contractions throughout
+      - specific named things and textured numbers instead of categories and round approximations
+      - sentence lengths that vary, including at least one short sentence and one long one
+      - headings in sentence case
+    should_avoid:
+      - every claim immediately balanced by its counterpoint
+      - a closing paragraph where both options are declared equally valid
+      - bullets that open with a bolded label and a colon
+      - decorative emoji used as bullet markers
+      - generic actors such as a client or a certain tool where a name would work
+
+  - id: konvo_gen_025
+    mode: negative_fit_guard
+    title: Do not overcorrect while removing tells
+    prompt: >
+      This draft was flagged as AI-generated. Rewrite it so it reads as human, but do
+      not lose what is good about it. Draft: "Imagine you're moving apartments. You
+      could carry every box yourself, or you could rent a truck. Caching is the truck.
+      It's a pivotal optimization that unlocks robust performance."
+    should_demonstrate:
+      - pivotal, unlocks, and robust are gone
+      - the moving-apartments analogy is kept, since it is the part doing real work
+      - the playful tone survives the edit
+      - the result still sounds like a person talking rather than a specification
+    should_avoid:
+      - swapping ordinary words for unusual ones, such as changing use to wield
+      - adding deliberate typos or broken grammar to seem casual
+      - shortening every sentence until the rhythm is uniformly clipped
+      - deleting the analogy and replacing it with a literal definition
+      - producing correct but personality-free prose, which is still machine-shaped

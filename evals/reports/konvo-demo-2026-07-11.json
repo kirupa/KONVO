@@ -1,6 +1,6 @@
 {
   "meta": {
-    "skill": "grasp",
+    "skill": "konvo",
     "generated_at": "2026-07-11T14:05:00-07:00",
     "report_version": 1,
     "status": "completed",
@@ -8,7 +8,7 @@
   },
   "trigger_results": [
     {
-      "id": "grasp_trigger_001",
+      "id": "konvo_trigger_001",
       "title": "Vector clocks explainer",
       "expected_trigger": true,
       "actual_trigger": true,
@@ -16,7 +16,7 @@
       "notes": "Long-form explainer request with explicit need for a concrete example."
     },
     {
-      "id": "grasp_trigger_002",
+      "id": "konvo_trigger_002",
       "title": "Reference counting walkthrough",
       "expected_trigger": true,
       "actual_trigger": true,
@@ -24,7 +24,7 @@
       "notes": "The request explicitly asks for a visual step-by-step explanation."
     },
     {
-      "id": "grasp_trigger_003",
+      "id": "konvo_trigger_003",
       "title": "Base64 tutorial",
       "expected_trigger": true,
       "actual_trigger": true,
@@ -32,7 +32,7 @@
       "notes": "Model-based tutorial request, good fit for intuition-first structure."
     },
     {
-      "id": "grasp_trigger_004",
+      "id": "konvo_trigger_004",
       "title": "Cache invalidation tradeoff explainer",
       "expected_trigger": true,
       "actual_trigger": true,
@@ -40,7 +40,7 @@
       "notes": "Tradeoff-heavy backend topic that benefits from structure and examples."
     },
     {
-      "id": "grasp_trigger_005",
+      "id": "konvo_trigger_005",
       "title": "API reference request",
       "expected_trigger": false,
       "actual_trigger": false,
@@ -48,7 +48,7 @@
       "notes": "Reference docs should remain concise and neutral."
     },
     {
-      "id": "grasp_trigger_006",
+      "id": "konvo_trigger_006",
       "title": "Release notes request",
       "expected_trigger": false,
       "actual_trigger": false,
@@ -56,7 +56,7 @@
       "notes": "Release notes should not be rewritten as explainers."
     },
     {
-      "id": "grasp_trigger_007",
+      "id": "konvo_trigger_007",
       "title": "Formal abstract request",
       "expected_trigger": false,
       "actual_trigger": false,
@@ -64,7 +64,7 @@
       "notes": "The prompt asks for an academic register."
     },
     {
-      "id": "grasp_trigger_008",
+      "id": "konvo_trigger_008",
       "title": "One-paragraph summary request",
       "expected_trigger": false,
       "actual_trigger": false,
@@ -74,7 +74,7 @@
   ],
   "generation_results": [
     {
-      "id": "grasp_gen_001",
+      "id": "konvo_gen_001",
       "title": "Cache invalidation",
       "mode": "design_tradeoff",
       "baseline": {
@@ -112,7 +112,7 @@
       "notes": "Representative strong-fit case."
     },
     {
-      "id": "grasp_gen_002",
+      "id": "konvo_gen_002",
       "title": "Reference counting memory management",
       "mode": "visual_walkthrough",
       "baseline": {
@@ -150,7 +150,7 @@
       "notes": "Strong visual-walkthrough win."
     },
     {
-      "id": "grasp_gen_003",
+      "id": "konvo_gen_003",
       "title": "Base64 encoding",
       "mode": "conversion_model",
       "baseline": {
@@ -188,7 +188,7 @@
       "notes": "Good model-based improvement."
     },
     {
-      "id": "grasp_gen_004",
+      "id": "konvo_gen_004",
       "title": "Checksum vs cryptographic hash",
       "mode": "toy_implementation",
       "baseline": {
@@ -226,7 +226,7 @@
       "notes": "Useful but slightly less visual than the top cases."
     },
     {
-      "id": "grasp_gen_005",
+      "id": "konvo_gen_005",
       "title": "Rate limiting",
       "mode": "design_tradeoff",
       "baseline": {
@@ -264,7 +264,7 @@
       "notes": "Strong mode fit."
     },
     {
-      "id": "grasp_gen_006",
+      "id": "konvo_gen_006",
       "title": "B-tree indexing",
       "mode": "visual_walkthrough",
       "baseline": {
@@ -302,7 +302,7 @@
       "notes": "Clear win."
     },
     {
-      "id": "grasp_gen_007",
+      "id": "konvo_gen_007",
       "title": "Debounce vs throttle",
       "mode": "boundary_concise",
       "baseline": {
@@ -340,7 +340,7 @@
       "notes": "Boundary case with modest upside."
     },
     {
-      "id": "grasp_gen_008",
+      "id": "konvo_gen_008",
       "title": "API docs control",
       "mode": "negative_fit_guard",
       "baseline": {

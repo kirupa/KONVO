@@ -1,8 +1,8 @@
 version: 1
-skill: grasp
+skill: konvo
 eval_type: regression
 checks:
-  - id: grasp_reg_001
+  - id: konvo_reg_001
     name: no_double_dashes
     priority: high
     description: Output should not use double dashes as interruption or emphasis punctuation.
@@ -12,7 +12,7 @@ checks:
       - replace with a comma
       - split into a shorter sentence
 
-  - id: grasp_reg_002
+  - id: konvo_reg_002
     name: intuition_before_jargon
     priority: high
     description: The opening should not begin with dense terminology before the reader has a foothold.
@@ -20,7 +20,7 @@ checks:
       - first paragraph is mostly definition language
       - formal terms appear before any plain-language framing
 
-  - id: grasp_reg_003
+  - id: konvo_reg_003
     name: stable_teaching_anchor
     priority: high
     description: The explanation should have one stable teaching anchor where appropriate.
@@ -28,7 +28,7 @@ checks:
       - example appears once and disappears
       - multiple unrelated metaphors compete for attention
 
-  - id: grasp_reg_004
+  - id: konvo_reg_004
     name: visual_support_present
     priority: medium
     description: Long explainers should show visual thinking through diagrams or explicit image directions.
@@ -36,7 +36,7 @@ checks:
       - no diagram guidance in a clearly visual topic
       - several state changes happen with no visual framing
 
-  - id: grasp_reg_005
+  - id: konvo_reg_005
     name: no_hype_voice
     priority: high
     description: The tone should be energetic without sounding like marketing copy.
@@ -44,7 +44,7 @@ checks:
       - overuse of words like revolutionary, game-changing, or groundbreaking
       - grandiose praise without explanation
 
-  - id: grasp_reg_006
+  - id: konvo_reg_006
     name: no_forced_tradeoff_section
     priority: medium
     description: The skill should not force rejected alternatives into topics that do not benefit from them.
@@ -52,7 +52,7 @@ checks:
       - awkward or artificial "failed approaches" section in a straightforward model tutorial
       - comparison section that does not teach anything meaningful
 
-  - id: grasp_reg_007
+  - id: konvo_reg_007
     name: technical_precision_preserved
     priority: high
     description: Accessibility should not come at the cost of correctness.
@@ -60,7 +60,7 @@ checks:
       - oversimplification creates a false mental model
       - critical dependencies or caveats are omitted
 
-  - id: grasp_reg_008
+  - id: konvo_reg_008
     name: domain_native_framing
     priority: high
     description: Non-computer topics should stay grounded in their own domain instead of being dragged back into software examples or developer language.
@@ -69,7 +69,7 @@ checks:
       - software metaphors replace clearer domain-native examples
       - the explanation sounds like a coder talking about code instead of the requested subject
 
-  - id: grasp_reg_009
+  - id: konvo_reg_009
     name: intake_gate_respected
     priority: high
     description: A vague request should produce clarifying questions, not a full draft written against guessed constraints.
@@ -82,7 +82,7 @@ checks:
       - ask only for the missing inputs, in one message, with defaults offered
       - stop and wait for the answer before drafting
 
-  - id: grasp_reg_010
+  - id: konvo_reg_010
     name: intake_not_over_asked
     priority: medium
     description: The gate should not re-ask for details the prompt already supplied, and should not spread questions across turns.
@@ -92,7 +92,7 @@ checks:
       - asks clarifying questions after the user explicitly said to skip them and write
       - no defaults offered, forcing the user to answer every question manually
 
-  - id: grasp_reg_011
+  - id: konvo_reg_011
     name: channel_limits_respected
     priority: high
     description: Output must obey the constraints of the channel it was written for.
@@ -107,7 +107,7 @@ checks:
       - move the hook into the opening lines
       - replace markdown structure with line breaks and plain capitalized labels
 
-  - id: grasp_reg_012
+  - id: konvo_reg_012
     name: image_mode_honored
     priority: high
     description: The answer to the image question should visibly change the output.
@@ -116,7 +116,7 @@ checks:
       - generate mode was chosen but only markers were produced, with no explanation of why generation was skipped
       - image callouts are collected at the end instead of placed inline where each image belongs
 
-  - id: grasp_reg_013
+  - id: konvo_reg_013
     name: images_are_introduced
     priority: high
     description: No image arrives unannounced. The sentence before it says something is about to be shown.
@@ -128,7 +128,7 @@ checks:
       - add a short declarative setup sentence, usually ending in a colon
       - if no honest setup can be written, the image is probably not needed
 
-  - id: grasp_reg_014
+  - id: konvo_reg_014
     name: no_captions_or_backreferences
     priority: medium
     description: The setup sentence does the caption's job, so the space under an image stays empty and prose does not narrate the image back.
@@ -140,7 +140,7 @@ checks:
       - delete the caption and fold anything load-bearing into the setup sentence
       - have the following paragraph build on the image rather than recap it
 
-  - id: grasp_reg_015
+  - id: konvo_reg_015
     name: levity_budget_and_placement
     priority: high
     description: Levity is rationed and front-weighted, and never interrupts a sequence the reader is tracking.
@@ -153,7 +153,7 @@ checks:
       - move the first gag up to the sentence conceding the topic is odd
       - cut down to three or fewer, keeping the earliest ones
 
-  - id: grasp_reg_016
+  - id: konvo_reg_016
     name: markers_are_buildable
     priority: high
     description: An image marker should be executable by a designer or image model without a follow-up question.
@@ -166,7 +166,7 @@ checks:
       - state the scene, what is labeled, and the single thing that changed
       - carry the same viewpoint and visual language across a sequence
 
-  - id: grasp_reg_017
+  - id: konvo_reg_017
     name: visual_rhythm_and_order
     priority: medium
     description: Something breaks the column regularly, and visuals precede the code that implements them.
@@ -178,7 +178,7 @@ checks:
       - treat code blocks and tables as legitimate rhythm breaks
       - reorder to prose, then image, then code
 
-  - id: grasp_reg_018
+  - id: konvo_reg_018
     name: no_applause_lines
     priority: high
     description: No sentence exists only to signal that the nearby idea is clever. Deleting it should cost the reader information, not just admiration.
@@ -192,7 +192,7 @@ checks:
       - if the point is genuinely important, replace the adjective with the concrete fact that makes it important
       - keep brief reactions such as neat, right?, which land after the demonstration rather than before it
 
-  - id: grasp_reg_019
+  - id: konvo_reg_019
     name: no_slogan_closers
     priority: medium
     description: Paragraphs end on substance, not on a compressed restatement parked there for cadence.
@@ -204,7 +204,7 @@ checks:
       - cut the fragment when the paragraph already made the point
       - keep at most one such closer in a long article, at a genuine turning point
 
-  - id: grasp_reg_020
+  - id: konvo_reg_020
     name: register_stays_spoken
     priority: medium
     description: The prose stays in the register of a person explaining something out loud, without reaching for literary gravitas.
@@ -217,7 +217,7 @@ checks:
       - use because, so, or a second sentence
       - read the sentence aloud and keep the version a person would actually say
 
-  - id: grasp_reg_021
+  - id: konvo_reg_021
     name: voice_not_flattened
     priority: high
     description: Cutting applause must not cut personality. Guards against over-correcting into neutral prose.

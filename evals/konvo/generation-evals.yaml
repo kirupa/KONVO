@@ -1,9 +1,9 @@
 version: 1
-skill: grasp
+skill: konvo
 eval_type: generation
 comparison: baseline_vs_skill
 cases:
-  - id: grasp_gen_001
+  - id: konvo_gen_001
     mode: design_tradeoff
     title: Cache invalidation
     prompt: |
@@ -20,7 +20,7 @@ cases:
       - generic hype language
       - double dashes
 
-  - id: grasp_gen_002
+  - id: konvo_gen_002
     mode: visual_walkthrough
     title: Reference counting memory management
     prompt: |
@@ -37,7 +37,7 @@ cases:
       - unexplained jargon in the opening
       - double dashes
 
-  - id: grasp_gen_003
+  - id: konvo_gen_003
     mode: conversion_model
     title: Base64 encoding
     prompt: |
@@ -54,7 +54,7 @@ cases:
       - metaphor hopping
       - double dashes
 
-  - id: grasp_gen_004
+  - id: konvo_gen_004
     mode: toy_implementation
     title: Checksum vs cryptographic hash
     prompt: |
@@ -71,7 +71,7 @@ cases:
       - salesy adjectives
       - double dashes
 
-  - id: grasp_gen_005
+  - id: konvo_gen_005
     mode: design_tradeoff
     title: Rate limiting
     prompt: |
@@ -86,7 +86,7 @@ cases:
       - flat list of definitions only
       - double dashes
 
-  - id: grasp_gen_006
+  - id: konvo_gen_006
     mode: visual_walkthrough
     title: B-tree indexing
     prompt: |
@@ -100,7 +100,7 @@ cases:
       - jumping into implementation details too early
       - double dashes
 
-  - id: grasp_gen_007
+  - id: konvo_gen_007
     mode: boundary_concise
     title: Debounce vs throttle
     prompt: |
@@ -114,7 +114,7 @@ cases:
       - forcing a full long-form article structure
       - double dashes
 
-  - id: grasp_gen_008
+  - id: konvo_gen_008
     mode: negative_fit_guard
     title: API docs control
     prompt: |
@@ -127,7 +127,7 @@ cases:
       - unnecessary metaphors
       - double dashes
 
-  - id: grasp_gen_009
+  - id: konvo_gen_009
     mode: visual_walkthrough
     title: Rear differential
     prompt: |
@@ -144,7 +144,7 @@ cases:
       - unexplained mechanical jargon in the opening
       - double dashes
 
-  - id: grasp_gen_010
+  - id: konvo_gen_010
     mode: conversion_model
     title: Standard deviation intuition
     prompt: |
@@ -161,7 +161,7 @@ cases:
       - sounding like lecture notes
       - double dashes
 
-  - id: grasp_gen_011
+  - id: konvo_gen_011
     mode: visual_walkthrough
     title: Three-phase AC power
     prompt: |
@@ -178,7 +178,7 @@ cases:
       - software analogies that distract from the electrical concept
       - double dashes
 
-  - id: grasp_gen_012
+  - id: konvo_gen_012
     mode: design_tradeoff
     title: Injection molding defects
     prompt: |
@@ -195,7 +195,7 @@ cases:
       - flat list of defect definitions only
       - double dashes
 
-  - id: grasp_gen_013
+  - id: konvo_gen_013
     mode: design_tradeoff
     title: Heat pump heating
     prompt: |
@@ -212,7 +212,7 @@ cases:
       - skipping the physical mechanism
       - double dashes
 
-  - id: grasp_gen_014
+  - id: konvo_gen_014
     mode: negative_fit_guard
     title: History negative control
     prompt: |
@@ -225,7 +225,7 @@ cases:
       - casual tutorial framing
       - double dashes
 
-  - id: grasp_gen_015
+  - id: konvo_gen_015
     mode: intake_gate
     title: Vague request triggers clarifying questions
     prompt: |
@@ -242,7 +242,7 @@ cases:
       - re-asking for the topic, which the prompt already gave
       - a long preamble before the questions
 
-  - id: grasp_gen_016
+  - id: konvo_gen_016
     mode: intake_gate
     title: Fully specified request skips the questions
     prompt: |
@@ -261,7 +261,7 @@ cases:
       - splitting a sentence across two posts
       - long-form article structure with headings
 
-  - id: grasp_gen_017
+  - id: konvo_gen_017
     mode: intake_gate
     title: LinkedIn channel constraints
     prompt: |
@@ -278,7 +278,7 @@ cases:
       - article-length output
       - burying the point below several paragraphs of setup
 
-  - id: grasp_gen_018
+  - id: konvo_gen_018
     mode: visual_walkthrough
     title: Counterintuitive topic drives image placement
     prompt: |
@@ -298,7 +298,7 @@ cases:
       - image descriptions too vague to build from
       - all markers collected at the end instead of placed inline
 
-  - id: grasp_gen_019
+  - id: konvo_gen_019
     mode: code_carried
     title: Code-heavy topic negative control
     prompt: |
@@ -313,7 +313,7 @@ cases:
       - a code block explaining a mechanism followed by a diagram illustrating the same thing
       - padding the article with decorative images
 
-  - id: grasp_gen_020
+  - id: konvo_gen_020
     mode: elegance_trap
     title: Elegant construct invites applause
     prompt: |
@@ -332,7 +332,7 @@ cases:
       - a verbless slogan closing a paragraph
       - restating the same claim twice in one paragraph for cadence
 
-  - id: grasp_gen_021
+  - id: konvo_gen_021
     mode: revision
     title: Strip applause without flattening voice
     prompt: |

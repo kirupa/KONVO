@@ -62,12 +62,33 @@ Both commands will create:
 You can still use the lower-level commands directly:
 
 ```bash
+ruby evals/run_evals.rb lint konvo
 ruby evals/run_evals.rb scaffold konvo
 ruby evals/run_evals.rb validate evals/reports/konvo-YYYY-MM-DD.json
 ruby evals/run_evals.rb summarize evals/reports/konvo-YYYY-MM-DD.json
 ```
 
 `summarize` now regenerates the HTML report automatically, so the browser view stays in sync with the JSON report.
+
+## Checking the Frontmatter
+
+`run` starts by linting `SKILL.md` frontmatter and stops if anything is wrong. You can run that check on its own:
+
+```bash
+ruby evals/run_evals.rb lint konvo
+```
+
+This exists because a broken description fails silently. The rest of the suite scores the body of the skill, but an agent reads the frontmatter first to decide whether to load the skill at all. If that block is malformed, the body never gets a chance to be right, and nothing else in this suite notices. The frontmatter shipped broken for three commits before anyone caught it.
+
+The check covers:
+
+- the frontmatter fences are present and the block is valid YAML
+- `name` is present and matches the suite being run
+- `description` is a non-empty string
+- `description` fits in 1024 characters, since the tail is what gets truncated
+- `description` has no stray line breaks or double spaces, which is the way a folded `>-` block quietly rewrites itself
+
+The colon is the trap worth knowing about. A plain YAML scalar cannot contain a colon followed by a space, so a description reading `revise, edit, or tighten: it keeps their voice` is a syntax error rather than a sentence. Writing the description as a folded `>-` block avoids the problem and keeps the line lengths readable.
 
 ## Folder Layout
 

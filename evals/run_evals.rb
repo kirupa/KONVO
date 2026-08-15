@@ -29,12 +29,14 @@ def usage
   puts <<~TEXT
     Usage:
       ruby evals/run_evals.rb run <skill> [output-base]
+      ruby evals/run_evals.rb lint <skill>
       ruby evals/run_evals.rb scaffold <skill> [output.json]
       ruby evals/run_evals.rb validate <report.json>
       ruby evals/run_evals.rb summarize <report.json> [output.md] [output.html]
 
     Examples:
       ruby evals/run_evals.rb run konvo
+      ruby evals/run_evals.rb lint konvo
       ruby evals/run_evals.rb scaffold konvo
       ruby evals/run_evals.rb validate evals/reports/konvo-2026-07-11.json
       ruby evals/run_evals.rb summarize evals/reports/konvo-2026-07-11.json
@@ -47,6 +49,88 @@ end
 
 def load_yaml(path)
   YAML.load_file(path)
+end
+
+DESCRIPTION_LIMIT = 1024
+
+def skill_md_path(skill)
+  root_level = File.join(File.expand_path("..", ROOT), "SKILL.md")
+  return root_level if File.exist?(root_level)
+
+  File.join(File.expand_path("..", ROOT), "skills", skill, "SKILL.md")
+end
+
+# The frontmatter is the only thing an agent reads before deciding whether to
+# load the skill at all. A syntax error there is silent: the body can be
+# perfect and the skill still never fires.
+def frontmatter_problems(skill)
+  path = skill_md_path(skill)
+  return ["Cannot find SKILL.md for #{skill}"] unless File.exist?(path)
+
+  text = File.read(path)
+  unless text.start_with?("---\n")
+    return ["#{File.basename(path)} does not open with a --- frontmatter fence"]
+  end
+
+  closing = text.index("\n---\n", 3)
+  return ["#{File.basename(path)} has no closing --- frontmatter fence"] if closing.nil?
+
+  raw = text[4...closing + 1]
+  problems = []
+
+  begin
+    data = YAML.safe_load(raw)
+  rescue Psych::SyntaxError => e
+    return ["Frontmatter is not valid YAML: #{e.message.lines.first.to_s.strip}. " \
+            "An unquoted value containing a colon and a space is the usual cause; " \
+            "use a folded >- block instead."]
+  end
+
+  unless data.is_a?(Hash)
+    return ["Frontmatter did not parse to a mapping of keys"]
+  end
+
+  problems << "Frontmatter is missing a name" unless data["name"].is_a?(String)
+  if data["name"].is_a?(String) && data["name"] != skill
+    problems << "Frontmatter name is #{data["name"].inspect} but the suite is #{skill.inspect}"
+  end
+
+  description = data["description"]
+  if !description.is_a?(String) || description.strip.empty?
+    problems << "Frontmatter description must be a non-empty string, got #{description.class}"
+    return problems
+  end
+
+  if description.length > DESCRIPTION_LIMIT
+    problems << "Frontmatter description is #{description.length} characters, over the " \
+                "#{DESCRIPTION_LIMIT} limit. The tail is what gets truncated, so trim it."
+  end
+
+  # A folded scalar turns a blank or over-indented line into a real newline,
+  # which silently rewrites the trigger text without failing to parse.
+  if description.include?("\n")
+    problems << "Frontmatter description contains a line break. Check for a blank or " \
+                "over-indented line inside the folded block."
+  end
+
+  if description.include?("  ")
+    problems << "Frontmatter description contains a double space, which usually means a " \
+                "folded line ended with trailing whitespace."
+  end
+
+  problems
+end
+
+def check_frontmatter!(skill)
+  problems = frontmatter_problems(skill)
+  if problems.empty?
+    puts "Frontmatter OK: #{skill}"
+    return
+  end
+
+  warn "Frontmatter check failed for #{skill}:"
+  problems.each { |problem| warn "  - #{problem}" }
+  exit 1
 end
 
 def load_skill_suite(skill)
@@ -633,6 +717,7 @@ def summarize_report(report_path, markdown_path = nil, html_path = nil)
 end
 
 def run_eval_suite(skill, output_path = nil)
+  check_frontmatter!(skill)
   json_path = scaffold_report(skill, output_path, render_html: false)
   summarize_report(json_path)
 end
@@ -647,6 +732,13 @@ when "run"
     exit 1
   end
   run_eval_suite(skill, ARGV.shift)
+when "lint"
+  skill = ARGV.shift
+  if skill.nil?
+    usage
+    exit 1
+  end
+  check_frontmatter!(skill)
 when "scaffold"
   skill = ARGV.shift
   if skill.nil?

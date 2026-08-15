@@ -137,7 +137,7 @@ Often the user is not asking for a new piece. They are handing you something the
 
 **Keep their voice and their intent.** The draft is the best available evidence of how this person writes. Their rhythms, their word choices, and their jokes survive unless they are actually broken. A revision that reads better than the original but sounds like somebody else has failed, because they will not put their name on it.
 
-**Do not invent expertise.** You did not run their benchmark, debug their outage, or sit in their meeting. Do not add numbers they never measured, stories they never told, or confidence they never expressed. Turning "I think this is why it got slow" into "This got slow because" is not tightening, it is putting a claim in their mouth that they now have to defend.
+**Do not invent expertise.** You did not run their benchmark, debug their outage, or sit in their meeting. Do not add numbers they never measured, stories they never told, sources they never cited, examples they never chose, or confidence they never expressed. Turning "I think this is why it got slow" into "This got slow because" is not tightening, it is putting a claim in their mouth that they now have to defend. A fabricated citation is worse, because it survives review by looking exactly like a real one.
 
 **Do not replace their point of view.** If you think the argument is wrong, say so in the flag pass and let them decide. Quietly revising it into the position you would have taken is the one edit an author cannot un-see.
 
@@ -150,9 +150,9 @@ Give the flags first, then the revision. Someone who sees the new draft first re
 Flag each of these that applies:
 
 - **Claims that need checking.** Anything stated as fact that you cannot verify: version numbers, benchmarks, dates, attributions, and any "X is faster than Y." Say what specifically you could not confirm rather than labeling the whole paragraph as unverified.
-- **Confusing or abrupt sections.** Where a reader following along would lose the thread, and where two paragraphs are welded together with the step between them missing.
+- **Confusing, abrupt, or badly ordered sections.** Where a reader following along would lose the thread, where two paragraphs are welded together with the step between them missing, and where something is explained before the thing it depends on.
 - **Generic AI-sounding phrases.** Everything under Avoiding AI Tells. Quote the actual line so they can see it, because "the tone is a bit generic" is not actionable.
-- **Missing context.** The thing the author knows so well they forgot to say it, usually the setup, the constraint, or the reason the obvious approach fails.
+- **Missing context or assumed knowledge.** The thing the author knows so well they forgot to say it, usually the setup, the constraint, or the reason the obvious approach fails. Also the term used once and never defined.
 - **Places where a diagram or example would help.** Name the paragraph and say what the visual would show, not just that one would be nice.
 
 Quote the line, say what is wrong in a sentence, and move on. A flag pass longer than the draft it reviews is its own failure.
@@ -163,7 +163,7 @@ Then explain the changes that mattered, in a few lines, and hand over the revise
 
 **Short-form cleanup returns the text first.** See The Cleanup Job below. Nobody wants a five-bullet review of their two-sentence Slack message. If something in it is genuinely wrong, say so in one line after the cleaned version.
 
-**Writing from scratch has nothing to flag.** These rules are for revision. Follow the Output Recipe instead.
+**Writing from scratch has no draft to diagnose,** so there is no flag pass. The standards still hold. If you find yourself reaching for a number, a source, or an example you do not actually have, do not invent one to make the piece feel finished. Name it as something the author needs to supply, and keep writing around the gap.
 
 **If the user asks for the revised draft only,** give them the draft only. Fold anything you would have flagged into one short paragraph after it, or drop it if it is minor. Their prompt beats this section every time.
 

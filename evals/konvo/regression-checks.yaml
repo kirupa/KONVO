@@ -506,7 +506,8 @@ checks:
       - benchmark numbers, versions, dates, or percentages the draft never contained
       - an anecdote or war story attributed to the author who never told it
       - a hedge upgraded into a flat assertion, as in "I think this caused it" becoming "this caused it"
-      - a citation or source added without the author supplying it
+      - a citation, source, or reference the author never supplied, which is the worst case because a fabricated one looks exactly like a real one
+      - an example or case study invented to fill a gap the author left open
       - a confident causal explanation replacing the author's stated uncertainty
     preferred_fix:
       - keep the author's hedges exactly as strong as they wrote them
@@ -541,3 +542,18 @@ checks:
       - apply the defaults without being asked
       - when the user's prompt contradicts a default, follow the prompt
       - on a brought draft, read it first and ask only what it genuinely leaves open
+  - id: konvo_reg_043
+    name: from_scratch_writing_surfaces_gaps_instead_of_filling_them
+    priority: high
+    description: >-
+      Writing from a blank page has no draft to diagnose, but the honesty rules
+      still hold. A gap must be named rather than filled with an invention.
+    failure_signals:
+      - a plausible-looking benchmark, statistic, or version number produced to make a section feel complete
+      - a citation or link generated for a claim the author never sourced
+      - an example or anecdote invented and presented as the author's own
+      - a confident causal claim where the mechanism was actually unknown
+      - the piece reading as finished while resting on facts nobody supplied
+    preferred_fix:
+      - write around the gap and name what the author still needs to supply
+      - keep the uncertainty visible in the draft rather than resolving it invisibly

@@ -114,9 +114,19 @@ Copilot CLI can confirm the agent sees it. Run these inside a Copilot CLI sessio
 
 If you edit the skill mid-session, `/skills reload` picks up the change without a restart.
 
-### 3. 🚧 Know when not to use it
+### 3. ✂️ Or paste something short and ask for a cleanup
 
-`konvo` is tuned for explainers: tutorials, guides, posts that build intuition before getting formal. Point it at a changelog or an API reference and you will get a friendly, chatty changelog, which is nobody's goal.
+The same skill handles short-form, and it skips the interview when you do this, because your draft already tells it the topic and the goal:
+
+> clean this up: been debugging for hours and it turns out the api wasn't slow because of the database, we were opening a new connection per request
+
+You get back something the size of what you gave it. Not an article about connection pooling.
+
+This covers posts and threads for X, LinkedIn posts, forum and Stack Overflow replies, Slack and Discord messages, and text messages. For social specifically, it handles the fiddly parts: hooks that say something instead of announcing a topic, per-post character counts you can actually trust, which post each image attaches to, and keeping links out of the main post so the algorithm doesn't bury it.
+
+### 4. 🚧 Know when not to use it
+
+`konvo` is tuned for explaining things: tutorials, guides, posts that build intuition before getting formal, and the short-form versions of all of that. Point it at a changelog or an API reference and you will get a friendly, chatty changelog, which is nobody's goal.
 
 ## 🧪 Running Evals
 

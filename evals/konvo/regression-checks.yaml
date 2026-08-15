@@ -320,3 +320,90 @@ checks:
       - deliver the article body alone, with no preamble and no offer to revise
       - omit the number entirely when no real number is available
       - keep the deliberate Diagram and Levity markers, which are output rather than placeholders
+
+  - id: konvo_reg_028
+    name: short_form_scale_respected
+    priority: high
+    description: Short input and short-form channels must produce short output rather than an article.
+    failure_signals:
+      - a pasted two-line message comes back as a structured post with headings
+      - a request to tighten a tweet returns several paragraphs
+      - a chat or text message reply that needs scrolling
+      - section headings appearing in an X post, a LinkedIn post, or a text message
+      - a thread of three posts that would have worked as one post
+    preferred_fix:
+      - return output at the scale of the input
+      - collapse a thread shorter than four posts into a single post and say so
+
+  - id: konvo_reg_029
+    name: cleanup_skips_the_interview
+    priority: high
+    description: Pasted drafts must be cleaned up directly rather than triggering the four intake questions.
+    failure_signals:
+      - asking topic, goal, length, and image questions about a two-sentence message the user already wrote
+      - refusing to start until the channel is confirmed when the pasted text makes it obvious
+      - more than one clarifying question on a short cleanup
+      - the author's claim softened or hedged during cleanup
+      - a cleanup that shares almost no vocabulary with the original
+    preferred_fix:
+      - treat the pasted draft as the brief, since topic and goal are already in it
+      - return the cleaned version first in a copyable block, with at most two lines about what changed
+
+  - id: konvo_reg_030
+    name: character_counts_shown_and_honest
+    priority: high
+    description: Every short-form piece must carry a character count, and every count must be under the channel limit.
+    failure_signals:
+      - thread posts delivered with no character counts
+      - a stated count that does not match the actual text
+      - any X post over 280 characters on a free account
+      - numbering such as 3/9 omitted from the count
+      - a LinkedIn post over roughly 3,000 characters
+    preferred_fix:
+      - count the characters rather than estimating them
+      - include the numbering prefix in the count
+      - cut content rather than shipping a post that cannot be published
+
+  - id: konvo_reg_031
+    name: hook_carries_information
+    priority: high
+    description: The first line must say something concrete rather than announce the subject.
+    failure_signals:
+      - openers such as let's talk about caching or a thread on DNS
+      - claims nobody would argue with, such as testing is important
+      - the unfalsifiable crowd claim, such as most developers get this wrong
+      - rhetorical questions with obvious answers
+      - a thread emoji or THREAD label carrying the weight a sentence should carry
+      - a hook that would sit equally well above a completely different post
+    preferred_fix:
+      - lead with a specific failure, a correction, a surprising result, a cost, or a question the reader has actually asked
+      - name who gets it wrong and how, rather than gesturing at most people
+
+  - id: konvo_reg_032
+    name: links_placed_in_followup
+    priority: medium
+    description: External links belong in a reply or first comment rather than the main post.
+    failure_signals:
+      - an external link inside the main X post or LinkedIn post body
+      - no pointer such as link in the replies or link in the comments
+      - splitting the link out silently when the link is the entire point of the post
+      - asking readers to comment or DM in order to receive the link
+      - media linked from elsewhere rather than uploaded to the platform
+    preferred_fix:
+      - put the link in the final thread post or the first comment
+      - name the tradeoff and let the author choose when the post exists to drive the click
+
+  - id: konvo_reg_033
+    name: social_media_earns_its_place
+    priority: medium
+    description: Images and video in short-form must carry information rather than decorate.
+    failure_signals:
+      - a stock photo suggested for a technical post
+      - four images where one diagram would do
+      - an image suggested in a thread without naming which post it attaches to
+      - video proposed for a static diagram with no motion or sequence
+      - missing alt text
+      - a visual requirement invented during a cleanup the author never asked to illustrate
+    preferred_fix:
+      - prefer a diagram, then a marked-up screenshot, then a short video where something changes
+      - attach each image to a named post and write its alt text

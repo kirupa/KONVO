@@ -437,3 +437,102 @@ cases:
       - shortening every sentence until the rhythm is uniformly clipped
       - deleting the analogy and replacing it with a literal definition
       - producing correct but personality-free prose, which is still machine-shaped
+
+  - id: konvo_gen_026
+    mode: short_form_cleanup
+    title: Clean up a pasted rough tweet without an interview
+    prompt: >
+      clean this up: "been debugging this for hours and finally figured out that
+      the reason our api was slow wasnt the database at all, it was that we were
+      opening a new connection for every single request which is apparently
+      really expensive, connection pooling fixed it"
+    should_demonstrate:
+      - the cleaned post is returned immediately, with no intake questions
+      - output stays at roughly the scale of the input rather than becoming an article
+      - the author's actual finding, which is connection setup cost rather than the database, survives intact
+      - a character count is shown
+      - the result is under 280 characters, or is explicitly offered as two posts
+      - the casual register is preserved rather than made formal
+    should_avoid:
+      - asking about topic, goal, length, or images before doing anything
+      - expanding it into a structured post with headings
+      - adding hashtags, emoji, or a call to action the author did not write
+      - inventing a specific latency number that was not in the original
+      - softening the claim into something hedged and safe
+
+  - id: konvo_gen_027
+    mode: thread_with_link
+    title: X thread with a link and per-post breakdown
+    prompt: >
+      Turn my blog post on why we moved off Kubernetes into an X thread. I want
+      people to read the full post at the end.
+    should_demonstrate:
+      - every post labeled and carrying an accurate character count under 280
+      - numbering included inside the counted characters
+      - post 1 works alone as a hook and contains no link
+      - one idea per post, with no sentence split across a post boundary
+      - the second to last post is a recap or payoff that could stand alone
+      - the link appears only in the final post
+      - the main post ends with a plain pointer such as link in the replies
+      - each suggested image names the post it attaches to and carries alt text
+    should_avoid:
+      - putting the link in post 1
+      - a thread emoji or THREAD label used in place of a real hook
+      - eyeballing character counts or omitting them
+      - a stock image suggestion
+      - trailing off without a recap
+
+  - id: konvo_gen_028
+    mode: linkedin_with_link
+    title: LinkedIn post that keeps the link out of the body
+    prompt: >
+      Write a LinkedIn post announcing our new open-source rate limiter, and I
+      want people to visit the repo.
+    should_demonstrate:
+      - the hook sits in the first two lines and earns the expand
+      - short paragraphs with blank lines between them
+      - no markdown syntax at all, since LinkedIn does not render it
+      - the body stays well under 3,000 characters
+      - the link is placed in the first comment, with the post ending in a pointer
+      - because the click is the actual goal, the reach tradeoff is named so the author can choose
+    should_avoid:
+      - bold, headings, or backticks in the body
+      - the link buried mid-paragraph in the post
+      - splitting the link out silently without telling the author why
+      - asking readers to comment in order to receive the link
+      - decorative emoji used as bullet markers
+
+  - id: konvo_gen_029
+    mode: forum_reply
+    title: Forum reply that answers first
+    prompt: >
+      Someone on a forum asked why their git rebase keeps rewriting commits they
+      did not touch. Write my reply.
+    should_demonstrate:
+      - the answer appears in the first sentence, before the explanation
+      - the reasoning follows, at the length the question deserves
+      - any code sits in a code block
+      - plain and direct, with the KONVO voice intact
+    should_avoid:
+      - opening with Great question
+      - an article-length response with headings
+      - asking the user intake questions before replying
+      - burying the answer beneath three paragraphs of background
+
+  - id: konvo_gen_030
+    mode: short_form_cleanup
+    title: Very short input stays very short
+    prompt: >
+      make this less awkward: "hey just wanted to follow up and check whether you
+      had a chance to look at the PR I sent over last week, no rush obviously but
+      let me know if you need anything from me"
+    should_demonstrate:
+      - a message of comparable length comes back
+      - the ask is clear and near the front
+      - the friendly tone survives
+      - no intake questions
+    should_avoid:
+      - turning a chat message into a formal email
+      - adding a subject line or a sign-off
+      - producing anything requiring scrolling
+      - stripping the warmth into something clipped and cold

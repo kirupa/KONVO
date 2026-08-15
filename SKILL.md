@@ -1,6 +1,6 @@
 ---
 name: konvo
-description: Write technical explainers in a casual, visual, example-driven format. Use when teaching a technical topic in software, mechanical systems, electronics, science, math, or other engineered domains with a friendly voice, strong intuition-building, concrete examples, playful but precise language, frequent diagrams, and a structure that may use walkthroughs, comparisons, toy implementations, or real-world applications. Always begins by confirming topic, goal, target length or channel, and whether images should be placeholder markers or generated visuals, asking the user for any of those the request does not already answer.
+description: Write technical explainers in a casual, visual, example-driven format. Use when teaching a technical topic in software, mechanical systems, electronics, science, math, or other engineered domains with a friendly voice, strong intuition-building, concrete examples, playful but precise language, frequent diagrams, and a structure that may use walkthroughs, comparisons, toy implementations, or real-world applications. Also use for short-form writing and cleanup, including X or Twitter posts and threads, LinkedIn posts, forum replies and comments, Slack or Discord messages, text messages, and any request to tighten, shorten, punch up, or rewrite a short message, including when the user pastes a rough draft and asks to clean it up. For long-form work it begins by confirming topic, goal, target length or channel, and whether images should be placeholder markers or generated visuals, asking the user for any of those the request does not already answer.
 ---
 
 # KONVO
@@ -21,6 +21,16 @@ Use this skill when the user wants:
 - a structure that benefits from diagrams, evolving visuals, or state-by-state walkthroughs
 - a writeup that should build intuition before getting formal
 - an explanation of a system, mechanism, process, model, or tradeoff in any technical field
+
+Also use it for short-form, which is a different job with the same voice:
+
+- a post or thread for X, LinkedIn, Mastodon, Bluesky, or Threads
+- a reply or comment on a forum, Stack Overflow, Reddit, or Hacker News
+- a Slack, Discord, or text message that needs to be clearer than the first attempt
+- any request to tighten, shorten, punch up, or clean up something the user already wrote
+- a very short prompt, or a pasted rough draft with little instruction, which usually means the user wants a cleaned-up version of that thing rather than an article about it
+
+When the input is short and the user has not asked for an article, do not turn it into one. Match the scale of what they gave you. See Short-Form and Social below.
 
 Good fits include topics from:
 
@@ -77,22 +87,25 @@ Do not start drafting until these are answered. Writing against guessed constrai
 
 One exception: if the user explicitly says to skip the questions and just write, do that. State the assumptions you are making in one line, then go.
 
+A second exception, which comes up constantly: **short-form cleanup does not get the interview.** If the user pastes a draft post, message, or reply and asks you to tighten it, the topic and the goal are already sitting in front of you, and the channel is usually obvious from the shape or from what they said. Interrogating someone about their two-sentence Slack message is worse than guessing. Do the work, and ask at most one question, only if something is genuinely load-bearing and unrecoverable from context.
+
+The interview is for pieces where a wrong guess costs a whole draft. A tweet is not one of those, because rewriting it costs seconds.
+
 ### Channel Formats
 
 | Channel | Shape |
 | --- | --- |
 | Long-form article | The full format. Headings, walkthroughs, code, image markers. |
+| X post | One post, 280 characters on a free account. |
 | X thread | Numbered posts, each 280 characters or fewer. |
 | X article | Long-form, no per-post limit. Use the article format. |
 | LinkedIn post | Short, plain text, hook above the fold. |
-
-**X thread.** Every post must be 280 characters or fewer, counted with the numbering included. Number them `1/`, `2/`, and so on, or `1/9` when you know the length up front. Post 1 is the hook and has to work alone, because for most readers it is the only one they will see. One idea per post. Never split a sentence across a post boundary. Images attach to specific posts, so say which post each one belongs to. Close on a recap post instead of trailing off.
-
-Count the characters. Do not eyeball them. A 300-character post is not a near miss, it is unpublishable.
-
-**LinkedIn post.** Only the first couple of lines show before the "see more" fold, so the hook goes there and has to earn the expand. Short paragraphs, one to three sentences, blank line between them. Markdown does not render on LinkedIn: no `#` headings, no `**bold**`, no backticks. Use line breaks and plain capitalized labels for structure instead. Keep it to roughly 3,000 characters. Past that it wants to be a LinkedIn article or a real article.
+| Forum or comment reply | Answer first, reasoning after. Plain and direct. |
+| Chat or text message | One to three short paragraphs. No preamble. |
 
 **Long-form.** Everything else in this document applies as written.
+
+Everything else in that table is short-form, and short-form has its own rules. See Short-Form and Social.
 
 ### Image Mode
 
@@ -103,6 +116,149 @@ Two answers, two behaviors.
 **Generate.** Produce the visuals as well, with whatever image generation is available, keeping one consistent visual language across a sequence. Still write the marker, so the draft carries its own visual plan and the intent survives if an image is later replaced. If generation is unavailable or fails, fall back to markers and say so rather than quietly dropping the visual.
 
 Either way, every image gets called out. On placeholder mode the draft should be handable to a designer without them needing to ask a single follow-up question.
+
+## Short-Form and Social
+
+Short-form is not a compressed article. It is a different job with the same voice. An article earns attention gradually. A post has to earn it in one line, against a feed that is actively trying to move the reader somewhere else.
+
+Two rules sit above everything else here.
+
+**Match the scale of the input.** A pasted two-line message gets a cleaned-up two-line message back. Expanding it into a structured post with headings is not helpfulness, it is a different deliverable nobody asked for.
+
+**Count the characters.** Do not eyeball them. A 300-character post on X is not a near miss, it is unpublishable. Print the count next to each piece so the author can check your work.
+
+### The Cleanup Job
+
+When someone pastes their own rough draft and asks you to tighten it, that draft is the brief. Their point, their opinion, and their voice are already in it.
+
+- Keep their claim. If you catch yourself softening or hedging their argument, stop. They meant it.
+- Keep their words where the words are fine. A cleanup that shares no vocabulary with the original is a rewrite, and it will not sound like them.
+- Fix the order before fixing the wording. Most rough drafts bury the point in the third sentence.
+- Cut anything that fails the deletion test under Applause Lines.
+- Return the cleaned version first, in a copyable block. If you want to explain what changed, do it after, in two lines at most.
+
+Do not add hype the author did not bring. Do not add a call to action they did not ask for. Do not add hashtags unless they used hashtags.
+
+### Hooks
+
+The first line decides whether the rest gets read. On X it is all of post 1. On LinkedIn it is everything above the "see more" fold. In a forum reply it is the first sentence, which decides whether the skim continues.
+
+A hook works when it leaves the reader with something they cannot resolve without reading on, and that something has to be concrete.
+
+Hooks that work:
+
+- **The specific failure.** "Our cache hit rate was 94 percent. The site was still slow."
+- **The correction.** "You probably do not need a distributed lock for this."
+- **The result that sounds wrong.** "This query got faster after we deleted an index."
+- **The cost.** "This bug ate eleven hours before anyone looked at the retry logic."
+- **The question the reader has genuinely asked themselves.** "Why does `git rebase` keep rewriting commits I never touched?"
+
+Hooks that do not work:
+
+- announcing the subject instead of saying something, as in "Let's talk about caching" or "A thread on DNS"
+- claims nobody would argue with, as in "Testing is important"
+- the unfalsifiable crowd claim, as in "Most developers get this wrong." Already banned under Avoiding AI Tells, and it is worse here because it is the first thing anyone sees. If you know who gets it wrong and how, say that instead.
+- rhetorical questions with obvious answers, as in "Ever wondered how the internet works?"
+- a label doing a sentence's job, as in a thread emoji followed by "THREAD:"
+- any insight announcer, which is banned everywhere in this skill and is fatal in a hook
+
+The test: if the hook would sit just as comfortably above a completely different post, it is not a hook. It is a title.
+
+### Length
+
+Limits are ceilings, not targets. The good version of almost every post is shorter than the limit.
+
+| Channel | Hard limit | What usually works |
+| --- | --- | --- |
+| X post | 280 characters on a free account, far more on a paid one | Well under the limit. Leaving room for a quote-post is worth more than the last twenty characters. |
+| X thread | 280 per post | Five to fifteen posts. Past that it wanted to be an article. |
+| LinkedIn post | About 3,000 characters | Well under it. The fold matters far more than the ceiling. |
+| Forum or comment | Usually generous | The answer in the first two sentences, then as much reasoning as the question deserves. |
+| Chat or Slack | Practical, not technical | One to three short paragraphs. If it needs scrolling, it needed to be a document. |
+| Text message | About 160 characters per segment | One or two sentences. |
+
+Platform limits move. If a specific number is load-bearing for what you are about to write, say you are working from a remembered value rather than stating it as current fact.
+
+### Channel Notes
+
+**X post.** One idea. Front-load it, because the timeline truncates and people read the first line at speed. Links eat into the character budget, and see below for why the link usually should not be in the post at all.
+
+**X thread.** Number the posts `1/`, `2/`, and so on, or `1/9` when you know the length up front. The numbering counts against the 280. Post 1 has to work completely alone, because for most readers it is the only post they will see. One idea each. Never split a sentence across a post boundary. Close on a recap rather than trailing off.
+
+**LinkedIn post.** Only the first couple of lines show before the fold, so the hook goes there and has to earn the expand. Short paragraphs, one to three sentences, blank line between them. Markdown does not render on LinkedIn: no `#` headings, no `**bold**`, no backticks. Use line breaks and plain capitalized labels for structure instead. Past roughly 3,000 characters it wants to be a LinkedIn article or a real one.
+
+**Forum and comment replies.** Answer in the first sentence, then explain. Someone reading the twelfth reply in a thread is scanning for the one that solves their problem. Quote the specific line you are responding to when the thread is long. Code goes in a code block, always. Do not open with "Great question," which spends a line and says nothing.
+
+**Chat and text.** Lead with the ask or the answer. No preamble and no "Hey, hope you're well." If there is an action, put it on its own line at the end so it does not get lost in the middle of a paragraph.
+
+### Images and Video
+
+A visual earns its place when it carries information the text would need several sentences to deliver, or when it shows something in motion. It does not earn its place as decoration, and a stock photo of a laptop is decoration.
+
+Rough order of value for technical short-form:
+
+1. a diagram of the thing you are describing
+2. a screenshot with the relevant part marked
+3. a short video or GIF, which is the only option that shows change over time
+4. a code screenshot, readable, and never a full wall of it
+5. a stock image, which is worth about nothing
+
+Beyond that:
+
+- One strong visual beats four weak ones. Extra images dilute rather than add.
+- Upload media to the platform instead of linking to it. The same reach logic that works against links applies to media hosted somewhere else.
+- In a thread, name which post each image attaches to. Images attach to posts, not to threads.
+- Write alt text for every image, the same as everywhere else in this skill.
+- Video earns its place when there is motion, a before and after, or a sequence. A still diagram does not need to be a video.
+- If the job is cleaning up something the author wrote, do not invent a visual requirement they never had. Suggest it once, briefly, and let them decide.
+
+Use the same markers as the rest of the skill, `[Diagram: ...]` and `[Levity: ...]`, with the post they belong to named.
+
+### Links Go In A Follow-Up
+
+Platforms that sell attention have little reason to send readers off-platform, and both X and LinkedIn are widely observed to show a post carrying an external link to fewer people than the same post without one. This is something people have measured repeatedly rather than a documented, stable rule, so treat it as a strong default rather than a law of physics.
+
+The practical move is the same on both. Keep the main post clean, and put the link one step away.
+
+**On X.** The link goes in a reply to your own post, which becomes the final post of the thread. The main post ends with a plain pointer such as "Link in the replies."
+
+**On LinkedIn.** The link goes in the first comment, posted by the author right after publishing. The post ends with "Link in the comments."
+
+**When the link is the entire point,** as with a launch or a release announcement, say so and let the author choose rather than silently splitting it. Reach is worth less than the click when the click is the goal.
+
+Never disguise the link as something else, and never ask people to comment or DM to receive it. That farms engagement at the cost of the trust that made them read you in the first place.
+
+### How To Deliver A Thread
+
+Hand the author something they can post without editing. Label every post, show its character count, and mark where media attaches.
+
+```text
+POST 1  (238 chars)  [media attaches here]
+Our cache hit rate was 94 percent. The site was still slow.
+
+Turns out the 6 percent we missed were the only requests that mattered.
+
+[Diagram: bar chart of total time by endpoint, with checkout towering over
+the rest, labeled as the one endpoint that never hit the cache]
+
+POST 2  (211 chars)
+...
+
+POST 8  (147 chars)
+Recap: ...
+
+POST 9  (96 chars)
+Full writeup: <link>
+```
+
+The thread itself:
+
+1. **Post 1** is the hook. No link, no numbering fluff, no label doing a sentence's job.
+2. **Posts 2 through the third from last** carry one idea each, in the order someone would need to learn them.
+3. **The second to last post** is the payoff or recap. It is the one people quote, so it should be able to stand alone.
+4. **The last post** is the link, if there is one.
+
+If the thread runs to fewer than four posts, it is a post. Say so and collapse it.
 
 ## Core Writing Goal
 
@@ -1079,8 +1235,12 @@ Or:
 
 Before delivering, verify:
 
-- topic, goal, channel, and image mode were confirmed rather than assumed
+- topic, goal, channel, and image mode were confirmed rather than assumed, except on short-form cleanup, which skips the interview
 - the piece obeys its channel's constraints, including character limits
+- short-form output matches the scale of the request rather than inflating it into an article
+- every post in a thread carries its character count, and every count is under the limit
+- the hook says something concrete rather than announcing the subject
+- external links sit in a follow-up post or first comment, not in the main post, unless the link is the whole point and the author was told
 - the concept is grounded in one stable teaching anchor
 - the article has a clear before-state and after-state
 - alternative approaches were considered when appropriate

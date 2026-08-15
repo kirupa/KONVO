@@ -114,7 +114,27 @@ Copilot CLI can confirm the agent sees it. Run these inside a Copilot CLI sessio
 
 If you edit the skill mid-session, `/skills reload` picks up the change without a restart.
 
-### 3. ✂️ Or paste something short and ask for a cleanup
+### 3. 📝 Or hand it a draft you already wrote
+
+Paste the draft and say what you want. You do not need to spell out the ground rules:
+
+> Use the konvo skill to improve this draft.
+
+Keeping your voice, not inventing expertise, not quietly replacing your argument, and flagging the weak spots before rewriting are all default behavior now. You get back a short list of flags first, then the revision:
+
+- claims that need checking, with the line quoted
+- confusing or abrupt sections
+- generic AI-sounding phrases
+- missing context
+- places where a diagram or example would help
+
+Then the changes that mattered, then the revised draft.
+
+If you want it to skip the review and just hand back prose, say so. Your prompt overrides the defaults:
+
+> Just give me the revised version, no commentary.
+
+### 4. ✂️ Or paste something short and ask for a cleanup
 
 The same skill handles short-form, and it skips the interview when you do this, because your draft already tells it the topic and the goal:
 
@@ -126,7 +146,7 @@ This covers posts and threads for X, LinkedIn posts, forum and Stack Overflow re
 
 The short-form rules are not guesses about what sounds human. They were measured against 809 real forum replies written between 2006 and 2026, about 27,000 words. That corpus is where the specific numbers come from: the median reply is 139 characters, 58 percent are a single paragraph, and across all 809 there are zero headings. It is also why the machine-vocabulary ban list is in the skill at all, since 27 of the 29 banned words appear exactly zero times in 27,000 words of someone writing quickly and not thinking about it.
 
-### 4. 🚧 Know when not to use it
+### 5. 🚧 Know when not to use it
 
 `konvo` is tuned for explaining things: tutorials, guides, posts that build intuition before getting formal, and the short-form versions of all of that. Point it at a changelog or an API reference and you will get a friendly, chatty changelog, which is nobody's goal.
 

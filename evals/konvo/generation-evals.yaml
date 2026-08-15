@@ -584,3 +584,50 @@ cases:
       - restating the questions before answering
       - a multi-paragraph status report nobody asked for
       - an invented warm sign-off
+  - id: konvo_gen_034
+    mode: draft_revision
+    title: Revise a draft with a shaky claim and a gap
+    prompt: >-
+      "Improve this: Redis is always faster than Postgres for reads, so we moved
+      our session store over last quarter. It was pretty easy. Latency got a lot
+      better and the team was happy. Anyway, if you are thinking about it, I would
+      say go for it."
+    should_demonstrate:
+      - flags come before the revised draft
+      - the always-faster claim is flagged as needing checking, quoted
+      - missing context is flagged, such as what latency was before and after
+      - a place where a diagram or number would help is named
+      - the author's recommendation survives intact
+    should_avoid:
+      - inventing latency figures the author never gave
+      - inventing a reason Redis was faster in their case
+      - softening the recommendation into a balanced take
+      - delivering the rewrite with no flags
+  - id: konvo_gen_035
+    mode: draft_revision
+    title: Revision defaults apply without being asked
+    prompt: >-
+      "can you clean up this blog post intro" followed by a three-paragraph intro
+      containing "In today's fast-paced world" and "it's worth noting that."
+    should_demonstrate:
+      - the AI-sounding phrases are flagged by quoting them
+      - the author's voice and structure otherwise survive
+      - no intake interrogation about what the post is about
+    should_avoid:
+      - asking the user to specify that they wanted their voice kept
+      - asking what the topic is when it is pasted above
+      - rewriting into a different, more polished authorial persona
+  - id: konvo_gen_036
+    mode: draft_revision
+    title: Explicit instruction overrides the flag default
+    prompt: >-
+      "Just give me the revised version, no commentary" followed by a short draft
+      with one unverifiable benchmark claim.
+    should_demonstrate:
+      - the revised draft comes back with no flag list
+      - the unverifiable claim is left as the author's, not hardened or invented around
+      - at most one short line afterward if something is genuinely load-bearing
+    should_avoid:
+      - a five-bullet flag pass the user explicitly declined
+      - silently deleting the claim instead of leaving it to the author
+      - treating the default as non-negotiable

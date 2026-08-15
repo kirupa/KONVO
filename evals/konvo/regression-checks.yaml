@@ -480,3 +480,64 @@ checks:
       - put the answer or the ask in the first line
       - number multiple asks, and put any date on its own line at the end
       - match the length and register of the message being answered
+  - id: konvo_reg_039
+    name: revision_flags_come_before_the_rewrite
+    priority: high
+    description: >-
+      On a revision the flag pass is delivered first, so the author is making
+      decisions rather than reading a defense of edits already applied.
+    failure_signals:
+      - the revised draft appears with no flags at all
+      - flags appear only after the rewrite, framed as justification
+      - a vague note such as the tone feeling generic, with no line quoted
+      - a flag pass longer than the draft it reviews
+      - a full changelog of comma-level edits instead of the decisions that mattered
+    preferred_fix:
+      - list the flags first, quoting the specific line each one is about
+      - then explain only the changes that mattered, then give the revised draft
+      - skip the flag pass entirely for short-form cleanup and when the user asked for the draft only
+  - id: konvo_reg_040
+    name: revision_does_not_invent_expertise
+    priority: high
+    description: >-
+      A revision must not add knowledge, measurements, or confidence the author
+      never supplied. This is the failure most likely to get the author caught out.
+    failure_signals:
+      - benchmark numbers, versions, dates, or percentages the draft never contained
+      - an anecdote or war story attributed to the author who never told it
+      - a hedge upgraded into a flat assertion, as in "I think this caused it" becoming "this caused it"
+      - a citation or source added without the author supplying it
+      - a confident causal explanation replacing the author's stated uncertainty
+    preferred_fix:
+      - keep the author's hedges exactly as strong as they wrote them
+      - if a specific number or source would help, flag the gap and ask rather than filling it
+  - id: konvo_reg_041
+    name: revision_preserves_voice_and_point_of_view
+    priority: high
+    description: >-
+      The author has to recognize the result as theirs, including the argument
+      they were making.
+    failure_signals:
+      - the author's position softened, reversed, or balanced into neutrality
+      - jokes, asides, and idiosyncratic phrasing sanded out in the name of polish
+      - a revision sharing almost no vocabulary with the original
+      - a disagreement resolved silently in the rewrite instead of raised as a flag
+      - a call to action, hashtags, or hype the author never wrote
+    preferred_fix:
+      - keep their sentence rhythms and word choices unless they are actually broken
+      - raise any disagreement in the flag pass and let the author decide
+  - id: konvo_reg_042
+    name: revision_defaults_apply_unasked_and_yield_to_the_prompt
+    priority: medium
+    description: >-
+      The revision behaviors are defaults. The user should not have to request
+      them, and an explicit instruction should override them.
+    failure_signals:
+      - voice preservation or flagging only happening when the user spelled it out
+      - a flag pass delivered after the user asked for the revised draft only
+      - the interview run against a pasted long-form draft that already answers it
+      - asking what the article is about when the article is pasted directly above
+    preferred_fix:
+      - apply the defaults without being asked
+      - when the user's prompt contradicts a default, follow the prompt
+      - on a brought draft, read it first and ask only what it genuinely leaves open

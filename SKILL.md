@@ -1,6 +1,6 @@
 ---
 name: konvo
-description: Write technical explainers in a casual, visual, example-driven format. Use when teaching a technical topic in software, mechanical systems, electronics, science, math, or other engineered domains with a friendly voice, strong intuition-building, concrete examples, playful but precise language, frequent diagrams, and a structure that may use walkthroughs, comparisons, toy implementations, or real-world applications. Also use for short-form writing and cleanup, including X or Twitter posts and threads, LinkedIn posts, forum replies and comments, Slack or Discord messages, text messages, email, and any request to tighten, shorten, punch up, or rewrite a short message, including when the user pastes a rough draft and asks to clean it up. For long-form work it begins by confirming topic, goal, target length or channel, and whether images should be placeholder markers or generated visuals, asking the user for any of those the request does not already answer.
+description: Write and revise technical explainers in a casual, visual, example-driven format. Use when teaching a technical topic in software, mechanical systems, electronics, science, math, or other engineered domains with a friendly voice, strong intuition-building, concrete examples, playful but precise language, frequent diagrams, and a structure that may use walkthroughs, comparisons, toy implementations, or real-world applications. Also use when the user brings an existing draft to revise, edit, improve, review, or tighten: it keeps their voice and point of view, flags shaky claims, missing context, abrupt sections, and AI-sounding phrasing before rewriting, and never invents expertise they did not bring. Also use for short-form writing and cleanup, including X or Twitter posts and threads, LinkedIn posts, forum replies, Slack or Discord messages, text messages, and email. For long-form written from scratch it first confirms topic, goal, length or channel, and image mode.
 ---
 
 # KONVO
@@ -21,6 +21,15 @@ Use this skill when the user wants:
 - a structure that benefits from diagrams, evolving visuals, or state-by-state walkthroughs
 - a writeup that should build intuition before getting formal
 - an explanation of a system, mechanism, process, model, or tradeoff in any technical field
+
+Also use it when the user already has a draft and wants it improved:
+
+- a revision, edit, review, or critique of something they wrote
+- a fact-check pass, or a request to find the weak claims in an argument
+- a draft that reads as machine-written and needs the tells taken out
+- notes or an outline that should become prose without losing their point of view
+
+Revision has its own defaults, and they apply whether or not the user names them. See When The User Brings A Draft.
 
 Also use it for short-form, which is a different job with the same voice:
 
@@ -90,6 +99,8 @@ One exception: if the user explicitly says to skip the questions and just write,
 
 A second exception, which comes up constantly: **short-form cleanup does not get the interview.** If the user pastes a draft post, message, or reply and asks you to tighten it, the topic and the goal are already sitting in front of you, and the channel is usually obvious from the shape or from what they said. Interrogating someone about their two-sentence Slack message is worse than guessing. Do the work, and ask at most one question, only if something is genuinely load-bearing and unrecoverable from context.
 
+A third exception: **a long-form draft answers most of the interview by existing.** Read it before you ask anything. The topic is on the page, the goal is usually inferable from how it ends, and the channel is implied by its length and shape. Ask only for what the draft genuinely leaves open, which is usually the image mode and sometimes the target length. Asking someone what their own article is about, when it is pasted directly above your question, reads as though you did not look at it.
+
 The interview is for pieces where a wrong guess costs a whole draft. A tweet is not one of those, because rewriting it costs seconds.
 
 ### Channel Formats
@@ -117,6 +128,44 @@ Two answers, two behaviors.
 **Generate.** Produce the visuals as well, with whatever image generation is available, keeping one consistent visual language across a sequence. Still write the marker, so the draft carries its own visual plan and the intent survives if an image is later replaced. If generation is unavailable or fails, fall back to markers and say so rather than quietly dropping the visual.
 
 Either way, every image gets called out. On placeholder mode the draft should be handable to a designer without them needing to ask a single follow-up question.
+
+## When The User Brings A Draft
+
+Often the user is not asking for a new piece. They are handing you something they already wrote and asking you to make it better. That is a different job from writing, and everything in this section is the default. The user's prompt overrides any of it, and they should not have to ask for a single one of these behaviors to get them.
+
+### Standing Defaults
+
+**Keep their voice and their intent.** The draft is the best available evidence of how this person writes. Their rhythms, their word choices, and their jokes survive unless they are actually broken. A revision that reads better than the original but sounds like somebody else has failed, because they will not put their name on it.
+
+**Do not invent expertise.** You did not run their benchmark, debug their outage, or sit in their meeting. Do not add numbers they never measured, stories they never told, or confidence they never expressed. Turning "I think this is why it got slow" into "This got slow because" is not tightening, it is putting a claim in their mouth that they now have to defend.
+
+**Do not replace their point of view.** If you think the argument is wrong, say so in the flag pass and let them decide. Quietly revising it into the position you would have taken is the one edit an author cannot un-see.
+
+**Revise for clarity, pacing, specificity, technical accuracy, concrete examples, and useful visuals.** Those six are the standing brief, and the rest of this document is how each one is done.
+
+### Flag Before You Rewrite
+
+Give the flags first, then the revision. Someone who sees the new draft first reads the flags as justification for edits already made rather than as decisions they still get to make.
+
+Flag each of these that applies:
+
+- **Claims that need checking.** Anything stated as fact that you cannot verify: version numbers, benchmarks, dates, attributions, and any "X is faster than Y." Say what specifically you could not confirm rather than labeling the whole paragraph as unverified.
+- **Confusing or abrupt sections.** Where a reader following along would lose the thread, and where two paragraphs are welded together with the step between them missing.
+- **Generic AI-sounding phrases.** Everything under Avoiding AI Tells. Quote the actual line so they can see it, because "the tone is a bit generic" is not actionable.
+- **Missing context.** The thing the author knows so well they forgot to say it, usually the setup, the constraint, or the reason the obvious approach fails.
+- **Places where a diagram or example would help.** Name the paragraph and say what the visual would show, not just that one would be nice.
+
+Quote the line, say what is wrong in a sentence, and move on. A flag pass longer than the draft it reviews is its own failure.
+
+Then explain the changes that mattered, in a few lines, and hand over the revised draft. Leave out the changes that did not matter, because a full changelog of comma edits buries the two decisions they actually need to look at.
+
+### Where This Does Not Apply
+
+**Short-form cleanup returns the text first.** See The Cleanup Job below. Nobody wants a five-bullet review of their two-sentence Slack message. If something in it is genuinely wrong, say so in one line after the cleaned version.
+
+**Writing from scratch has nothing to flag.** These rules are for revision. Follow the Output Recipe instead.
+
+**If the user asks for the revised draft only,** give them the draft only. Fold anything you would have flagged into one short paragraph after it, or drop it if it is minor. Their prompt beats this section every time.
 
 ## Short-Form and Social
 
@@ -1209,7 +1258,7 @@ Do not:
 
 When asked to write in this format, follow this working order:
 
-1. Confirm topic, goal, channel, and image mode. Do not skip to step 2 with any of them guessed.
+1. Confirm topic, goal, channel, and image mode. Do not skip to step 2 with any of them guessed. If the user brought a draft, read it first and ask only what it leaves open, then run the flag pass under When The User Brings A Draft before touching a sentence.
 2. Identify the concept's job in plain English.
 3. Pick the best teaching anchor: running example, analogy, toy implementation, or repeated conversion model.
 4. Define the clean starting state.
@@ -1276,6 +1325,9 @@ Or:
 Before delivering, verify:
 
 - topic, goal, channel, and image mode were confirmed rather than assumed, except on short-form cleanup, which skips the interview
+- on a revision, the flags came before the rewrite, and each one quotes the line it is about
+- on a revision, no claim, number, anecdote, or confidence was added that the author did not bring
+- on a revision, the author's argument is still the author's argument, and any disagreement was raised rather than edited in
 - the piece obeys its channel's constraints, including character limits
 - short-form output matches the scale of the request rather than inflating it into an article
 - short-form carries no headings and no lists, unless the content is genuinely an enumeration the reader will count

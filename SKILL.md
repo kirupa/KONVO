@@ -1,6 +1,20 @@
 ---
 name: konvo
-description: Write and revise technical explainers in a casual, visual, example-driven format. Use when teaching a technical topic in software, mechanical systems, electronics, science, math, or other engineered domains with a friendly voice, strong intuition-building, concrete examples, playful but precise language, and frequent diagrams. It adapts vocabulary, examples, pacing, and depth for readers from literal five-year-olds to veteran practitioners. Also use when the user brings an existing draft to revise, edit, improve, review, or tighten: it keeps their voice and point of view, flags shaky claims, missing context, abrupt sections, and AI-sounding phrasing before rewriting, and never invents expertise they did not bring. Also use for short-form writing and cleanup, including X or Twitter posts and threads, LinkedIn posts, forum replies, Slack or Discord messages, text messages, and email. For new long-form it first confirms topic, audience and depth, goal, content type or channel, target length, and image mode.
+description: >-
+  Write and revise technical explainers in a casual, visual, example-driven
+  format. Use when teaching a technical topic in software, mechanical systems,
+  electronics, science, math, or other engineered domains with a friendly
+  voice, strong intuition-building, concrete examples, playful but precise
+  language, and frequent diagrams. It adapts vocabulary, examples, pacing, and
+  depth for readers from literal five-year-olds to veteran practitioners. Also
+  use when the user brings an existing draft to revise, edit, improve, review,
+  or tighten: it keeps their voice and point of view, flags shaky claims,
+  missing context, abrupt sections, and AI-sounding phrasing before rewriting,
+  and never invents expertise they did not bring. Also use for short-form
+  writing and cleanup, including X or Twitter posts and threads, LinkedIn posts,
+  forum replies, Slack or Discord messages, text messages, and email. For new
+  long-form it first confirms topic, audience and depth, goal, content type or
+  channel, target length, and image mode.
 ---
 
 # KONVO

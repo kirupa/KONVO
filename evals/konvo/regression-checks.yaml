@@ -74,8 +74,11 @@ checks:
     priority: high
     description: A vague request should produce clarifying questions, not a full draft written against guessed constraints.
     failure_signals:
-      - a complete article is delivered when topic, goal, channel, or image mode were never specified
+      - a complete long-form article is delivered when topic, audience and depth, goal, content type or channel, target length, or image mode were never specified
+      - the reader's age or experience level is assumed without evidence
       - the channel is assumed to be long-form without asking
+      - target length is inferred from the channel without asking
+      - content type and target length are treated as interchangeable
       - image mode is assumed without asking
       - questions are asked but a full draft is delivered in the same turn anyway
     preferred_fix:
@@ -88,9 +91,10 @@ checks:
     description: The gate should not re-ask for details the prompt already supplied, and should not spread questions across turns.
     failure_signals:
       - asks for the topic when the prompt already names it
-      - asks the four questions one per turn instead of together
+      - asks the six required questions one per turn instead of together
       - asks clarifying questions after the user explicitly said to skip them and write
       - no defaults offered, forcing the user to answer every question manually
+      - treats optional additional notes as required and blocks drafting when they are blank
 
   - id: konvo_reg_011
     name: channel_limits_respected
@@ -102,6 +106,7 @@ checks:
       - thread posts are unnumbered
       - a LinkedIn post uses markdown headings, bold, or backticks, none of which render there
       - a LinkedIn post buries the hook below the first couple of lines
+      - a short email response is structured like an X post merely because both have the same character limit
     preferred_fix:
       - count characters per post rather than estimating
       - move the hook into the opening lines
@@ -557,3 +562,18 @@ checks:
     preferred_fix:
       - write around the gap and name what the author still needs to supply
       - keep the uncertainty visible in the draft rather than resolving it invisibly
+
+  - id: konvo_reg_044
+    name: audience_depth_respected
+    priority: high
+    description: Vocabulary, examples, pacing, assumed knowledge, and technical depth should fit the requested age and experience level without changing the underlying facts.
+    failure_signals:
+      - an explanation for a five-year-old relies on unexplained jargon, long abstractions, or adult workplace examples
+      - a deep dive for experienced practitioners spends most of its time reteaching basic definitions
+      - simplification removes a dependency or caveat and creates a false mental model
+      - the tone becomes baby talk or condescending when the audience is young
+      - age is treated as a reliable substitute for prior knowledge
+    preferred_fix:
+      - use familiar physical examples and short, accurate steps for young children
+      - skip known basics and surface edge cases, tradeoffs, and implementation detail for veterans
+      - ask what the reader already knows when age alone does not establish the right depth

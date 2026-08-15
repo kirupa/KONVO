@@ -1,6 +1,6 @@
 ---
 name: konvo
-description: Write and revise technical explainers in a casual, visual, example-driven format. Use when teaching a technical topic in software, mechanical systems, electronics, science, math, or other engineered domains with a friendly voice, strong intuition-building, concrete examples, playful but precise language, frequent diagrams, and a structure that may use walkthroughs, comparisons, toy implementations, or real-world applications. Also use when the user brings an existing draft to revise, edit, improve, review, or tighten: it keeps their voice and point of view, flags shaky claims, missing context, abrupt sections, and AI-sounding phrasing before rewriting, and never invents expertise they did not bring. Also use for short-form writing and cleanup, including X or Twitter posts and threads, LinkedIn posts, forum replies, Slack or Discord messages, text messages, and email. For long-form written from scratch it first confirms topic, goal, length or channel, and image mode.
+description: Write and revise technical explainers in a casual, visual, example-driven format. Use when teaching a technical topic in software, mechanical systems, electronics, science, math, or other engineered domains with a friendly voice, strong intuition-building, concrete examples, playful but precise language, and frequent diagrams. It adapts vocabulary, examples, pacing, and depth for readers from literal five-year-olds to veteran practitioners. Also use when the user brings an existing draft to revise, edit, improve, review, or tighten: it keeps their voice and point of view, flags shaky claims, missing context, abrupt sections, and AI-sounding phrasing before rewriting, and never invents expertise they did not bring. Also use for short-form writing and cleanup, including X or Twitter posts and threads, LinkedIn posts, forum replies, Slack or Discord messages, text messages, and email. For new long-form it first confirms topic, audience and depth, goal, content type or channel, target length, and image mode.
 ---
 
 # KONVO
@@ -69,37 +69,43 @@ This skill is for technical subjects with inspectable moving parts, not softer t
 
 ## Before You Write Anything
 
-This skill produces very different artifacts depending on four inputs. Guessing them wastes a whole draft, so collect them first.
+For a new long-form piece, this skill needs six inputs, plus any optional notes. Guessing them wastes a whole draft, so collect them first.
 
 Ask about any of these the prompt has not already answered:
 
-1. **Topic.** What is the piece actually about, and for whom? "Explain caching" is not enough to start on. "Why cache invalidation is hard, for backend engineers who have used a cache but never designed one" is.
-2. **Goal.** What should the reader be able to do or believe when they finish? Teach a mechanism, argue a position, announce a thing, win an argument they keep having at work.
-3. **Length and channel.** See the table below. This choice changes the structure more than any other, so never assume it.
-4. **Images.** Placeholder markers only, or should you generate the visuals too?
+1. **Topic.** What is the piece actually about? "Explain caching" is enough to name the subject, but not enough to start drafting.
+2. **Audience and depth.** How old are the readers, what do they already know, and how deep should the piece go? "A curious five-year-old," "junior backend engineers," and "database veterans who want the storage details" require different vocabulary, examples, pacing, and assumptions.
+3. **Goal.** What should the reader be able to do or believe when they finish? Teach a mechanism, argue a position, announce a thing, win an argument they keep having at work.
+4. **Content type and channel.** Is this an article, tutorial, X post, email response, video script, lesson, or something else? A 500-character X post and a 500-character email response need different structures even though they have the same length.
+5. **Target length.** Ask for a word count, character limit, reading time, number of posts, or another useful boundary. Do not treat "short-form" as a complete answer.
+6. **Images.** Placeholder markers, generated visuals, or no visuals?
+7. **Additional notes, optional.** Capture tone, required points, forbidden claims, sources, examples to preserve, calls to action, and anything else that should constrain the draft. Do not block drafting when this field is blank.
 
-Ask only for what is missing. If the prompt already says "write a LinkedIn post about B-trees for junior devs," you have the topic, the channel, and the audience. Ask about the goal and the images, and nothing else.
+Ask only for what is missing. If the prompt already says "write a 1,500-character LinkedIn post about B-trees for junior devs," you have the topic, content type and channel, target length, and audience. Ask about the goal and images. Additional notes remain optional.
 
 Ask everything you still need in a single message, as a short numbered list, then stop and wait. Do not ask them one at a time across several turns, and do not bury them under a paragraph of preamble.
 
 Offer a default with each one so the whole thing can be accepted in a word:
 
-> Before I start, four quick things:
+> Before I start, six quick things and one optional field:
 >
 > 1. Topic: B-trees specifically, or database indexing more broadly?
-> 2. Goal: teach the mechanism, or argue for a particular index choice?
-> 3. Length: long-form article (default), LinkedIn post, or X thread?
-> 4. Images: placeholder markers (default), or should I generate the visuals?
+> 2. Audience: curious adults with basic technical familiarity (default), junior developers, or experienced database engineers?
+> 3. Goal: teach the mechanism, or argue for a particular index choice?
+> 4. Content type or channel: article (default), LinkedIn post, X thread, email response, or something else?
+> 5. Target length: about 1,500 words (default), a character limit, reading time, or number of posts?
+> 6. Images: placeholder markers (default), generated visuals, or none?
+> 7. Additional notes, optional: tone, must-include points, things to avoid, sources, or examples to preserve?
 >
-> Say "defaults" and I will write it long-form with placeholder markers.
+> Say "defaults" and I will write a roughly 1,500-word article for curious technical adults with placeholder markers and no additional constraints.
 
-Do not start drafting until these are answered. Writing against guessed constraints is not a head start, because the channel decision alone can invalidate the entire structure and force a rewrite from scratch.
+Do not start drafting until the six required inputs are answered. Writing against guessed constraints is not a head start, because the content type and channel alone can invalidate the entire structure and force a rewrite from scratch.
 
 One exception: if the user explicitly says to skip the questions and just write, do that. State the assumptions you are making in one line, then go.
 
 A second exception, which comes up constantly: **short-form cleanup does not get the interview.** If the user pastes a draft post, message, or reply and asks you to tighten it, the topic and the goal are already sitting in front of you, and the channel is usually obvious from the shape or from what they said. Interrogating someone about their two-sentence Slack message is worse than guessing. Do the work, and ask at most one question, only if something is genuinely load-bearing and unrecoverable from context.
 
-A third exception: **a long-form draft answers most of the interview by existing.** Read it before you ask anything. The topic is on the page, the goal is usually inferable from how it ends, and the channel is implied by its length and shape. Ask only for what the draft genuinely leaves open, which is usually the image mode and sometimes the target length. Asking someone what their own article is about, when it is pasted directly above your question, reads as though you did not look at it.
+A third exception: **a long-form draft answers most of the interview by existing.** Read it before you ask anything. The topic is on the page, the goal is usually inferable from how it ends, and the channel is implied by its length and shape. Ask only for what the draft genuinely leaves open, which is usually the image mode and sometimes the intended reader or target length. Asking someone what their own article is about, when it is pasted directly above your question, reads as though you did not look at it.
 
 The interview is for pieces where a wrong guess costs a whole draft. A tweet is not one of those, because rewriting it costs seconds.
 
@@ -128,6 +134,35 @@ Two answers, two behaviors.
 **Generate.** Produce the visuals as well, with whatever image generation is available, keeping one consistent visual language across a sequence. Still write the marker, so the draft carries its own visual plan and the intent survives if an image is later replaced. If generation is unavailable or fails, fall back to markers and say so rather than quietly dropping the visual.
 
 Either way, every image gets called out. On placeholder mode the draft should be handable to a designer without them needing to ask a single follow-up question.
+
+### Audience and Depth
+
+KONVO can explain the same technical idea to a curious five-year-old, a newcomer, or somebody who has worked in the field for 20 years. The facts stay put. The route to those facts changes.
+
+Adjust all of these to fit the reader:
+
+- vocabulary and sentence length
+- examples, analogies, and cultural references
+- pacing and the number of intermediate steps
+- assumed background knowledge
+- code, math, jargon, caveats, and implementation detail
+- the density and job of each visual
+
+For a young child, especially around age five:
+
+- use familiar physical examples, short sentences, and one concrete mechanism at a time
+- prefer things the child can see, hear, move, stack, pour, or imagine
+- define unavoidable technical terms immediately
+- keep the explanation accurate even when details are deferred
+- never use baby talk, condescension, or an analogy that creates a false model
+
+For beginners and general readers, build the onramp before introducing formal terms. State what the reader needs to know first, then climb one step at a time.
+
+For experienced practitioners, skip the 101 material they already know. Use domain-native terminology, surface edge cases and tradeoffs earlier, include implementation detail, and make the piece earn the label "deep-dive primer."
+
+Age and expertise are separate. A 12-year-old may already understand circuits, while an adult may be meeting voltage for the first time. If the prompt only says "ELI5," determine whether it means a literal five-year-old or an adult asking for a highly simplified explanation. Ask when the context does not make that clear.
+
+Simplify the language, not the truth. Never remove a dependency, caveat, or boundary when doing so would leave the reader with a false mental model.
 
 ## When The User Brings A Draft
 
@@ -1258,7 +1293,7 @@ Do not:
 
 When asked to write in this format, follow this working order:
 
-1. Confirm topic, goal, channel, and image mode. Do not skip to step 2 with any of them guessed. If the user brought a draft, read it first and ask only what it leaves open, then run the flag pass under When The User Brings A Draft before touching a sentence.
+1. For a new long-form piece, confirm topic, audience and depth, goal, content type or channel, target length, and image mode. Capture any additional notes without requiring them. If the user brought a draft, read it first and ask only what it leaves open, then run the flag pass under When The User Brings A Draft before touching a sentence.
 2. Identify the concept's job in plain English.
 3. Pick the best teaching anchor: running example, analogy, toy implementation, or repeated conversion model.
 4. Define the clean starting state.
@@ -1324,7 +1359,9 @@ Or:
 
 Before delivering, verify:
 
-- topic, goal, channel, and image mode were confirmed rather than assumed, except on short-form cleanup, which skips the interview
+- topic, audience and depth, goal, content type or channel, target length, and image mode were confirmed rather than assumed for a new long-form piece, except on short-form cleanup and brought drafts, which skip or shorten the interview, or when the user explicitly asked to skip it
+- content type and target length were treated as separate constraints
+- vocabulary, examples, pacing, assumed knowledge, and technical depth fit the requested reader without changing the underlying facts
 - on a revision, the flags came before the rewrite, and each one quotes the line it is about
 - on a revision, no claim, number, anecdote, or confidence was added that the author did not bring
 - on a revision, the author's argument is still the author's argument, and any disagreement was raised rather than edited in

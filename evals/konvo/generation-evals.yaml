@@ -232,7 +232,8 @@ cases:
       Write something about hash tables.
     should_demonstrate:
       - asks for the missing inputs instead of drafting
-      - covers goal, channel or length, and image mode
+      - covers audience and depth, goal, content type or channel, target length, and image mode
+      - offers an optional field for additional notes without making it a blocker
       - asks in a single message as a short numbered list
       - offers a default for each question so the user can accept them in one word
       - stops and waits rather than answering its own questions and continuing
@@ -246,11 +247,12 @@ cases:
     mode: intake_gate
     title: Fully specified request skips the questions
     prompt: |
-      Write an X thread teaching junior backend engineers how DNS resolution works.
+      Write an 8-post X thread teaching junior backend engineers how DNS resolution works.
       The goal is for them to be able to debug a failed lookup. Use placeholder image
       markers rather than generating any visuals.
     should_demonstrate:
-      - writes immediately without asking anything, since all four inputs are supplied
+      - writes immediately without asking anything, since all six required inputs are supplied
+      - contains exactly 8 posts
       - numbered posts, each 280 characters or fewer including the numbering
       - first post works as a standalone hook
       - image markers placed inline and attributed to specific posts
@@ -267,12 +269,12 @@ cases:
     prompt: |
       Write a LinkedIn post about why database indexes speed up reads but slow down writes.
       Audience is engineering managers. Goal is to help them ask better questions in design
-      reviews. Placeholder images are fine.
+      reviews. Keep it between 1,200 and 1,600 characters. Placeholder images are fine.
     should_demonstrate:
       - hook lands in the opening lines, above the see-more fold
       - short paragraphs separated by blank lines
       - plain text structure, since markdown does not render on LinkedIn
-      - stays within roughly 3,000 characters
+      - stays between 1,200 and 1,600 characters
     should_avoid:
       - markdown headings, bold, or backticks
       - article-length output
@@ -631,3 +633,41 @@ cases:
       - a five-bullet flag pass the user explicitly declined
       - silently deleting the claim instead of leaving it to the author
       - treating the default as non-negotiable
+
+  - id: konvo_gen_037
+    mode: audience_adaptation
+    title: Literal ELI5 technical explanation
+    prompt: |
+      Write a 500-word illustrated explainer teaching a curious five-year-old why thunder
+      happens after lightning. The goal is for the child to understand that lightning
+      heats the air and the fast-moving air makes the sound. Use placeholder image markers.
+    should_demonstrate:
+      - uses short sentences and familiar physical examples without baby talk
+      - explains one concrete mechanism at a time
+      - defines or avoids technical terms that a five-year-old would not know
+      - keeps the relationship between lightning, heated air, expansion, and sound accurate
+      - uses simple, buildable visuals that help the child track the sequence
+    should_avoid:
+      - unexplained terms such as plasma, pressure wave, or rapid thermal expansion
+      - an analogy that replaces the real mechanism with a false one
+      - adult workplace or software examples
+      - condescending praise or baby talk
+
+  - id: konvo_gen_038
+    mode: audience_adaptation
+    title: Veteran deep-dive primer
+    prompt: |
+      Write a 2,000-word deep-dive primer on DNS resolution for experienced network
+      engineers. The goal is to sharpen their operational debugging across recursive
+      resolvers, delegation, caching, negative responses, DNSSEC, and split-horizon
+      environments. Use placeholder diagram markers.
+    should_demonstrate:
+      - assumes fluency with basic DNS records, recursion, and command-line inspection
+      - moves quickly into failure modes, edge cases, tradeoffs, and operational detail
+      - uses domain-native terminology without pausing to define basic networking concepts
+      - proposes diagrams that expose resolution state, cache boundaries, and failure points
+      - remains structured and readable despite the greater technical density
+    should_avoid:
+      - spending the opening teaching what DNS stands for
+      - replacing precise terminology with beginner analogies
+      - treating deep dive as permission for dense, unstructured prose

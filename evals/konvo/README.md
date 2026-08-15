@@ -11,6 +11,8 @@ We want to know:
 - does the skill trigger for the right prompts?
 - does it improve explainers that benefit from intuition-first teaching?
 - does it work well outside software topics, including engineering, math, electrical systems, manufacturing, and physics-flavored explainers?
+- does it adapt vocabulary, examples, pacing, and depth from literal age-five explanations through expert primers?
+- does it gather audience, content type, and target length separately instead of treating them as interchangeable?
 - does it avoid over-applying itself to docs, release notes, or formal writing?
 - does it stay out of softer subjects like history and philosophy where the format is a poor fit?
 - does it preserve important style constraints such as avoiding double dashes?

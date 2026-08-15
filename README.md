@@ -20,7 +20,7 @@ The point is more good technical writing in the world, published by the people w
 
 KONVO assumes you know things the agent never will, and it is built to go get them.
 
-Before it writes a word, the skill interviews you. What is the topic, what should the reader be able to do afterward, how long should it run, and should images be placeholder markers or real generated visuals. It asks rather than guessing, because guessing is how you end up with a competent article about something adjacent to what you meant.
+Before it writes a new long-form piece, the skill interviews you. What is the topic, who is the reader, what should they be able to do afterward, what kind of content are you making, how long should it run, and should images be placeholder markers or real generated visuals. It asks rather than guessing, because guessing is how you end up with a competent article about something adjacent to what you meant.
 
 **You bring** the reason this is worth writing, the reader you have in mind, the place people reliably get stuck, the opinion you are willing to defend, and the real numbers and war stories that make it yours.
 
@@ -29,6 +29,20 @@ Before it writes a word, the skill interviews you. What is the topic, what shoul
 **KONVO brings** the standard, so you are not re-explaining your taste at the start of every session.
 
 There is a chunk of the skill devoted to stripping the tells that make writing read as machine-generated. That is not about sneaking anything past anyone. It is because you are the one whose name is on it, and a reader who smells autopilot stops trusting the explanation, even when the explanation is correct.
+
+## 🧒 From ELI5 to Deep Dive
+
+Tell KONVO who the reader is. It can explain the same technical idea to a curious five-year-old, a newcomer, or somebody who has worked in the field for decades.
+
+KONVO adjusts vocabulary, examples, sentence length, pacing, assumed knowledge, visuals, code, math, and implementation detail. It simplifies the route into a topic without changing the underlying facts. Age and expertise are separate, so give it either the reader's age, what they already know, or both.
+
+For a true ELI5 explanation:
+
+> Use the KONVO skill to explain DNS resolution to a curious five-year-old. Keep it concrete, accurate, short, and visual. Use familiar examples and define any technical word you cannot avoid.
+
+For a deep-dive primer:
+
+> Use the KONVO skill to explain DNS resolution to experienced network engineers. Skip the basics they already know and focus on caching layers, failure modes, delegation, DNSSEC, and operational debugging.
 
 ## 📚 Where This Comes From
 
@@ -99,11 +113,29 @@ Agents load a skill on their own when your request matches its description, so t
 
 If you want to be sure it fired, name it directly:
 
-> Use the konvo skill to explain how DNS resolution actually works.
+> Use the KONVO skill to explain how DNS resolution actually works.
 
-Either way, the first thing back is usually not a draft. It is a short set of questions about goal, audience, length, and images. Those two minutes pay for themselves, because everything downstream is built on your answers. You can front-load them instead:
+Either way, the first thing back is usually not a draft. It is a short set of questions about topic, audience and depth, goal, content type or channel, target length, and images. Those two minutes pay for themselves, because everything downstream is built on your answers. You can front-load them instead:
 
-> Use the konvo skill to write a 1,200 word post explaining how DNS resolution works, aimed at bootcamp grads who have never thought about where an IP address comes from. The thing they always get wrong is assuming the browser talks to one server. Placeholder image markers are fine.
+> Use the KONVO skill to write a 1,200-word article explaining how DNS resolution works, aimed at bootcamp grads who have never thought about where an IP address comes from. The goal is for them to trace a lookup and identify where it failed. The thing they usually get wrong is assuming the browser talks to one server. Placeholder image markers are fine.
+
+For the fewest rewrites, provide the fields explicitly:
+
+```text
+Use the KONVO skill to help me create or improve the content below.
+
+Topic: [WHAT IS THIS ABOUT?]
+Target reader: [AGE / EXPERIENCE LEVEL / PRIOR KNOWLEDGE]
+Goal: [WHAT SHOULD THE READER UNDERSTAND OR DO?]
+Content type / channel: [ARTICLE / X POST / EMAIL RESPONSE / ETC.]
+Target length: [WORDS / CHARACTERS / READING TIME / NUMBER OF POSTS]
+Visuals: [PLACEHOLDERS / GENERATED / NONE]
+Additional notes: [TONE / MUST-INCLUDE / MUST-AVOID / SOURCES]
+
+[PASTE YOUR DRAFT, NOTES, OR SOURCE MATERIAL HERE]
+```
+
+Content type and target length are separate on purpose. A 500-character X post and a 500-character email response have different structures, conventions, and jobs. Additional notes are optional.
 
 Copilot CLI can confirm the agent sees it. Run these inside a Copilot CLI session:
 
@@ -118,7 +150,7 @@ If you edit the skill mid-session, `/skills reload` picks up the change without 
 
 Paste the draft and say what you want. You do not need to spell out the ground rules:
 
-> Use the konvo skill to improve this draft.
+> Use the KONVO skill to improve this draft.
 
 Keeping your voice, not inventing expertise, not quietly replacing your argument, and flagging the weak spots before rewriting are all default behavior now. You get back a short list of flags first, then the revision:
 

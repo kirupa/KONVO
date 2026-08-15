@@ -1,6 +1,6 @@
 ---
 name: konvo
-description: Write technical explainers in a casual, visual, example-driven format. Use when teaching a technical topic in software, mechanical systems, electronics, science, math, or other engineered domains with a friendly voice, strong intuition-building, concrete examples, playful but precise language, frequent diagrams, and a structure that may use walkthroughs, comparisons, toy implementations, or real-world applications. Also use for short-form writing and cleanup, including X or Twitter posts and threads, LinkedIn posts, forum replies and comments, Slack or Discord messages, text messages, and any request to tighten, shorten, punch up, or rewrite a short message, including when the user pastes a rough draft and asks to clean it up. For long-form work it begins by confirming topic, goal, target length or channel, and whether images should be placeholder markers or generated visuals, asking the user for any of those the request does not already answer.
+description: Write technical explainers in a casual, visual, example-driven format. Use when teaching a technical topic in software, mechanical systems, electronics, science, math, or other engineered domains with a friendly voice, strong intuition-building, concrete examples, playful but precise language, frequent diagrams, and a structure that may use walkthroughs, comparisons, toy implementations, or real-world applications. Also use for short-form writing and cleanup, including X or Twitter posts and threads, LinkedIn posts, forum replies and comments, Slack or Discord messages, text messages, email, and any request to tighten, shorten, punch up, or rewrite a short message, including when the user pastes a rough draft and asks to clean it up. For long-form work it begins by confirming topic, goal, target length or channel, and whether images should be placeholder markers or generated visuals, asking the user for any of those the request does not already answer.
 ---
 
 # KONVO
@@ -27,6 +27,7 @@ Also use it for short-form, which is a different job with the same voice:
 - a post or thread for X, LinkedIn, Mastodon, Bluesky, or Threads
 - a reply or comment on a forum, Stack Overflow, Reddit, or Hacker News
 - a Slack, Discord, or text message that needs to be clearer than the first attempt
+- an email, where the first line is a preview pane and works like a hook whether or not you wrote it as one
 - any request to tighten, shorten, punch up, or clean up something the user already wrote
 - a very short prompt, or a pasted rough draft with little instruction, which usually means the user wants a cleaned-up version of that thing rather than an article about it
 
@@ -139,6 +140,45 @@ When someone pastes their own rough draft and asks you to tighten it, that draft
 
 Do not add hype the author did not bring. Do not add a call to action they did not ask for. Do not add hashtags unless they used hashtags.
 
+### How Short Replies Actually Behave
+
+Everything below was counted, not estimated. The source is 809 forum replies written by this skill's author between 2006 and 2026, about 27,000 words of prose after quoted text, code blocks, and URLs were stripped out. Where the corpus and your instincts disagree, the corpus is describing what a person actually did and your instincts are describing what a model tends to produce.
+
+**Short is shorter than you think.** The median reply is 139 characters. Half of everything fits in a single X post with room left over, and 82 percent lands under 280. The median sentence is 10 words, and a quarter of all sentences are 5 words or fewer. When a short-form draft comes back at three paragraphs, the fix is usually not the wording. Two of the paragraphs are throat-clearing.
+
+**No scaffolding.** Across all 809 replies there are zero headings and 12 lists. Fifty-eight percent are a single paragraph. Even among the longest 25, the ones over 600 characters, two used a list and none used a heading. This is the widest gap between how a model writes short-form and how a person does. Three bullets inside a two-sentence answer are a formatting reflex rather than a structure the reader needed.
+
+**Open by answering or by asking.** Fifty-seven percent go straight into the content. Twenty-two percent open with a question back to the asker. Five percent greet. The most common two-word opening in the whole corpus is "Can you", ahead of "What is" and "Do you", because the most common move is to request the missing input rather than guess at it. "Can you post your code?" "What is the error you are seeing?"
+
+**Ask when the input is missing, and only ask.** Questions appear in 37 percent of replies. If the person left out the error text, the code, or the screenshot, ask for the one thing that would settle it and stop. Do not hedge the request by attaching a speculative answer as insurance, because that buries the ask and invites them to respond to the guess instead.
+
+**Keep contrast inside the sentence.** In roughly 1,700 sentences, "But" starts one, "And" starts three, and "However" starts none. The contrast lives mid-sentence instead: "The function expects an int to be returned, but you are returning a double?" Models default to the opposite habit and open sentence after sentence with But, So, and However. Splitting a contrast in two also drops the hinge the reader needed to see.
+
+**One emoji, at the end, or none at all.** Emoji appear in 49 percent of replies. When one shows up it sits at the very end 78 percent of the time, and 192 of the 440 emoji in the corpus are the same mild smile. One at the end reads as tone. Three, or one mid-sentence, reads as decoration.
+
+**The aside is a spaced hyphen.** Sixteen percent hang a clause off a sentence with ` - `, as in "Sadly, no - I have no idea what happened." Em dashes appear in zero of the 809, which is the same conclusion the AI-tell rules reach from the other direction.
+
+**Name the person you are answering.** Fifteen percent address someone by handle, and 10 percent use `@name - ` followed immediately by the answer. In a thread with several participants, naming who you are talking to costs a few characters and removes all ambiguity about which question you took.
+
+**Hand off with a colon.** Forty-five percent end a line on a colon and then give the code, the link, or the image. "Here is a start with the pause, play, and restart capabilities:" One character replaces a whole sentence of introduction.
+
+**Do not hedge, apologize, or flatter.** In replies from 2020 onward, hedges appear in 3 percent, apologies in 1 percent, and compliments to the asker in 6 percent. Say the thing. If you are genuinely unsure, name the specific uncertainty instead of softening the entire sentence around it.
+
+**Plain intensifiers only.** The corpus reaches for "just" and "really" and almost nothing else. Of 29 machine-vocabulary words from the ban list, 27 appear zero times in 27,000 words, and the two that do appear are used literally, as in navigating to a page. The ban list is not a matter of taste. It describes words that people writing quickly do not reach for.
+
+The direction of travel is worth knowing too. Compared with replies from 2015 and earlier, the ones from 2020 onward are shorter (median 125 characters against 160), ask more questions (37 percent against 25), carry more exclamation (38 percent against 15), hedge far less (3 percent against 11), and say "I" less often (36 percent against 51) while saying "you" just as much. When in doubt, write the newer version: shorter, more curious, less throat-clearing, and pointed at the reader rather than at yourself.
+
+### Email
+
+There is no email corpus behind this section. The rules below are carried over from the reply corpus above, because a sent email and a forum reply are the same job in a different window: one person, one question, a specific answer, and no audience to perform for. Treat this as reasoned from adjacent evidence rather than measured.
+
+- Put the answer or the ask in the first line. The subject and the first line are all that show in a preview pane, so the first line is a hook whether or not you wrote it as one.
+- One email, one ask. If there are three asks, number them, because that is the one place where a list genuinely helps and the reader will otherwise answer only the first.
+- If you need something by a date, put the date and the ask on their own line at the end. Do not leave it in the middle of a paragraph.
+- No "Hope you're well," no "I wanted to reach out," and no restating their question back to them before answering it. All three spend the preview line.
+- Match their register. A three-line email deserves a three-line reply, and answering it with six paragraphs reads as a mismatch rather than as thoroughness.
+- Sign off the way the author actually signs off. If the corpus of one is all you have, copy what they used last time rather than inventing a warmer version.
+
 ### Hooks
 
 The first line decides whether the rest gets read. On X it is all of post 1. On LinkedIn it is everything above the "see more" fold. In a forum reply it is the first sentence, which decides whether the skim continues.
@@ -187,7 +227,7 @@ Platform limits move. If a specific number is load-bearing for what you are abou
 
 **LinkedIn post.** Only the first couple of lines show before the fold, so the hook goes there and has to earn the expand. Short paragraphs, one to three sentences, blank line between them. Markdown does not render on LinkedIn: no `#` headings, no `**bold**`, no backticks. Use line breaks and plain capitalized labels for structure instead. Past roughly 3,000 characters it wants to be a LinkedIn article or a real one.
 
-**Forum and comment replies.** Answer in the first sentence, then explain. Someone reading the twelfth reply in a thread is scanning for the one that solves their problem. Quote the specific line you are responding to when the thread is long. Code goes in a code block, always. Do not open with "Great question," which spends a line and says nothing.
+**Forum and comment replies.** Someone reading the twelfth reply in a thread is scanning for the one that solves their problem, so the first sentence has to be the answer or the question that unblocks it. Address people by handle rather than quoting them: the corpus quotes the asker in 1 percent of replies and @mentions them in 15. Quote a line only when you are correcting one specific claim in a long thread. Code goes in a code block, always. See the measured rules above for how the sentences themselves should behave.
 
 **Chat and text.** Lead with the ask or the answer. No preamble and no "Hey, hope you're well." If there is an action, put it on its own line at the end so it does not get lost in the middle of a paragraph.
 
@@ -1238,6 +1278,10 @@ Before delivering, verify:
 - topic, goal, channel, and image mode were confirmed rather than assumed, except on short-form cleanup, which skips the interview
 - the piece obeys its channel's constraints, including character limits
 - short-form output matches the scale of the request rather than inflating it into an article
+- short-form carries no headings and no lists, unless the content is genuinely an enumeration the reader will count
+- short-form opens with the answer or with the one question that unblocks the asker, not with a greeting or a compliment
+- contrast in short-form sits inside a sentence rather than opening one with But, So, or However
+- short-form carries at most one emoji, at the end, and uses a spaced hyphen rather than an em dash for an aside
 - every post in a thread carries its character count, and every count is under the limit
 - the hook says something concrete rather than announcing the subject
 - external links sit in a follow-up post or first comment, not in the main post, unless the link is the whole point and the author was told

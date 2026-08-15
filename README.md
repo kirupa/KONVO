@@ -122,7 +122,9 @@ The same skill handles short-form, and it skips the interview when you do this, 
 
 You get back something the size of what you gave it. Not an article about connection pooling.
 
-This covers posts and threads for X, LinkedIn posts, forum and Stack Overflow replies, Slack and Discord messages, and text messages. For social specifically, it handles the fiddly parts: hooks that say something instead of announcing a topic, per-post character counts you can actually trust, which post each image attaches to, and keeping links out of the main post so the algorithm doesn't bury it.
+This covers posts and threads for X, LinkedIn posts, forum and Stack Overflow replies, Slack and Discord messages, text messages, and email. For social specifically, it handles the fiddly parts: hooks that say something instead of announcing a topic, per-post character counts you can actually trust, which post each image attaches to, and keeping links out of the main post so the algorithm doesn't bury it.
+
+The short-form rules are not guesses about what sounds human. They were measured against 809 real forum replies written between 2006 and 2026, about 27,000 words. That corpus is where the specific numbers come from: the median reply is 139 characters, 58 percent are a single paragraph, and across all 809 there are zero headings. It is also why the machine-vocabulary ban list is in the skill at all, since 27 of the 29 banned words appear exactly zero times in 27,000 words of someone writing quickly and not thinking about it.
 
 ### 4. 🚧 Know when not to use it
 

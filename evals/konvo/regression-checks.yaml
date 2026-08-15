@@ -407,3 +407,76 @@ checks:
     preferred_fix:
       - prefer a diagram, then a marked-up screenshot, then a short video where something changes
       - attach each image to a named post and write its alt text
+  - id: konvo_reg_034
+    name: short_form_carries_no_scaffolding
+    priority: high
+    description: >-
+      Short-form must not be structured like a document. Across 809 measured
+      forum replies there were zero headings and twelve lists, and 58 percent
+      were a single paragraph.
+    failure_signals:
+      - a markdown heading in a post, reply, chat message, or email
+      - a bulleted or numbered list inside an answer of a few sentences
+      - bolded labels introducing each sentence of a short reply
+      - a two-sentence answer split into sections
+    preferred_fix:
+      - write it as one paragraph, or two at most
+      - use a list only when the reader will genuinely count the items, such as numbered asks in an email
+  - id: konvo_reg_035
+    name: short_form_opens_with_answer_or_question
+    priority: high
+    description: >-
+      A short reply opens by answering or by asking for the one missing input.
+      Greetings, compliments, and restatements spend the only line that gets read.
+    failure_signals:
+      - opening with "Great question" or any compliment to the asker
+      - restating the question back before answering it
+      - a greeting where the answer should be
+      - a speculative answer attached to a request for missing information, which buries the ask
+    preferred_fix:
+      - lead with the answer, or lead with the single question that unblocks them and stop there
+      - address the person by handle if the thread has several participants
+  - id: konvo_reg_036
+    name: contrast_stays_inside_the_sentence
+    priority: medium
+    description: >-
+      Across roughly 1,700 measured sentences, "But" opened one, "And" opened
+      three, and "However" opened none. Contrast belongs mid-sentence.
+    failure_signals:
+      - consecutive sentences opening with But, So, However, or And
+      - a contrast split across two sentences where one would hold it
+      - a paragraph hinged on "That said" or "However" in short-form
+    preferred_fix:
+      - join the halves with a mid-sentence but, though, or although
+      - cut the transition entirely if the contrast is already visible
+  - id: konvo_reg_037
+    name: short_form_emoji_and_punctuation_restraint
+    priority: medium
+    description: >-
+      Emoji appear in about half of short replies, land at the end 78 percent of
+      the time, and are usually a single mild face. Asides use a spaced hyphen,
+      never an em dash.
+    failure_signals:
+      - more than one emoji in a short post
+      - an emoji mid-sentence or used as a bullet marker
+      - an em dash used for an aside
+      - decorative emoji added to a cleanup the author wrote without any
+    preferred_fix:
+      - keep at most one emoji and put it at the end, or leave it out
+      - use a spaced hyphen for an aside
+  - id: konvo_reg_038
+    name: email_respects_the_preview_line
+    priority: medium
+    description: >-
+      The first line of an email is a preview pane. It has to carry the answer or
+      the ask.
+    failure_signals:
+      - opening with "Hope you're well" or "I wanted to reach out"
+      - the ask buried in the middle of a paragraph
+      - a deadline mentioned without its own line
+      - a six-paragraph reply to a three-line email
+      - an invented sign-off warmer than the author's own
+    preferred_fix:
+      - put the answer or the ask in the first line
+      - number multiple asks, and put any date on its own line at the end
+      - match the length and register of the message being answered

@@ -536,3 +536,51 @@ cases:
       - adding a subject line or a sign-off
       - producing anything requiring scrolling
       - stripping the warmth into something clipped and cold
+  - id: konvo_gen_031
+    mode: forum_reply
+    title: Reply to an incomplete bug report
+    prompt: >-
+      Someone posts on a forum: "My fetch call isn't working. It just fails.
+      Anyone know what's wrong?" Write the reply.
+    should_demonstrate:
+      - asks for the one missing thing, such as the console error or the code
+      - one or two sentences total
+      - no heading, no list
+      - opens with the question rather than a greeting
+    should_avoid:
+      - guessing at causes when nothing was shared
+      - a checklist of things to try
+      - an opening of "Great question" or any compliment
+      - attaching a speculative answer to the request
+  - id: konvo_gen_032
+    mode: short_form_cleanup
+    title: Tighten an over-structured draft
+    prompt: >-
+      Clean this up for a forum reply. "Hi there! Great question. So, there are a
+      few things to consider here. **First**, you need to check your imports.
+      **Second**, however, the bundler config matters too. But at the end of the
+      day, it's probably just a caching issue. Hope this helps!"
+    should_demonstrate:
+      - collapses to one short paragraph with no bold labels
+      - leads with the likely cause rather than the preamble
+      - contrast held inside a sentence rather than opening one with But or However
+    should_avoid:
+      - keeping the greeting or the compliment
+      - keeping the bolded First and Second labels
+      - keeping "at the end of the day" or "Hope this helps"
+      - expanding it into something longer than the original
+  - id: konvo_gen_033
+    mode: email
+    title: Reply to a short email asking for a status update
+    prompt: >-
+      Write a reply to this email: "Hey, any update on the migration? Also do you
+      still need the staging creds from me? Thanks!"
+    should_demonstrate:
+      - answers both questions, numbered or clearly separated
+      - the answer sits in the first line
+      - length in proportion to the original
+    should_avoid:
+      - an opening of "Hope you're well" or "I wanted to reach out"
+      - restating the questions before answering
+      - a multi-paragraph status report nobody asked for
+      - an invented warm sign-off

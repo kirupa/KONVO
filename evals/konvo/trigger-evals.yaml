@@ -79,6 +79,17 @@ cases:
       - manufacturing process with clear stages
       - a visual walkthrough is a natural fit
 
+  - id: konvo_trigger_016
+    should_trigger: true
+    title: Conversational review of an existing draft
+    prompt: |
+      Review this technical blog draft with me section by section. Ask focused questions
+      or suggest choices, preserve my voice, and do not rewrite it yet.
+    rationale:
+      - explicit editorial-review request
+      - the skill has a conversational draft-analysis mode
+      - preserving author voice is part of the requested behavior
+
   - id: konvo_trigger_005
     should_trigger: false
     title: API reference request

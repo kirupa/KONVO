@@ -13,9 +13,13 @@ We want to know:
 - does it work well outside software topics, including engineering, math, electrical systems, manufacturing, and physics-flavored explainers?
 - does it adapt vocabulary, examples, pacing, and depth from literal age-five explanations through expert primers?
 - does it gather audience, content type, and target length separately instead of treating them as interchangeable?
+- does a review request become a conversational section-level analysis instead of a premature rewrite?
+- does it judge writing by the job it must do rather than by an AI detector score?
+- does it treat rhetoric, voice, structure, and punctuation as editorial lenses rather than provenance evidence?
+- does it preserve useful punctuation and load-bearing hedges while fixing clustering and empty caution?
 - does it avoid over-applying itself to docs, release notes, or formal writing?
 - does it stay out of softer subjects like history and philosophy where the format is a poor fit?
-- does it preserve important style constraints such as avoiding double dashes?
+- does it avoid the literal double-hyphen token in finished prose without blanket-banning em dashes?
 
 ## Suite Structure
 
@@ -81,6 +85,15 @@ Representative non-fit boundaries currently covered:
 - philosophy prompts
 - checklist and reference-style writing
 
+Representative editorial-workflow cases currently covered:
+
+- conversational review that pauses before rewriting
+- boring-version and transplant tests for generic prose
+- reverse outlines and structure chosen for the piece's job
+- punctuation density, read-aloud rhythm, and author punctuation fingerprints
+- legally or technically load-bearing hedges
+- Pangram and detector-evasion requests redirected into honest quality work
+
 ## What Counts As Value
 
 The skill is providing value when it improves:
@@ -96,6 +109,8 @@ without introducing:
 - generic hype language
 - over-stylized fluff
 - broken technical precision
-- double dashes
+- literal double-hyphen punctuation in finished body prose
+- blanket punctuation bans driven by detector fashion
+- detector-evasion tactics or promised human scores
 - software-default framing on non-computer topics
 - forced metaphors or forced tradeoff sections

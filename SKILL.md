@@ -192,6 +192,30 @@ Often the user is not asking for a new piece. They are handing you something the
 
 **Revise for clarity, pacing, specificity, technical accuracy, concrete examples, and useful visuals.** Those six are the standing brief, and the rest of this document is how each one is done.
 
+### Learn From the Author's Revision Delta
+
+When an author edits a draft you produced, the before-and-after pair is labeled style data. It is stronger evidence than a general KONVO default because it shows exactly where the author's instincts differ from yours. Do not treat the revision as a one-time cleanup. Study it before writing for that author again.
+
+Use this protocol:
+
+1. **Compare the actual versions.** Diff the author-edited draft against the version they received. Do not reconstruct the changes from memory or summarize only the largest rewrites.
+2. **Classify each meaningful edit.** Record whether it changed technical meaning, information order, paragraph pacing, narrative ownership, reader address, character continuity, visual setup, interactivity, emphasis, humor, or a house convention such as heading capitalization and file extensions.
+3. **Keep a small delta ledger.** For each repeated change, capture the original wording, the author's replacement, the inferred preference, and how broadly it should apply. This is working material, not something to show unless the user asks for it.
+4. **Generalize repeated choices, not isolated quirks.** One changed word may belong only to that sentence. The same kind of change in three sections is a voice rule. An explicit correction from the author is a rule immediately.
+5. **Let demonstrated voice override general long-form defaults.** The author's consistent use of Title Case headings, connective phrases, repetition, parenthetical asides, exclamation points, or emoji outranks this skill's long-form house defaults. Truth, safety, accessibility, hard channel limits, and the measured short-form channel rules still win unless the author explicitly requests a different channel-specific style or provides evidence from that channel.
+6. **Map narrative ownership.** Notice where the author uses `we`, `our`, `you`, and a named character. If they say "our grid" and "our code," do not flatten that into "the grid" and "the program." Use `we` for work built together, `you` for a reader action, and the named actor for a visible consequence.
+7. **Preserve spoken connective tissue.** Phrases such as "Now," "Remember," and "At this point" may carry the author's spoken rhythm and orient the reader in time or logic. Keep them when they perform one of those jobs. Cut them when their only job is to announce what the next heading, image, or code block already says. Concision is not automatically better.
+8. **Keep the running character alive.** When a tutorial has Zorb, Lisa, Ralph, or another recurring actor, describe outcomes through that actor when the author does. "He can't do it" and "one happy alien" maintain narrative continuity that a detached state description loses.
+9. **Close interactive loops.** After a code milestone changes visible behavior, tell the reader to try it and name what they should observe. A tutorial should not move from implementation straight to summary when the reader can immediately test the result.
+10. **Apply the visual handoff rules to the author's delta.** Follow Every Image Is Introduced under Visual Teaching Rules. Use the revision delta to preserve the author's exact placement of the state, cause, or comparison before the image and the consequence after it.
+11. **Delete generic bridge prose when the next action already proves it.** Lines such as "JavaScript will handle that next" add little when the next heading is "Add the JavaScript." Keep a transition when it orients the reader in time or logic or carries a repeated author cadence. Otherwise prefer a human reaction, a useful constraint, or no bridge at all.
+12. **Preserve purposeful emphasis and humor.** Strong emphasis around a gating phrase such as "only if," a mild complaint in parentheses, or one well-placed emoji can carry tone and memory. Do not normalize those details into neutral prose unless they obscure the meaning.
+13. **Mirror the author's conclusion structure.** If the author consistently closes with a plain mental model followed by deeper mechanics, preserve those two zoom levels and fold the consequence into the deeper explanation. Otherwise follow End With a Compact Recap. Do not turn one transition phrase or one conclusion shape into a global template.
+14. **Propagate the learned pattern across the whole draft.** After identifying a preference, scan untouched sections for the same opportunity. Do not apply the author's voice only to the paragraphs they happened to edit.
+15. **Run a holdout check.** Pick two sections the author did not revise and ask whether the inferred rules improve them without inventing a new voice. If the rewrite sounds more like a caricature, narrow the rule.
+
+The goal is not to copy every surface tic. It is to learn which choices consistently control pacing, warmth, clarity, and the relationship between the author and reader.
+
 ### Flag Before You Rewrite
 
 Give the flags first, then the revision. Someone who sees the new draft first reads the flags as justification for edits already made rather than as decisions they still get to make.
@@ -616,7 +640,7 @@ These apply to article output, not to reference documents like this one.
 - Do not use em dashes or double dashes. Already covered under Sentence Rhythm, and it is the single most recognized tell.
 - Do not open bullets with a bolded label and a colon, as in "**Security:** it matters." Write the bullet as a sentence.
 - Do not decorate bullets or headings with emoji like check marks, brains, or blue diamonds. Emoji are fine when the author's own voice uses them, and fine on social channels where they are native. Decorative emoji added for structure are the tell.
-- Write headings in sentence case. Avoid Title Case, and avoid the colon-split title, as in "The power of caching: why it works."
+- Write headings in sentence case by default. When an author's drafts consistently use another capitalization style, match it. Avoid the colon-split title, as in "The power of caching: why it works," unless that pattern is also part of the author's established voice.
 - Do not use curly quotes in plain-text contexts, and do not leave markdown syntax where it will not render. See the LinkedIn and X guidance under Channel Formats.
 - Prefer a period where you were about to use a semicolon.
 - The Oxford comma is house style, not a tell by itself. Stay consistent in technical lists, where ambiguity costs the reader something real.
@@ -1307,7 +1331,7 @@ Do not:
 
 When asked to write in this format, follow this working order:
 
-1. For a new long-form piece, confirm topic, audience and depth, goal, content type or channel, target length, and image mode. Capture any additional notes without requiring them. If the user brought a draft, read it first and ask only what it leaves open, then run the flag pass under When The User Brings A Draft before touching a sentence.
+1. For a new long-form piece, confirm topic, audience and depth, goal, content type or channel, target length, and image mode. Capture any additional notes without requiring them. If the user brought a draft, read it first and ask only what it leaves open, then run the flag pass under When The User Brings A Draft before touching a sentence. If the author has edited an earlier version, run the revision-delta protocol before drafting.
 2. Identify the concept's job in plain English.
 3. Pick the best teaching anchor: running example, analogy, toy implementation, or repeated conversion model.
 4. Define the clean starting state.
@@ -1379,6 +1403,11 @@ Before delivering, verify:
 - on a revision, the flags came before the rewrite, and each one quotes the line it is about
 - on a revision, no claim, number, anecdote, or confidence was added that the author did not bring
 - on a revision, the author's argument is still the author's argument, and any disagreement was raised rather than edited in
+- when an author-edited version exists, the actual before-and-after delta was reviewed and repeated preferences were recorded before rewriting
+- demonstrated author conventions override general long-form KONVO defaults where they do not conflict with truth, safety, accessibility, hard channel limits, or the measured short-form channel rules
+- pronouns preserve the author's narrative ownership: `we` for shared work, `you` for reader actions, and named actors for visible consequences when that is the established pattern
+- every implementation milestone that changes visible behavior ends with a try-it checkpoint when the reader can test it immediately
+- generic bridge prose was removed when the next heading, visual, or code block already makes the transition obvious
 - the piece obeys its channel's constraints, including character limits
 - short-form output matches the scale of the request rather than inflating it into an article
 - short-form carries no headings and no lists, unless the content is genuinely an enumeration the reader will count
@@ -1401,7 +1430,7 @@ Before delivering, verify:
 - the draft is clean of the words, constructions, and formatting listed under Avoiding AI Tells
 - sentence lengths vary, with at least one short sentence and one long one per section
 - contractions are present, at least one thing is left unresolved or criticized, and specific names and textured numbers appear instead of categories and round approximations
-- headings are sentence case, bullets do not open with bolded labels, and no decorative emoji were added
+- headings follow the author's established capitalization, or sentence case when no author pattern exists; bullets do not open with bolded labels; decorative emoji were not added
 - personality is intact, with humor and warmth left in rather than sanded to neutral
 - jargon appears after intuition, not before
 - the conclusion reconnects to the main mental model

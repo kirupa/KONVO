@@ -28,7 +28,7 @@ Before it writes a new long-form piece, the skill interviews you. What is the to
 
 **KONVO brings** the standard, so you are not re-explaining your taste at the start of every session.
 
-There is a chunk of the skill devoted to stripping the tells that make writing read as machine-generated. That is not about sneaking anything past anyone. It is because you are the one whose name is on it, and a reader who smells autopilot stops trusting the explanation, even when the explanation is correct.
+There is a chunk of the skill devoted to editing the habits that make writing generic, empty, or suspiciously uniform. That is not about sneaking past a detector. KONVO treats those habits as writing problems, not proof of who or what wrote the draft. The test is whether the piece is doing its job and whether your judgment is still visible in it.
 
 ## 🧒 From ELI5 to Deep Dive
 
@@ -148,7 +148,15 @@ If you edit the skill mid-session, `/skills reload` picks up the change without 
 
 ### 3. 📝 Or hand it a draft you already wrote
 
-Paste the draft and say what you want. You do not need to spell out the ground rules:
+Paste the draft and choose how much control you want to keep in the conversation.
+
+For an editorial conversation before anything gets rewritten:
+
+> Use the KONVO skill to review this draft with me. Work through it section by section, ask focused questions or suggest choices, preserve my voice, and do not rewrite it yet.
+
+KONVO reads the whole piece, states what job it thinks the piece is doing, and builds a quick reverse outline. It then discusses each major section through four lenses: rhetoric, voice, structure, and punctuation. You get at most one useful question or suggestion per section, plus the single repeated pattern costing the draft the most. Your answers become the brief for a later revision.
+
+For a full revision, you do not need to spell out the ground rules:
 
 > Use the KONVO skill to improve this draft.
 
@@ -199,7 +207,9 @@ The JSON file is the source of truth. The HTML file is the rendered report you c
 
 ## 🧭 Direction
 
-The measure of KONVO is not whether the output sounds human. It is whether you would put your name on it.
+The measure of KONVO is not whether Pangram or another detector calls the output human. It is whether the writing does its job and whether you would put your name on it.
+
+KONVO will not optimize a classifier score. It will use the useful part of the detection conversation: finding empty rhetoric, transplantable sentences, overbuilt structure, and repetitive punctuation, then fixing those because they weaken the writing. It also preserves disclosure when a rule requires it, personal human authorship is part of the promise, or automation would create a false impression of many independent people.
 
 That usually means the draft comes back with:
 
@@ -211,3 +221,5 @@ That usually means the draft comes back with:
 - your voice intact, and your judgment visible in what got emphasized
 
 Then you edit it, because you are still the author. The skill is meant to hand you a strong draft and get out of the way, not to hand you something finished that you feel vaguely uneasy about publishing.
+
+The job-first framing and the rhetoric, voice, structure, and punctuation taxonomy were sharpened by Steph Zinn's a16z crypto post, [“Stop asking if it was written by AI. Start asking whether it's doing its job.”](https://x.com/a16zcrypto/status/2091934263302402318)

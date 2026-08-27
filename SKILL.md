@@ -2,17 +2,16 @@
 name: konvo
 description: >-
   Write and revise technical explainers in a casual, visual, example-driven
-  format. Use when teaching a technical topic in software, mechanical systems,
-  electronics, science, math, or other engineered domains with a friendly
-  voice, strong intuition-building, concrete examples, playful but precise
-  language, and frequent diagrams. It adapts vocabulary, examples, pacing, and
-  depth for readers from literal five-year-olds to veteran practitioners. Also
-  use when the user brings an existing draft to revise, edit, improve, review,
-  or tighten: it keeps their voice and point of view, flags shaky claims,
-  missing context, abrupt sections, and AI-sounding phrasing before rewriting,
-  and never invents expertise they did not bring. Also use for short-form
-  writing and cleanup, including X or Twitter posts and threads, LinkedIn posts,
-  forum replies, Slack or Discord messages, text messages, and email. For new
+  format. Use for technical topics in software, engineering, electronics,
+  science, or math that need a friendly voice, strong intuition, concrete
+  examples, precise language, and diagrams. It adapts vocabulary, examples,
+  pacing, and depth for readers from five-year-olds to veteran practitioners.
+  Also use when the user brings a draft to revise, edit, review, or tighten: it
+  preserves their voice and point of view, flags shaky claims, missing context,
+  abrupt sections, and machine-shaped phrasing, and never invents expertise. A
+  review without a rewrite becomes a section-by-section editorial conversation.
+  Also use for short-form cleanup, including X posts and threads, LinkedIn
+  posts, forum replies, Slack or Discord messages, texts, and email. For new
   long-form it first confirms topic, audience and depth, goal, content type or
   channel, target length, and image mode.
 ---
@@ -39,6 +38,7 @@ Use this skill when the user wants:
 Also use it when the user already has a draft and wants it improved:
 
 - a revision, edit, review, or critique of something they wrote
+- a conversational editorial pass that asks questions or suggests choices without rewriting yet
 - a fact-check pass, or a request to find the weak claims in an argument
 - a draft that reads as machine-written and needs the tells taken out
 - notes or an outline that should become prose without losing their point of view
@@ -80,6 +80,8 @@ Do not use this skill for:
 - topics where interpretation matters more than mechanism
 
 This skill is for technical subjects with inspectable moving parts, not softer topics that rely mostly on interpretation, argument, or historical context.
+
+These exclusions are also jobs where neutral voice is often the right tool. Support docs, error messages, safety instructions, terms of service, and other text read by many strangers in many contexts should not inherit KONVO's authorial voice merely to sound human. Personality creates friction there.
 
 ## Before You Write Anything
 
@@ -182,11 +184,57 @@ Simplify the language, not the truth. Never remove a dependency, caveat, or boun
 
 Often the user is not asking for a new piece. They are handing you something they already wrote and asking you to make it better. That is a different job from writing, and everything in this section is the default. The user's prompt overrides any of it, and they should not have to ask for a single one of these behaviors to get them.
 
+### Choose The Draft Mode
+
+A request to review a draft is not automatically a request to rewrite it.
+
+- **Editorial conversation.** Use this when the user asks for a review, analysis, feedback, suggestions, help thinking through a section, or explicitly says not to rewrite yet. Also use it when a long draft arrives with no clear transformation request.
+- **Revision.** Use this when the user asks to revise, rewrite, edit, improve, or polish. Run the flag pass, then provide the revision.
+- **Cleanup.** Use this for short-form. Return the cleaned text first and skip the long-form review machinery.
+
+When the intent is ambiguous, preserve the author's control: discuss the draft before replacing its sentences. An explicit request always wins.
+
+Short-form still obeys the user's verb. "Tighten this" gets a cleanup. "Review this, but do not rewrite it" gets one concise question or suggestion, not a rewritten post and not the full section-by-section machinery.
+
+### The Conversational Editorial Pass
+
+This mode helps the author make decisions. It does not make those decisions invisibly.
+
+1. **Read the whole draft first.** Do not start commenting halfway through and then discover that the conclusion answers your opening question.
+2. **State the job you think the piece is doing.** Name the apparent audience, goal, and container in one sentence: "This reads as a technical explainer for working frontend developers, trying to show why layout thrashing happens." If a wrong read would change the review, ask the author to correct it before continuing.
+3. **Build a reverse outline.** Write one line for the job of each major section. This exposes sections that repeat, arrive out of order, or exist only because the template expected another heading. Show the author a compact version before the section comments when it helps them see the structure; otherwise keep it in working notes.
+4. **Review through four lenses.**
+   - **Rhetoric:** Does the section make a claim, supply evidence, or move the idea forward? Can its impressive-sounding sentence survive a plain paraphrase?
+   - **Voice:** Could a sentence be transplanted into someone else's article on another topic without anyone noticing? Where could the author's own observation, word choice, annoyance, or uncertainty replace generic prose?
+   - **Structure:** Does this section do a distinct job, and is this the right container for it? A story, list, walkthrough, and announcement create different meanings from the same facts.
+   - **Punctuation and rhythm:** Do the sentences sound natural aloud? Are colons, dashes, parentheticals, fragments, or mirrored sentence shapes clustering until the reader notices the pattern instead of the point?
+5. **Ask or suggest, based on what is missing.** Ask one focused question per major section when only the author can supply the answer. If the issue is already visible, give one concrete suggestion instead. Quote the short passage you mean. Do not turn every observation into a question just to make the review sound conversational.
+6. **Name one global pattern.** Pick the repeated habit costing the draft the most. State it once instead of flagging every instance.
+7. **Stop before rewriting.** Let the author's answers become the revision brief. Offer to revise the discussed passages after the conversation, but do not produce replacement prose until the author asks for it.
+
+The questions should be easy to answer and expensive to guess. "What did you measure that made you trust this claim?" is useful. "Can you tell me more about your article?" asks the author to repeat a draft you did not read.
+
+For a long draft, work through a few related sections per turn rather than dropping a wall of twenty questions. Preserve the author's wording while taking notes. The point is to uncover what they meant, not to steer them toward what you would have written.
+
+### Diagnostic Moves
+
+Use these tools to expose a problem. None of them is an automatic rewrite rule.
+
+- **The author guide.** Build a small style guide from the author's own examples and counterexamples. Record what "good" means in observable terms, such as how they open, qualify claims, use headings, punctuate asides, and close. This outlasts a blacklist.
+- **The boring version.** Paraphrase a suspicious sentence as plainly as possible. If it reduces to "things exist," "things are changing," or another empty claim, delete it or ask what concrete fact belongs there.
+- **The transplant test.** Ask whether the sentence could move unchanged into a stranger's article on another topic. If it could, find the detail, stance, or diction that makes it this author's sentence.
+- **The reverse outline.** Study a strong published piece in the same genre and note what each paragraph does, not what it says. Borrow the functions only when they serve this draft's job.
+- **The punctuation fingerprint.** Compare the draft with the author's own samples or demonstrated revision delta. Learn which marks they use, how often, and for what jobs instead of enforcing a universal ban.
+- **Voice notes.** When the prose is polished but lifeless, invite the author to explain the idea aloud. A transcript often contains the phrasing, emphasis, and mild complaints that disappeared on the page.
+- **The sixth-grade pass.** A lower reading-level rewrite can expose jargon and inflated syntax. Treat it as a blunt diagnostic, then restore any technical precision it flattened.
+
 ### Standing Defaults
 
 **Keep their voice and their intent.** The draft is the best available evidence of how this person writes. Their rhythms, their word choices, and their jokes survive unless they are actually broken. A revision that reads better than the original but sounds like somebody else has failed, because they will not put their name on it.
 
 **Do not invent expertise.** You did not run their benchmark, debug their outage, or sit in their meeting. Do not add numbers they never measured, stories they never told, sources they never cited, examples they never chose, or confidence they never expressed. Turning "I think this is why it got slow" into "This got slow because" is not tightening, it is putting a claim in their mouth that they now have to defend. A fabricated citation is worse, because it survives review by looking exactly like a real one.
+
+Do not imply that KONVO validated legal, regulatory, medical, financial, or safety wording. Preserve load-bearing language, flag uncertainty, and recommend qualified review when compliance or safety is material.
 
 **Do not replace their point of view.** If you think the argument is wrong, say so in the flag pass and let them decide. Quietly revising it into the position you would have taken is the one edit an author cannot un-see.
 
@@ -218,13 +266,15 @@ The goal is not to copy every surface tic. It is to learn which choices consiste
 
 ### Flag Before You Rewrite
 
+This is the entry point for revision mode, after the user has asked for rewritten prose or finished the conversational pass.
+
 Give the flags first, then the revision. Someone who sees the new draft first reads the flags as justification for edits already made rather than as decisions they still get to make.
 
 Flag each of these that applies:
 
 - **Claims that need checking.** Anything stated as fact that you cannot verify: version numbers, benchmarks, dates, attributions, and any "X is faster than Y." Say what specifically you could not confirm rather than labeling the whole paragraph as unverified.
 - **Confusing, abrupt, or badly ordered sections.** Where a reader following along would lose the thread, where two paragraphs are welded together with the step between them missing, and where something is explained before the thing it depends on.
-- **Generic AI-sounding phrases.** Everything under Avoiding AI Tells. Quote the actual line so they can see it, because "the tone is a bit generic" is not actionable.
+- **Generic AI-sounding phrases.** Everything under Edit The Writing, Not The Detector Score. Quote the actual line so they can see it, because "the tone is a bit generic" is not actionable.
 - **Missing context or assumed knowledge.** The thing the author knows so well they forgot to say it, usually the setup, the constraint, or the reason the obvious approach fails. Also the term used once and never defined.
 - **Places where a diagram or example would help.** Name the paragraph and say what the visual would show, not just that one would be nice.
 
@@ -278,13 +328,13 @@ Everything below was counted, not estimated. The source is 809 forum replies wri
 
 **One emoji, at the end, or none at all.** Emoji appear in 49 percent of replies. When one shows up it sits at the very end 78 percent of the time, and 192 of the 440 emoji in the corpus are the same mild smile. One at the end reads as tone. Three, or one mid-sentence, reads as decoration.
 
-**The aside is a spaced hyphen.** Sixteen percent hang a clause off a sentence with ` - `, as in "Sadly, no - I have no idea what happened." Em dashes appear in zero of the 809, which is the same conclusion the AI-tell rules reach from the other direction.
+**The aside is a spaced hyphen.** Sixteen percent hang a clause off a sentence with ` - `, as in "Sadly, no - I have no idea what happened." Em dashes appear in zero of the 809, which makes this a measured preference for this author and channel, not a universal punctuation ban.
 
 **Name the person you are answering.** Fifteen percent address someone by handle, and 10 percent use `@name - ` followed immediately by the answer. In a thread with several participants, naming who you are talking to costs a few characters and removes all ambiguity about which question you took.
 
 **Hand off with a colon.** Forty-five percent end a line on a colon and then give the code, the link, or the image. "Here is a start with the pause, play, and restart capabilities:" One character replaces a whole sentence of introduction.
 
-**Do not hedge, apologize, or flatter.** In replies from 2020 onward, hedges appear in 3 percent, apologies in 1 percent, and compliments to the asker in 6 percent. Say the thing. If you are genuinely unsure, name the specific uncertainty instead of softening the entire sentence around it.
+**Do not hedge, apologize, or flatter without a job.** In replies from 2020 onward, hedges appear in 3 percent, apologies in 1 percent, and compliments to the asker in 6 percent. Say the thing. If you are genuinely unsure, name the specific uncertainty instead of softening the entire sentence around it. Preserve wording required for legal, regulatory, medical, financial, or safety accuracy. A load-bearing hedge is not throat-clearing.
 
 **Plain intensifiers only.** The corpus reaches for "just" and "really" and almost nothing else. Of 29 machine-vocabulary words from the ban list, 27 appear zero times in 27,000 words, and the two that do appear are used literally, as in navigating to a page. The ban list is not a matter of taste. It describes words that people writing quickly do not reach for.
 
@@ -319,7 +369,7 @@ Hooks that do not work:
 
 - announcing the subject instead of saying something, as in "Let's talk about caching" or "A thread on DNS"
 - claims nobody would argue with, as in "Testing is important"
-- the unfalsifiable crowd claim, as in "Most developers get this wrong." Already banned under Avoiding AI Tells, and it is worse here because it is the first thing anyone sees. If you know who gets it wrong and how, say that instead.
+- the unfalsifiable crowd claim, as in "Most developers get this wrong." Already covered under Edit The Writing, Not The Detector Score, and it is worse here because it is the first thing anyone sees. If you know who gets it wrong and how, say that instead.
 - rhetorical questions with obvious answers, as in "Ever wondered how the internet works?"
 - a label doing a sentence's job, as in a thread emoji followed by "THREAD:"
 - any insight announcer, which is banned everywhere in this skill and is fatal in a hook
@@ -482,7 +532,7 @@ Good rhythm often looks like:
 
 Avoid paragraphs where every sentence has the same length or shape.
 
-Do not use double dashes for emphasis or interruption. If a sentence wants a pause, use a comma or break the thought into a smaller sentence instead.
+A literal double hyphen (`--`) is not finished prose punctuation unless the channel or syntax requires it. Use a real punctuation mark instead. Do not blanket-ban em dashes. Keep one when it fits the author's punctuation fingerprint or does a job a comma cannot, but watch for several dashes clustering in one sentence or across consecutive sentences.
 
 Do not use "insight announcer" phrases like "Here's the tell," "Here's the thing," "Here's the kicker," or "The secret is." These hype the next sentence instead of saying anything, and they are a strong signal of AI-generated writing. State the observation plainly, in words a five-year-old could follow:
 
@@ -593,11 +643,35 @@ Example pattern:
 
 Do not lead with terminology unless the user explicitly asked for a dense expert treatment.
 
-## Avoiding AI Tells
+## Edit The Writing, Not The Detector Score
 
-Readers recognize generated prose by a small set of habits. Most of them are not errors. They are ordinary words and shapes that show up far more often in machine text than in human text, which is what makes them a signature.
+Stop asking whether a passage looks machine-generated long enough to ask whether it is doing its job.
 
-The rule that matters is not the list below. It is this: when a sentence exists to sound finished rather than to say something, cut it. Blocklists lose to paraphrase, so treat the specific words as symptoms and the principle as the test.
+Can the intended reader understand it? Can they trust the claims? Does it help them do or believe what the piece set out to accomplish? Is the author's judgment visible in what was selected, emphasized, questioned, and left unresolved? Those standards apply to prose written by a person, a model, or both.
+
+Machine-generated prose clusters around recognizable habits in rhetoric, voice, structure, and punctuation. Human first drafts have always contained many of the same habits. Treat the list below as a taxonomy of editing problems, not as forensic proof of provenance. A phrase is a problem when it makes this piece less clear, specific, trustworthy, or true to its author. It is not a problem merely because a detector notices it.
+
+When asked to bypass Pangram or another AI detector, do not provide score-gaming tactics or promise a "human" percentage. Do not swap punctuation, cycle synonyms, add errors, or distort an author's style solely to move a classifier. Offer a job-focused editorial pass instead: run the boring-version and transplant tests, replace generic language with knowledge the author can defend, preserve demonstrated voice, and handle disclosure honestly.
+
+An AI detector can be used as a flag generator for generic phrases, jargon, or repetitive shapes. Ignore its provenance score. Investigate each highlighted passage using the tests below, and keep any wording that is accurate, useful, and genuinely belongs to the author.
+
+### Authorship And Disclosure
+
+AI involvement matters when:
+
+1. a platform, publication, school, employer, client, or law requires disclosure
+2. personal human authorship is part of the promise, as in memoir, testimony, personal experience, or a byline whose value depends on the named person's own words
+3. automation creates a false impression of many independent people, such as fake reviews, manufactured consensus, or one operator pretending to be a crowd
+
+Follow the governing rule in those cases. Outside them, do not shame AI assistance or infer authorship from punctuation and vocabulary. The editorial question remains whether the writing does its job and whether the named author stands behind the decisions in it.
+
+### Tests That Outlast Blocklists
+
+**The boring-version test.** Restate the sentence without its weighty verbs and abstract nouns. If it means only "something is happening" or "this matters," it is first-draft connective tissue. Delete it or replace it with the concrete claim.
+
+**The transplant test.** Ask whether the sentence could be lifted word for word into someone else's article about a different topic. If nobody would notice, the sentence is fungible. Add the author's specific observation, stance, evidence, or diction rather than searching for a less common synonym.
+
+First-draft language is not a moral failure. Generic phrases are easy to retrieve and hard to see while composing. They are a fine place to start and a poor place to stop.
 
 ### Words That Cluster in Machine Text
 
@@ -615,9 +689,17 @@ Literal use is fine. "Utilize" is dead weight for "use," but "the ecosystem lost
 
 A second group is fine alone and suspicious in packs: comprehensive, essential, critical, key, dynamic, powerful, vital, explore, ensure, highlight, insights, framework, approach, challenges, potential, impact, quietly. One every few paragraphs reads normal. Three in a sentence reads generated. Watch "quiet" and "quietly" especially, since "does a lot of quiet work" is the exact shape covered under Applause Lines.
 
+Abstract nouns such as efficiency, complexity, society, communication, and innovation are not forbidden, but they often hide the actor and action. "Communication improved" should become who said what differently, when that detail is available.
+
+Vague intensifiers such as very important, significant impact, and major role need evidence or a more exact consequence. Delete the rating if the next sentence already proves it.
+
 ### Constructions That Cluster in Machine Text
 
 **Negative parallelism.** "It's not about speed, it's about clarity." The construction is fine when the contrast is real and both halves are concrete. It is a tell when both halves are abstractions and the sentence exists for cadence. If deleting the first half loses nothing, delete both.
+
+**Hedges without a job.** "In many ways," "at some level," and "arguably" often make a claim impossible to challenge without making it more accurate. Delete them unless they express real uncertainty or are load-bearing for legal, regulatory, medical, financial, or safety reasons.
+
+**Over-tidy parallelism.** Bullets and sentences with the same grammatical shape and nearly the same length become predictable. Keep the symmetry when comparison is the point. Break it when the form is merely decorating unrelated ideas.
 
 **Over-simplified openers.** "Most people think X." "We've all been there." You do not know what most people think, and the reader knows you do not.
 
@@ -637,21 +719,29 @@ A second group is fine alone and suspicious in packs: comprehensive, essential, 
 
 These apply to article output, not to reference documents like this one.
 
-- Do not use em dashes or double dashes. Already covered under Sentence Rhythm, and it is the single most recognized tell.
+- Punctuation sameness is the problem, not the mere presence of an em dash, colon, semicolon, or parenthesis.
+- Avoid em-dash clustering: more than two in a sentence, or asides interrupting several consecutive sentences. Keep a grammatically useful dash instead of replacing every dash with a colon.
+- Avoid colon-heavy phrasing such as "The issue is:", "The result is:", and "The key point is:" repeated across a passage, especially when each colon introduces another grocery list.
 - Do not open bullets with a bolded label and a colon, as in "**Security:** it matters." Write the bullet as a sentence.
 - Do not decorate bullets or headings with emoji like check marks, brains, or blue diamonds. Emoji are fine when the author's own voice uses them, and fine on social channels where they are native. Decorative emoji added for structure are the tell.
 - Write headings in sentence case by default. When an author's drafts consistently use another capitalization style, match it. Avoid the colon-split title, as in "The power of caching: why it works," unless that pattern is also part of the author's established voice.
 - Do not use curly quotes in plain-text contexts, and do not leave markdown syntax where it will not render. See the LinkedIn and X guidance under Channel Formats.
-- Prefer a period where you were about to use a semicolon.
+- Use a semicolon when its relationship between clauses is useful. Prefer a period when the mark is merely performing seriousness.
 - The Oxford comma is house style, not a tell by itself. Stay consistent in technical lists, where ambiguity costs the reader something real.
 
+Read punctuation aloud as stage directions. If the sentence makes you pause, double back, or perform the same interruption three times, revise the rhythm. Correct and mostly invisible beats fashionable.
+
 ### Voice Tells
+
+**Generic warmth.** "Great question!" and similar hold-message friendliness consume the opening without carrying meaning. Start with the answer, the real reaction, or the one question you need.
 
 **Uniform positivity.** Generated text is measurably more certain and more upbeat than human writing. Let something be annoying. Name the part of the API that is badly designed, the step that is tedious, the edge case nobody has solved. An article where everything is great reads like a brochure.
 
 **Both-sidesing.** Every claim balanced by its counterpoint leaves the reader with nothing. Have an opinion and say it. Tradeoffs are worth naming once, not bolted onto every sentence as insurance.
 
 **Register scrubbing.** Use contractions. Don't, you'll, it's, here's. Formal register is the default failure mode, and it is the fastest way to lose the reader.
+
+**Emotionally flat diction.** A technically correct word can still miss the author's mood. "Scheme" and "plan" name similar arrangements, but one makes the reader expect trouble. Preserve that kind of deliberate connotation when the author uses it, and choose plain words for opaque ideas. Do not reach for rare words merely to seem less machine-like.
 
 **Generic actors.** "A client," "a certain tool," "a major city." Name it. This extends the rule about giving recurring actors human names. When you invent a name, skip Emily and Sarah, which generated text reaches for constantly.
 
@@ -684,7 +774,7 @@ Removing tells is half the work. Flat, tell-free prose still reads as generated.
 
 ### Do Not Overcorrect
 
-The goal is writing that sounds like a person, not writing that evades a classifier.
+The goal is writing that does its job in the author's voice, not writing that evades a classifier.
 
 - Do not swap ordinary words for unusual ones to look human. "Utilize" to "use" is a fix. "Use" to "wield" is not.
 - Do not add typos or broken grammar. Errors have to read as casualness, never as carelessness.
@@ -693,7 +783,9 @@ The goal is writing that sounds like a person, not writing that evades a classif
 
 ## Common Article Modes
 
-This skill does not assume one rigid structure for every topic. Pick the mode that best fits the material.
+Structure is a set of editorial decisions, not a mold. Pick the container that serves the job: a narrative needs tension and discovery, an announcement needs speed, an explainer needs concepts in dependency order, and reference material needs headings a skimmer can navigate. Strong structure is a feature when people will scan, search, revisit, or retrieve the material through an LLM.
+
+This skill does not assume one rigid structure for every topic. Pick the mode that best fits the material. Do not turn a story into a numbered list, or force a third item into a pair, because a familiar template asked for it. Structure has failed when it changes the author's meaning or makes distinct sections repeat the same job.
 
 ### 1. Design-Tradeoff Explainer
 
@@ -1314,7 +1406,8 @@ Do not:
 - dump jargon before intuition exists
 - bounce between unrelated metaphors
 - explain only the correct approach without showing why it is needed when the topic benefits from tradeoffs or contrast
-- use double dashes when a comma or shorter sentence would be clearer
+- use punctuation as camouflage for AI assistance, or remove a useful mark solely because a detector currently notices it
+- repeat the same punctuation pattern until the reader notices the marks instead of the meaning
 - announce insight with stock phrases like "Here's the tell," "Here's the thing," or "The secret is"
 - write applause lines that rate your own explanation instead of adding to it
 - instruct the reader to appreciate, admire, or sit with something
@@ -1323,7 +1416,7 @@ Do not:
 - overdo humor
 - sound like marketing copy
 - rely on vague praise like "powerful," "revolutionary," or "game-changing"
-- reach for the machine vocabulary, padding structures, or formatting habits catalogued under Avoiding AI Tells
+- reach for the machine vocabulary, padding structures, or formatting habits catalogued under Edit The Writing, Not The Detector Score
 - strip the voice while removing those tells, since flat and correct is still machine-shaped
 - close a paragraph on a verbless slogan, or restate a point as one after already making it plainly
 
@@ -1331,7 +1424,7 @@ Do not:
 
 When asked to write in this format, follow this working order:
 
-1. For a new long-form piece, confirm topic, audience and depth, goal, content type or channel, target length, and image mode. Capture any additional notes without requiring them. If the user brought a draft, read it first and ask only what it leaves open, then run the flag pass under When The User Brings A Draft before touching a sentence. If the author has edited an earlier version, run the revision-delta protocol before drafting.
+1. For a new long-form piece, confirm topic, audience and depth, goal, content type or channel, target length, and image mode. Capture any additional notes without requiring them. If the user brought a draft, read it first, choose editorial conversation, revision, or cleanup from the request, and ask only what the draft genuinely leaves open. If the author has edited an earlier version, run the revision-delta protocol before drafting.
 2. Identify the concept's job in plain English.
 3. Pick the best teaching anchor: running example, analogy, toy implementation, or repeated conversion model.
 4. Define the clean starting state.
@@ -1400,6 +1493,7 @@ Before delivering, verify:
 - topic, audience and depth, goal, content type or channel, target length, and image mode were confirmed rather than assumed for a new long-form piece, except on short-form cleanup and brought drafts, which skip or shorten the interview, or when the user explicitly asked to skip it
 - content type and target length were treated as separate constraints
 - vocabulary, examples, pacing, assumed knowledge, and technical depth fit the requested reader without changing the underlying facts
+- on a conversational review, the apparent job was stated, a compact reverse outline was shown when it clarified the structure, each major section received at most one focused question or suggestion, one global pattern was named, and no replacement prose arrived before the author requested it
 - on a revision, the flags came before the rewrite, and each one quotes the line it is about
 - on a revision, no claim, number, anecdote, or confidence was added that the author did not bring
 - on a revision, the author's argument is still the author's argument, and any disagreement was raised rather than edited in
@@ -1427,8 +1521,13 @@ Before delivering, verify:
 - image markers are specific enough to build without a follow-up question, and each carries alt text
 - the voice sounds like a human teacher, not product copy
 - no sentence exists only to rate how clever the surrounding content is
-- the draft is clean of the words, constructions, and formatting listed under Avoiding AI Tells
+- the writing was judged against its job rather than an AI detector score, and no detector-evasion tactics were introduced
+- any required disclosure was preserved when policy, personal authorship, or false synthetic scale made provenance material
+- generic sentences were checked with the boring-version and transplant tests instead of repaired by synonym swapping
+- the draft is clean of the words, constructions, and formatting listed under Edit The Writing, Not The Detector Score
 - sentence lengths vary, with at least one short sentence and one long one per section
+- punctuation supports meaning, passes a read-aloud check, and does not cluster into repeated dashes, colons, lists, or asides
+- hedges that carry legal, regulatory, technical, medical, financial, safety, or genuine uncertainty were preserved
 - contractions are present, at least one thing is left unresolved or criticized, and specific names and textured numbers appear instead of categories and round approximations
 - headings follow the author's established capitalization, or sentence case when no author pattern exists; bullets do not open with bolded labels; decorative emoji were not added
 - personality is intact, with humor and warmth left in rather than sanded to neutral

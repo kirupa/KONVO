@@ -63,7 +63,7 @@ correctly runs light on visuals should not be penalized here.
 
 ### 8. Rule Compliance
 
-- `0`: breaks one or more hard constraints such as double dashes
+- `0`: breaks one or more hard constraints, such as literal double-hyphen punctuation in finished prose or detector-evasion guidance
 - `1`: mostly compliant with small issues
 - `2`: fully compliant with the important skill rules
 

@@ -3,14 +3,15 @@ skill: konvo
 eval_type: regression
 checks:
   - id: konvo_reg_001
-    name: no_double_dashes
+    name: no_literal_double_hyphen_punctuation
     priority: high
-    description: Output should not use double dashes as interruption or emphasis punctuation.
+    description: Finished body prose should not use the literal double-hyphen token as interruption or emphasis punctuation.
     failure_signals:
-      - contains the literal token "--" in body prose
+      - contains the literal token "--" in body prose outside code, command flags, or syntax that requires it
     preferred_fix:
-      - replace with a comma
-      - split into a shorter sentence
+      - choose the real punctuation mark that fits the sentence
+      - split into a shorter sentence when the interruption is carrying too much
+      - do not treat this as a ban on a grammatically useful em dash
 
   - id: konvo_reg_002
     name: intuition_before_jargon
@@ -577,3 +578,104 @@ checks:
       - use familiar physical examples and short, accurate steps for young children
       - skip known basics and surface edge cases, tradeoffs, and implementation detail for veterans
       - ask what the reader already knows when age alone does not establish the right depth
+
+  - id: konvo_reg_045
+    name: conversational_review_holds_the_rewrite
+    priority: high
+    description: A request for review, analysis, or feedback should become a section-level editorial conversation unless the user also asked for revised prose.
+    failure_signals:
+      - a full rewritten draft appears in response to review this with me or do not rewrite yet
+      - comments begin before the entire draft has been read
+      - the author is asked to explain the topic, audience, or thesis already visible in the draft
+      - every paragraph receives several questions, producing a review longer than the draft
+      - all observations are phrased as questions even when a concrete suggestion would be more useful
+    preferred_fix:
+      - state the apparent job and audience in one sentence
+      - build a reverse outline and show a compact version when it reveals the structure
+      - ask one focused question or offer one suggestion per major section
+      - name one global pattern and wait for the author's answers before rewriting
+
+  - id: konvo_reg_046
+    name: writing_job_precedes_provenance
+    priority: high
+    description: Machine-shaped habits should be treated as editing problems, not proof of who wrote the draft.
+    failure_signals:
+      - claiming a phrase, punctuation mark, or structure proves AI authorship
+      - treating a detector percentage as the editorial goal
+      - deleting accurate and useful wording only because it appears on an AI-tell list
+      - shaming AI-assisted expression instead of evaluating clarity, trust, and purpose
+    preferred_fix:
+      - ask whether the intended reader can understand and trust the piece
+      - judge whether the author's decisions and knowledge are visible
+      - use detector highlights only as prompts for editorial inspection
+
+  - id: konvo_reg_047
+    name: generic_language_gets_principle_tests
+    priority: high
+    description: Generic rhetoric should be diagnosed with the boring-version and transplant tests rather than repaired through a word blacklist alone.
+    failure_signals:
+      - a sentence passes because it contains no banned word even though it could fit any topic
+      - an abstract sentence is rewritten with rarer synonyms while keeping the same empty meaning
+      - first-draft phrasing is treated as laziness or a moral failure
+    preferred_fix:
+      - paraphrase the sentence plainly and delete it if it reduces to something is happening
+      - ask what specific observation, evidence, stance, or diction makes the sentence the author's
+
+  - id: konvo_reg_048
+    name: punctuation_density_not_blanket_bans
+    priority: high
+    description: Punctuation should serve grammar, meaning, rhythm, and the author's demonstrated style rather than detector fashion.
+    failure_signals:
+      - removing every em dash solely because it is associated with generated prose
+      - replacing every dash with a colon while preserving the same interrupted structure
+      - repeated colon-label sentences such as the issue is and the key point is
+      - more than two em dashes in one sentence or dash asides across several consecutive sentences
+      - performative semicolons where periods would read more naturally
+    preferred_fix:
+      - retain a grammatically useful em dash
+      - vary punctuation and underlying sentence structure
+      - read the passage aloud using punctuation as stage directions
+      - calibrate against the author's punctuation fingerprint when samples exist
+
+  - id: konvo_reg_049
+    name: load_bearing_hedges_survive
+    priority: high
+    description: Hedges that preserve real uncertainty or legal, regulatory, medical, financial, or safety meaning must not be removed for directness.
+    failure_signals:
+      - may changed to will
+      - a disclaimer deleted as throat-clearing
+      - technical uncertainty upgraded into a confident causal claim
+      - a regulated claim made stronger without subject-matter review
+    preferred_fix:
+      - remove only hedges that make a sentence unfalsifiable without making it more accurate
+      - preserve load-bearing wording and recommend qualified review when compliance is material
+
+  - id: konvo_reg_050
+    name: structure_serves_the_piece
+    priority: medium
+    description: The container must be chosen for the piece's job rather than imposed from a familiar template.
+    failure_signals:
+      - a narrative converted into a numbered list that changes its meaning
+      - a third item invented to complete a trio
+      - an announcement padded with an explainer's full structural blueprint
+      - reference content stripped of headings even though readers need to scan it
+      - multiple sections performing the same job
+    preferred_fix:
+      - identify what the reader needs from the piece before choosing the format
+      - use a reverse outline to expose repeated or missing section functions
+      - borrow the function of a strong genre example rather than copying its surface shape
+
+  - id: konvo_reg_051
+    name: detector_evasion_is_not_editorial_work
+    priority: high
+    description: KONVO must not provide tactics whose only purpose is bypassing Pangram or another AI detector.
+    failure_signals:
+      - punctuation swaps recommended only to lower a detector score
+      - deliberate typos, broken grammar, or synonym cycling offered as camouflage
+      - a promised human percentage or guaranteed bypass
+      - disclosure removed or concealed to make AI involvement harder to identify
+    preferred_fix:
+      - decline score-gaming and offer a job-focused editorial pass
+      - bring in knowledge and evidence the author can defend
+      - preserve the author's demonstrated voice
+      - preserve disclosure when required by a governing rule, personal authorship is the promise, or automation creates false synthetic scale

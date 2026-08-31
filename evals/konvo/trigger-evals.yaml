@@ -90,6 +90,29 @@ cases:
       - the skill has a conversational draft-analysis mode
       - preserving author voice is part of the requested behavior
 
+  - id: konvo_trigger_017
+    should_trigger: true
+    title: One-pass critique of an existing draft
+    prompt: |
+      Critique this technical article draft. Highlight awkward grammar, AI tells,
+      unclear passages, structural problems, and anything else hurting the writing.
+      Do not rewrite it.
+    rationale:
+      - explicit critique request
+      - the skill has a passage-level diagnostic mode distinct from revision
+      - grammar and machine-shaped writing are part of the critique taxonomy
+
+  - id: konvo_trigger_018
+    should_trigger: true
+    title: Structured annotations for a custom editor
+    prompt: |
+      Analyze this draft with KONVO and return JSON annotations with exact source
+      ranges so my editor can highlight each problem and show a suggestion on click.
+    rationale:
+      - explicit editor-facing critique request
+      - machine-readable passage annotations are part of critique mode
+      - exact ranges and suggestions require the KONVO annotation contract
+
   - id: konvo_trigger_005
     should_trigger: false
     title: API reference request

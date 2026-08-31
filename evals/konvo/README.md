@@ -14,6 +14,10 @@ We want to know:
 - does it adapt vocabulary, examples, pacing, and depth from literal age-five explanations through expert primers?
 - does it gather audience, content type, and target length separately instead of treating them as interchangeable?
 - does a review request become a conversational section-level analysis instead of a premature rewrite?
+- does a critique request become a prioritized, passage-level diagnostic without questions or rewritten prose?
+- does critique identify awkward grammar precisely while preserving deliberate informal voice?
+- does each finding carry severity, category, location, evidence, consequence, and a useful next action?
+- does critique respect a narrow requested scope and avoid manufacturing problems in a clean draft?
 - does it judge writing by the job it must do rather than by an AI detector score?
 - does it treat rhetoric, voice, structure, and punctuation as editorial lenses rather than provenance evidence?
 - does it preserve useful punctuation and load-bearing hedges while fixing clustering and empty caution?
@@ -87,6 +91,10 @@ Representative non-fit boundaries currently covered:
 
 Representative editorial-workflow cases currently covered:
 
+- one-pass critiques spanning grammar, clarity, structure, voice, credibility, audience, and AI-shaped habits
+- grammar-only critique and proportional critique of short drafts
+- clean-draft controls that prevent criticism-by-quota
+- JSON editor annotations with exact UTF-16 ranges, revision IDs, severities, categories, explanations, and safe replacements
 - conversational review that pauses before rewriting
 - boring-version and transplant tests for generic prose
 - reverse outlines and structure chosen for the piece's job

@@ -2,18 +2,17 @@
 name: konvo
 description: >-
   Write and revise technical explainers in a casual, visual, example-driven
-  format. Use for technical topics in software, engineering, electronics,
-  science, or math that need a friendly voice, strong intuition, concrete
-  examples, precise language, and diagrams. It adapts vocabulary, examples,
-  pacing, and depth for readers from five-year-olds to veteran practitioners.
-  Also use when the user brings a draft to revise, edit, review, or tighten: it
-  preserves their voice and point of view, flags shaky claims, missing context,
-  abrupt sections, and machine-shaped phrasing, and never invents expertise. A
-  review without a rewrite becomes a section-by-section editorial conversation.
-  Also use for short-form cleanup, including X posts and threads, LinkedIn
-  posts, forum replies, Slack or Discord messages, texts, and email. For new
-  long-form it first confirms topic, audience and depth, goal, content type or
-  channel, target length, and image mode.
+  format. Use for software, engineering, electronics, science, or math that
+  needs a friendly voice, strong intuition, concrete examples, precise
+  language, and diagrams. It adapts vocabulary and depth from five-year-olds
+  to veteran practitioners. Also use for drafts to revise, edit, review,
+  critique, or tighten. It preserves the author's voice and point of view,
+  flags shaky claims, awkward grammar, missing context, structural problems,
+  and machine-shaped phrasing, and never invents expertise. A critique returns
+  a prioritized passage-level report; a collaborative review becomes a
+  section-by-section conversation. Also use for short-form cleanup: X,
+  LinkedIn, forums, Slack, Discord, texts, and email. For new long-form it first
+  confirms topic, audience, goal, channel, length, depth, and image mode.
 ---
 
 # KONVO
@@ -38,6 +37,7 @@ Use this skill when the user wants:
 Also use it when the user already has a draft and wants it improved:
 
 - a revision, edit, review, or critique of something they wrote
+- a one-pass critique that highlights exact passages with grammar, clarity, structure, voice, credibility, or AI-shaped writing problems
 - a conversational editorial pass that asks questions or suggests choices without rewriting yet
 - a fact-check pass, or a request to find the weak claims in an argument
 - a draft that reads as machine-written and needs the tells taken out
@@ -188,13 +188,181 @@ Often the user is not asking for a new piece. They are handing you something the
 
 A request to review a draft is not automatically a request to rewrite it.
 
+- **Critique.** Use this when the user asks to critique, audit, mark up, flag, highlight, diagnose, or identify what could be better. Return a prioritized report tied to exact passages. Do not interview the author, ask follow-up questions, or rewrite the draft by default.
 - **Editorial conversation.** Use this when the user asks for a review, analysis, feedback, suggestions, help thinking through a section, or explicitly says not to rewrite yet. Also use it when a long draft arrives with no clear transformation request.
 - **Revision.** Use this when the user asks to revise, rewrite, edit, improve, or polish. Run the flag pass, then provide the revision.
 - **Cleanup.** Use this for short-form. Return the cleaned text first and skip the long-form review machinery.
 
 When the intent is ambiguous, preserve the author's control: discuss the draft before replacing its sentences. An explicit request always wins.
 
+An explicit critique verb wins even when the prompt also says "do not rewrite." That sentence reinforces critique's boundary; it does not turn the request into an editorial conversation. Route "review this, but do not rewrite it yet" to editorial conversation only when the user did not ask to critique, audit, flag, highlight, mark up, or diagnose the draft.
+
 Short-form still obeys the user's verb. "Tighten this" gets a cleanup. "Review this, but do not rewrite it" gets one concise question or suggestion, not a rewritten post and not the full section-by-section machinery.
+
+### The Critique Pass
+
+A critique is an editorial diagnostic. It should leave the author knowing what to fix, where to fix it, and why it matters, without replacing their draft or turning the response into an interview.
+
+#### Read In Two Passes
+
+Read the entire draft before flagging anything.
+
+Set the scope before scanning. A general critique uses both passes and all applicable categories. A narrowed request such as "grammar only," "major issues only," or "focus on structure" scans and reports only that lens. Do not smuggle excluded strategy, audience, voice, fact-checking, or AI-tell commentary into `Job read`, `Overall`, or `Keep`; omit those fields when honoring the requested scope requires it.
+
+1. **Macro pass.** Identify the piece's apparent job, reader, thesis or goal, structure, information order, pacing, repetition, missing context, and trust risks. A sentence can be grammatical and still sit in the wrong section.
+2. **Sentence pass.** Check grammar, usage, syntax, clarity, specificity, diction, voice, rhythm, punctuation, spelling, typography, and machine-shaped patterns.
+
+Do not critique from the first paragraph forward without knowing where the piece lands. The conclusion may resolve an ambiguity that looked like a gap in the opening.
+
+#### Locate Every Finding
+
+Anchor each finding to the smallest passage that proves it.
+
+- Use the section heading plus paragraph number for pasted prose, such as `Caching failures, paragraph 2`.
+- Use supplied line numbers for a file or line-numbered draft.
+- When there are no headings, number paragraphs from the beginning and say `paragraph 4`.
+- Quote only the phrase or sentence needed to recognize the problem.
+- Never invent line numbers, and never say "somewhere in the middle."
+
+#### Use The Right Category
+
+Choose the narrowest useful label. Do not manufacture one finding in every category.
+
+- **Grammar and mechanics:** agreement, tense, sentence boundaries, modifiers, pronouns, parallel construction, punctuation that changes meaning, spelling, capitalization, and typography
+- **Clarity and precision:** ambiguity, vague reference, buried actors, abstract language, unnecessary jargon, wordiness, and claims whose consequence is unclear
+- **Structure and pacing:** order, paragraph unity, repetition, missing steps, abrupt transitions, sections doing the same job, and a container that fights the material
+- **Voice and tone:** register shifts, generic warmth, flattened personality, accidental hostility, marketing language, and wording the author would be unlikely to say aloud
+- **AI-shaped habit:** empty profundity, applause lines, prompt echoes, transplantable phrases, machine vocabulary, over-tidy parallelism, fractal summaries, uniform positivity, over-organization, and punctuation clustering
+- **Logic and credibility:** unsupported generalizations, contradictions, causal leaps, false certainty, unverifiable numbers, missing sources, and load-bearing caveats
+- **Audience and channel:** assumed knowledge, mismatched depth, weak hooks, channel formatting, length, and calls to action
+- **Teaching and visuals:** a missing example, analogy that creates a false model, invisible state change, unexplained jargon, or a visual opportunity that would carry real explanatory work
+
+Call something an **AI-shaped habit**, not proof that AI wrote it. Explain the writing problem the pattern creates. "This sounds AI-generated" is not a critique.
+
+A critique can flag a claim that needs evidence without pretending to fact-check it. Mark it `needs verification`, say why it is load-bearing, and verify it only when the user asks for a fact-check or supplies authoritative sources. Do not call an unsupported claim false merely because the draft does not include its citation.
+
+#### Assign Severity By Consequence
+
+- **High:** risks a false claim, wrong mental model, broken argument, serious ambiguity, loss of trust, or failure of the piece's main job; unsupported universal or quantified claims belong here when the argument depends on them
+- **Medium:** makes the reader stop, reread, lose momentum, or hear a generic voice; includes most awkward grammar, repetition, and unsupported local claims
+- **Low:** polish that does not block understanding, such as a typo, mild wordiness, or house-style inconsistency
+
+Severity is about reader impact, not how easy the edit is. A one-word `not` missing from a safety instruction is high. A whole bland paragraph may be medium.
+
+#### Return A Usable Report
+
+Use this shape unless the user requests another:
+
+```text
+## Critique
+
+**Job read:** [one sentence naming the apparent reader, purpose, and container]
+
+**Overall:** [one or two sentences naming the strongest working choice and the
+largest quality risk]
+
+### Priority findings
+
+1. **High · Logic and credibility · needs verification · Opening, paragraph 2**
+   > [smallest useful quote]
+
+   **Why:** [the reader consequence]
+
+   **Direction:** [what needs to change, or what evidence the author needs to supply]
+
+2. **Medium · Grammar and mechanics · "Failure modes," paragraph 1**
+   > [smallest useful quote]
+
+   **Why:** [name the grammatical or syntactic problem]
+
+   **Fix:** [a local correction when the answer is unambiguous]
+
+### Repeated patterns
+
+[One note per pattern, with two or three locations. Omit this section when
+nothing meaningfully repeats.]
+
+### Keep
+
+[One to three choices that carry the author's voice, structure, example, or
+technical explanation and should survive revision.]
+```
+
+Sort findings by severity, then by reading order. Include every high- and medium-severity issue by default. Include low-severity issues when they repeat, muddy the author's voice, or the user asks for a comprehensive line edit. Do not bury three important findings under twenty comma preferences.
+
+Match the report to the draft. For a short post or message, skip the full scaffold and return only the job read plus up to three applicable findings. Omit empty sections everywhere. A clean draft can receive "No high- or medium-severity issues found" instead of invented criticism.
+
+Use `Fix` only for a local correction with little authorial judgment, such as subject-verb agreement or an obvious dangling modifier whose actor is known. Use `Direction` when a real revision requires evidence, intent, structure, or voice only the author owns. An illustrative phrase may clarify a direction, but do not quietly rewrite a paragraph inside the critique.
+
+Add `needs verification` to the finding label when the critique identifies a load-bearing claim that lacks support. This marks the claim's editorial status without declaring it false.
+
+Awkward grammar is not the same as informal grammar. Preserve deliberate fragments, dialect, contractions, repeated words, and spoken phrasing when they are readable and consistent with the author's voice. Flag them when they create ambiguity, break the intended rhythm, or look accidental. Name the exact issue instead of saying "awkward."
+
+Do not line-edit code, command output, quoted source material, citations, URLs, or deliberate diagram markers as though they were the author's body prose. Flag a problem there only when it is technically wrong or the surrounding explanation misuses it.
+
+Do not ask questions in critique mode. When information is missing, state what the author needs to decide or supply under `Direction`. Do not attach a revised draft. If the user asks for critique plus revision, give the critique first and use its accepted findings as the revision brief.
+
+#### Return Editor Annotations When Requested
+
+When the critique will be consumed by a text editor, API, or MCP tool, return machine-readable annotations instead of the Markdown report. A request for JSON annotations, source ranges, clickable highlights, or editor integration selects this mode even when the user says "analyze" or "review" rather than "critique." The editor owns presentation and color; KONVO supplies ranges and meaning.
+
+Use the untouched source text for all range calculations. Do not normalize whitespace, line endings, quotes, or Unicode first. Schema version 1.0 fixes `offset_encoding` to `utf-16`: zero-based UTF-16 code-unit offsets with an inclusive `start` and exclusive `end`. Echo a caller-supplied revision ID so stale findings can be discarded.
+
+The component emitting the final JSON should compute and validate offsets programmatically after the model identifies the exact quote. Do not trust unverified model arithmetic, especially after emoji, non-BMP characters, or CRLF line endings.
+
+Return JSON only, without a Markdown fence or commentary:
+
+For the untouched source text `🧭 The tools is improving quickly.`, a valid result is:
+
+```json
+{
+  "schema_version": "1.0",
+  "document_revision": "editor-42",
+  "offset_encoding": "utf-16",
+  "summary": {
+    "high": 0,
+    "medium": 1,
+    "low": 0
+  },
+  "annotations": [
+    {
+      "id": "konvo-1",
+      "start": 7,
+      "end": 25,
+      "quote": "tools is improving",
+      "level": "phrase",
+      "severity": "medium",
+      "category": "grammar_mechanics",
+      "title": "Subject-verb disagreement",
+      "why": "The plural subject takes a plural verb.",
+      "suggestion": "Change is to are.",
+      "replacement": "tools are improving",
+      "needs_verification": false,
+      "pattern_id": null
+    }
+  ]
+}
+```
+
+These top-level fields are always present: `schema_version`, `document_revision`, `offset_encoding`, `summary`, and `annotations`. `document_revision` is a string when supplied by the caller and `null` otherwise.
+
+Every annotation always contains `id`, `start`, `end`, `quote`, `level`, `severity`, `category`, `title`, `why`, `suggestion`, `replacement`, `needs_verification`, and `pattern_id`. `replacement` and `pattern_id` are strings or `null`; `needs_verification` is always a boolean. The allowed enum values are:
+
+- `level`: `phrase`, `sentence`, or `paragraph`
+- `severity`: `high`, `medium`, or `low`
+- `category`: `grammar_mechanics`, `clarity_precision`, `structure_pacing`, `voice_tone`, `ai_shaped_habit`, `logic_credibility`, `audience_channel`, or `teaching_visuals`
+
+Every `quote` must equal the exact source slice from `start` to `end`, and ranges must contain at least one source character. Use the smallest actionable span. For a missing-word or insertion problem, anchor the annotation to the shortest surrounding phrase or sentence that makes the omission clear rather than creating an invisible zero-width highlight.
+
+A paragraph-level structural annotation may overlap a phrase-level grammar annotation because the editor can render them on different layers. Deduplicate findings that describe the same problem on the same text. `pattern_id` is a stable string shared by annotations that are instances of one repeated pattern within the response; otherwise it is `null`.
+
+Set `replacement` only for a safe local edit that preserves meaning and voice. It is the complete literal text that replaces the full `[start, end)` span, not just the changed word. Applying it means `source.slice(0, start) + replacement + source.slice(end)`. Use `null` when the author must supply evidence, choose a structure, or make a substantive wording decision. `suggestion` still explains what would improve the passage. Set `needs_verification` only for a claim that requires evidence or fact-checking.
+
+Sort annotations by `start`, then severity from high to low, then `end`, then `id`. The summary counts must match the annotations. Keep IDs stable within the response.
+
+On a clean draft, still return the complete top-level JSON object with an empty `annotations` array and zeroes in all three summary fields. Never return a prose success message to a machine consumer.
+
+The consumer must validate the echoed revision and `source.slice(start, end) === quote` before rendering or applying anything. On a mismatch, do not highlight the approximate range. It may search for the exact quote near the proposed position and re-anchor only when one unambiguous nearby match exists; otherwise discard the annotation and request a fresh critique. A non-null replacement is safe to apply only when the revision and quote still match.
 
 ### The Conversational Editorial Pass
 
@@ -268,12 +436,14 @@ The goal is not to copy every surface tic. It is to learn which choices consiste
 
 This is the entry point for revision mode, after the user has asked for rewritten prose or finished the conversational pass.
 
-Give the flags first, then the revision. Someone who sees the new draft first reads the flags as justification for edits already made rather than as decisions they still get to make.
+Give a compressed critique first, then the revision. Use the critique categories above, but report only the decisions that matter to the rewrite rather than every local correction. Someone who sees the new draft first reads the flags as justification for edits already made rather than as decisions they still get to make.
 
 Flag each of these that applies:
 
+- **Grammar and mechanics that affect the revision.** Name agreement, tense, modifier, reference, sentence-boundary, or punctuation problems precisely. Routine local corrections can stay implicit in the revised prose.
 - **Claims that need checking.** Anything stated as fact that you cannot verify: version numbers, benchmarks, dates, attributions, and any "X is faster than Y." Say what specifically you could not confirm rather than labeling the whole paragraph as unverified.
 - **Confusing, abrupt, or badly ordered sections.** Where a reader following along would lose the thread, where two paragraphs are welded together with the step between them missing, and where something is explained before the thing it depends on.
+- **Voice or tone shifts that would change the author.** Flag accidental marketing voice, generic warmth, or register changes before editing them. Preserve deliberate informality.
 - **Generic AI-sounding phrases.** Everything under Edit The Writing, Not The Detector Score. Quote the actual line so they can see it, because "the tone is a bit generic" is not actionable.
 - **Missing context or assumed knowledge.** The thing the author knows so well they forgot to say it, usually the setup, the constraint, or the reason the obvious approach fails. Also the term used once and never defined.
 - **Places where a diagram or example would help.** Name the paragraph and say what the visual would show, not just that one would be nice.
@@ -1424,7 +1594,7 @@ Do not:
 
 When asked to write in this format, follow this working order:
 
-1. For a new long-form piece, confirm topic, audience and depth, goal, content type or channel, target length, and image mode. Capture any additional notes without requiring them. If the user brought a draft, read it first, choose editorial conversation, revision, or cleanup from the request, and ask only what the draft genuinely leaves open. If the author has edited an earlier version, run the revision-delta protocol before drafting.
+1. For a new long-form piece, confirm topic, audience and depth, goal, content type or channel, target length, and image mode. Capture any additional notes without requiring them. If the user brought a draft, read it first and choose critique, editorial conversation, revision, or cleanup from the request. Critique does not ask questions; editorial conversation does. If the author has edited an earlier version, run the revision-delta protocol before drafting.
 2. Identify the concept's job in plain English.
 3. Pick the best teaching anchor: running example, analogy, toy implementation, or repeated conversion model.
 4. Define the clean starting state.
@@ -1493,6 +1663,10 @@ Before delivering, verify:
 - topic, audience and depth, goal, content type or channel, target length, and image mode were confirmed rather than assumed for a new long-form piece, except on short-form cleanup and brought drafts, which skip or shorten the interview, or when the user explicitly asked to skip it
 - content type and target length were treated as separate constraints
 - vocabulary, examples, pacing, assumed knowledge, and technical depth fit the requested reader without changing the underlying facts
+- on a critique, every finding names a severity, category, location, exact quote, reader consequence, and fix or direction; all high and medium issues are included; no follow-up questions or rewritten draft are present
+- on a critique, awkward grammar is named precisely and deliberate informal voice is not standardized by mistake
+- on a critique, AI-shaped habits are tied to writing quality rather than treated as proof of provenance
+- on an editor critique, the response is JSON only; the document revision is echoed; required fields and enum values are present; each non-empty quote matches its UTF-16 range; summary counts match; and replacement is null unless the full annotated span can be changed safely
 - on a conversational review, the apparent job was stated, a compact reverse outline was shown when it clarified the structure, each major section received at most one focused question or suggestion, one global pattern was named, and no replacement prose arrived before the author requested it
 - on a revision, the flags came before the rewrite, and each one quotes the line it is about
 - on a revision, no claim, number, anecdote, or confidence was added that the author did not bring

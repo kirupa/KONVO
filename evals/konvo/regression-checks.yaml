@@ -679,3 +679,133 @@ checks:
       - bring in knowledge and evidence the author can defend
       - preserve the author's demonstrated voice
       - preserve disclosure when required by a governing rule, personal authorship is the promise, or automation creates false synthetic scale
+
+  - id: konvo_reg_052
+    name: critique_is_diagnostic_not_conversational
+    priority: high
+    description: An explicit critique request should return a complete one-pass diagnostic rather than questions, collaborative pacing, or a rewritten draft.
+    failure_signals:
+      - asking the author one question per section
+      - stopping after a partial batch of sections and waiting for answers
+      - a full revised draft attached without being requested
+      - treating critique as a synonym for improve or rewrite
+      - omitting clear problems because the author has not answered an interview
+    preferred_fix:
+      - read the whole draft and return the findings in one response
+      - state missing information as a direction for the author rather than a question
+      - stop after the diagnostic unless critique plus revision was requested
+
+  - id: konvo_reg_053
+    name: critique_findings_are_anchored_and_actionable
+    priority: high
+    description: Every critique finding must show the author exactly where the problem is, what kind it is, why it matters, and what action follows.
+    failure_signals:
+      - vague feedback such as this section is awkward or the tone feels robotic
+      - a finding with no exact quote or usable location
+      - invented line numbers for pasted prose
+      - a category or severity with no reader consequence
+      - advice to improve clarity without naming what is unclear
+    preferred_fix:
+      - include severity, category, heading or paragraph location, and the smallest useful quote
+      - explain the reader consequence
+      - give a local fix for objective mechanics or a direction for author-owned choices
+
+  - id: konvo_reg_054
+    name: critique_names_grammar_precisely
+    priority: high
+    description: Grammar findings must identify the actual rule or ambiguity while preserving deliberate informal voice.
+    failure_signals:
+      - labeling a sentence awkward without naming agreement, tense, modifier, reference, boundary, parallelism, punctuation, spelling, capitalization, or typography
+      - treating every fragment, contraction, dialect choice, or repeated word as an error
+      - formalizing readable spoken phrasing such as sorta when it matches the author's voice
+      - missing grammar that changes the meaning or actor
+    preferred_fix:
+      - name the exact grammatical or syntactic issue
+      - offer a minimal correction when no authorial decision is required
+      - leave intentional fragments and idiosyncratic phrasing alone when they are clear
+
+  - id: konvo_reg_055
+    name: critique_prioritizes_reader_impact
+    priority: high
+    description: Critique severity and selection should reflect consequences for the reader rather than ease of editing or a desire to fill categories.
+    failure_signals:
+      - twenty comma or style notes preceding a false claim or broken argument
+      - a missing negation in safety guidance labeled low because the edit is one word
+      - one criticism manufactured in every category
+      - repeated instances listed separately when one pattern note would be clearer
+      - low-severity polish presented as equally important as high-severity credibility risk
+    preferred_fix:
+      - sort by severity and then reading order
+      - include all high and medium issues by default
+      - group repeated low-level symptoms into one pattern with representative locations
+      - say no meaningful issues were found when the draft is clean
+
+  - id: konvo_reg_056
+    name: critique_scope_and_scale_are_respected
+    priority: medium
+    description: A critique must obey the requested lens and stay proportional to the draft.
+    failure_signals:
+      - AI-tell or strategy feedback in a grammar-only critique
+      - fact-checking when the user requested mechanics only
+      - the full long-form report scaffold for a two-sentence post
+      - low-severity line editing when the user asked only for major problems
+      - empty report sections retained merely to match the template
+    preferred_fix:
+      - scan only the requested categories when the user narrows the scope
+      - use the full report for long drafts and up to three findings for short-form
+      - omit empty sections
+
+  - id: konvo_reg_057
+    name: critique_ai_labels_describe_quality_not_provenance
+    priority: high
+    description: AI-shaped findings must explain a writing-quality problem without asserting who or what wrote the passage.
+    failure_signals:
+      - this was clearly written by AI
+      - an AI probability or detector score
+      - a phrase flagged only because it appears on a blacklist
+      - punctuation treated as proof of model authorship
+      - generic prose labeled AI without explaining whether it is empty, transplantable, repetitive, overbuilt, or tonally flat
+    preferred_fix:
+      - label the category AI-shaped habit
+      - name the specific pattern and its reader consequence
+      - keep wording that is accurate, useful, and true to the author even when a detector notices it
+
+  - id: konvo_reg_058
+    name: editor_annotations_map_to_exact_source
+    priority: high
+    description: Machine-readable critique output must give a text editor exact, revision-safe ranges and complete suggestion metadata.
+    failure_signals:
+      - prose or a Markdown fence surrounding the JSON
+      - a missing or changed caller-supplied document revision
+      - offsets calculated after normalizing whitespace, line endings, quotes, or Unicode
+      - byte or code-point offsets labeled as UTF-16
+      - an annotation quote that differs from source.slice(start, end)
+      - a zero-width or empty-quote annotation that cannot be clicked
+      - a required top-level or annotation field omitted
+      - an undocumented level, severity, or category value
+      - summary counts that do not match the annotations
+      - a replacement supplied for an author-owned structural, evidentiary, or voice decision
+      - a replacement containing only the changed word instead of the complete text for the annotated range
+      - duplicate findings on the same range for the same problem
+      - a prose no-issues message instead of valid JSON with an empty annotations array
+    preferred_fix:
+      - return JSON only using schema version 1.0 and zero-based inclusive-start, exclusive-end UTF-16 offsets
+      - echo the document revision and validate it before rendering or applying a finding
+      - use the smallest actionable phrase, sentence, or paragraph range
+      - anchor missing-word findings to visible surrounding text rather than an invisible insertion point
+      - provide the full-span replacement only for safe local edits and null otherwise
+      - validate quote equality; re-anchor only an unambiguous nearby exact match and discard anything else
+      - sort by start, severity, end, and id so rendering is deterministic
+
+  - id: konvo_reg_059
+    name: editor_annotation_request_selects_critique_mode
+    priority: high
+    description: A request for JSON annotations, source ranges, clickable highlights, or editor integration must route to machine-readable critique even when framed as analyze or review.
+    failure_signals:
+      - editorial-conversation questions returned before the JSON
+      - a Markdown critique report returned to an editor or API consumer
+      - routing analyze this draft to conversational review despite an explicit request for source ranges
+      - a rewritten draft instead of annotations
+    preferred_fix:
+      - let the requested output contract override the generic analyze or review verb
+      - return the annotation schema directly without questions or surrounding prose

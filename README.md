@@ -150,11 +150,27 @@ If you edit the skill mid-session, `/skills reload` picks up the change without 
 
 Paste the draft and choose how much control you want to keep in the conversation.
 
+For a one-pass critique that flags what needs work without rewriting:
+
+> Use the KONVO skill to critique this draft. Highlight awkward grammar, AI-shaped writing, clarity problems, structural issues, and anything else hurting the piece. Do not rewrite it.
+
+KONVO returns a prioritized report. Every finding carries a severity, category, location, exact quote, explanation, and either a local fix or a direction for the author. It catches grammar and mechanics, clarity, structure and pacing, voice and tone, AI-shaped habits, logic and credibility, audience fit, and missing teaching or visual support. It also names the parts worth protecting so a later revision does not polish the author's voice away.
+
+The AI-shaped label describes a writing habit, not who wrote the draft. KONVO explains why the passage is generic, empty, repetitive, or overbuilt instead of treating punctuation or vocabulary as proof of AI authorship.
+
+For a custom editor, ask for editor annotations instead of the prose report. KONVO returns JSON with zero-based UTF-16 `start` and `end` offsets, the exact quoted text, phrase/sentence/paragraph level, severity, category, explanation, suggestion, and an optional safe replacement. Echoed document revisions let the editor discard stale results after the author keeps typing.
+
+That output maps naturally to an editor UI: red for high severity, amber for medium, and blue or gray for low. Use an underline for phrase findings and a gutter marker or background tint for paragraph findings. Keep a text label or icon beside the color so accessibility does not depend on hue alone.
+
+When the author clicks overlapping findings, show every annotation at that point with the smallest range first. The panel can display `title`, `why`, and `suggestion`, plus an Apply button only when `replacement` is non-null. Before rendering or applying anything, verify the document revision and confirm that the quoted source still matches the returned range. If the text changed, discard or safely re-anchor the finding instead of highlighting the wrong words.
+
 For an editorial conversation before anything gets rewritten:
 
 > Use the KONVO skill to review this draft with me. Work through it section by section, ask focused questions or suggest choices, preserve my voice, and do not rewrite it yet.
 
 KONVO reads the whole piece, states what job it thinks the piece is doing, and builds a quick reverse outline. It then discusses each major section through four lenses: rhetoric, voice, structure, and punctuation. You get at most one useful question or suggestion per section, plus the single repeated pattern costing the draft the most. Your answers become the brief for a later revision.
+
+The distinction is simple: critique gives you the complete diagnostic in one pass; editorial conversation slows down and works through author decisions with you.
 
 For a full revision, you do not need to spell out the ground rules:
 

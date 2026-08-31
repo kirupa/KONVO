@@ -785,3 +785,157 @@ cases:
       - treating structure as decoration
       - producing a full founder post before the author chooses
       - recommending the familiar explainer template for every genre
+
+  - id: konvo_gen_044
+    mode: draft_critique
+    title: Critique a draft across grammar, quality, and AI-shaped habits
+    prompt: |
+      Critique this draft. Flag and highlight everything that meaningfully hurts the
+      writing, including awkward grammar and AI tells. Do not ask me questions or
+      rewrite it.
+
+      # I Stopped Choosing Frameworks First
+
+      In today's fast-paced development landscape, AI tools plays a pivotal role in
+      unlocking seamless productivity. The tools is improving quickly, which mean
+      every developer can build robust apps without worrying about implementation.
+
+      After testing agents for three weeks, the architecture was changed completely.
+      Every developer who uses an agent saves at least 40 hours per project. This
+      significant impact underscores why the future of software has arrived.
+
+      I now describe the finished behavior and let the agent choose the stack. I test
+      the result, point out what feels wrong, and repeat. Honestly, I still hate when
+      it picks a framework with a 900MB install, but that irritation is useful data.
+
+      In conclusion, this journey is not just about tools, it is about embracing a
+      transformative new paradigm. The future is here, and the possibilities are
+      endless.
+    should_demonstrate:
+      - states the apparent reader, purpose, and container in one job-read sentence
+      - returns a prioritized critique with severity, category, location, exact quote, why, and fix or direction for every finding
+      - flags AI tools plays, tools is, and which mean as grammar problems with unambiguous local fixes
+      - flags After testing agents for three weeks as a dangling modifier and supplies a local correction
+      - flags the 40-hours universal as a high-severity credibility claim needing evidence or qualification
+      - flags the generic opening, machine vocabulary, empty conclusion, negative parallelism, and pep-talk ending as AI-shaped habits while explaining the writing harm
+      - identifies the concrete iteration paragraph and 900MB complaint as material worth keeping
+      - groups repeated generic language into a pattern note rather than duplicating the same explanation
+      - stops without questions or a rewritten draft
+    should_avoid:
+      - claiming the draft was written by AI
+      - a detector score or provenance judgment
+      - vague labels such as awkward or sounds robotic with no grammatical or reader-level explanation
+      - twenty low-value punctuation notes burying the core problems
+      - rewriting the entire opening or conclusion inside the critique
+
+  - id: konvo_gen_045
+    mode: draft_critique
+    title: Correct grammar without sanding off deliberate voice
+    prompt: |
+      Critique this paragraph for writing quality, especially grammar. Flag problems,
+      but do not rewrite it:
+
+      Then PHP. Yep. The reasons was obvious once I timed the loop: edit, refresh,
+      done. It was sorta annoying to admit because I had spent years avoiding PHP,
+      but the numbers didn't care. One tiny server, one happy agent, and no build
+      pipeline. Not bad.
+    should_demonstrate:
+      - flags The reasons was as subject-verb disagreement and gives were as the local fix
+      - preserves Then PHP, Yep, sorta, Not bad, and the compact fragments as deliberate voice
+      - recognizes the timed loop and emotional admission as specific author-owned material
+      - returns a concise critique proportionate to the one-paragraph draft
+      - does not attach a revised paragraph
+    should_avoid:
+      - calling every fragment a sentence error
+      - changing sorta to somewhat or otherwise formalizing the register
+      - deleting Yep or Not bad as unnecessary
+      - claiming the human-sounding details prove human authorship
+      - asking the author what tone they intended when the paragraph demonstrates it
+
+  - id: konvo_gen_046
+    mode: scoped_draft_critique
+    title: Respect a grammar-only critique scope
+    prompt: |
+      Critique only grammar and mechanics in this excerpt. Do not comment on strategy,
+      structure, factual claims, or AI tells:
+
+      In today's rapidly evolving landscape, each of the agents write code differently.
+      The new workflow have three stages, and neither of the first two stages include
+      a test. Its useful, but the results varies.
+    should_demonstrate:
+      - flags write, have, include, Its, and varies with the correct grammatical form
+      - labels and locates each issue precisely
+      - gives local fixes without rewriting the paragraph
+      - stays inside the requested grammar-and-mechanics scope
+    should_avoid:
+      - flagging the formulaic opening or rapidly evolving landscape as an AI-shaped habit
+      - debating the missing tests as a strategy problem
+      - fact-checking the three-stage claim
+      - adding structure, voice, or audience findings
+      - asking follow-up questions
+
+  - id: konvo_gen_047
+    mode: draft_critique
+    title: Do not invent problems in a clean draft
+    prompt: |
+      Critique this short paragraph and flag only meaningful writing problems:
+
+      At 2:13am, the retry queue hit 18,442 jobs. Maya disabled the failing worker,
+      drained the queue, and left the root-cause analysis for daylight. That choice
+      recovered checkout in six minutes without pretending we understood the bug.
+    should_demonstrate:
+      - reports that no high- or medium-severity issues were found
+      - identifies the textured numbers, named actor, concrete actions, and unresolved cause as choices worth keeping
+      - keeps the response short and proportional
+    should_avoid:
+      - manufacturing a finding to fill every critique category
+      - demanding a synonym for a clear ordinary word
+      - treating the unresolved root cause as a flaw in this paragraph
+      - rewriting the paragraph
+      - asking follow-up questions
+
+  - id: konvo_gen_048
+    mode: editor_annotations
+    title: Return clickable editor annotations with stable source ranges
+    prompt: |
+      Return KONVO critique annotations as JSON for my JavaScript text editor. Use
+      document revision editor-42 and exact UTF-16 source offsets. Return no prose or
+      Markdown outside the JSON.
+
+      Source text:
+      🧭 The tools is improving quickly. This pivotal journey unlocks seamless productivity.
+    should_demonstrate:
+      - returns parseable JSON with schema_version 1.0, document_revision editor-42, and offset_encoding utf-16
+      - every annotation has an id, start, end, exact quote, level, severity, category, title, why, suggestion, replacement, needs_verification, and pattern_id
+      - every quote equals the exact UTF-16 source slice at its inclusive start and exclusive end offsets, including the surrogate-pair emoji before the first finding
+      - annotations are sorted by start and then severity when positions match
+      - summary high, medium, and low counts equal the returned annotations
+      - flags tools is as grammar_mechanics with a safe local replacement
+      - flags the generic machine vocabulary as ai_shaped_habit without claiming AI authorship
+      - uses only documented enum values and the smallest actionable ranges
+    should_avoid:
+      - a Markdown code fence or explanatory prose around the JSON
+      - byte or Unicode-code-point offsets mislabeled as UTF-16
+      - a quote that does not match its source range
+      - normalized whitespace or punctuation before calculating offsets
+      - a full-sentence replacement for a substantive voice decision
+      - duplicate annotations describing the same issue on the same span
+
+  - id: konvo_gen_049
+    mode: editor_annotations
+    title: Return valid empty annotations for a clean editor draft
+    prompt: |
+      Analyze this text for my editor and return KONVO JSON annotations for revision
+      clean-7. Return JSON even when there is nothing meaningful to flag:
+
+      At 2:13am, Maya disabled the failing worker and drained 18,442 queued jobs.
+    should_demonstrate:
+      - routes to editor annotation mode despite the verb analyze
+      - returns JSON only with schema_version 1.0, document_revision clean-7, and offset_encoding utf-16
+      - returns an empty annotations array
+      - returns high, medium, and low summary counts of zero
+    should_avoid:
+      - asking editorial-conversation questions
+      - a prose message saying no issues were found
+      - manufacturing an annotation so the array is not empty
+      - wrapping the JSON in a Markdown code fence

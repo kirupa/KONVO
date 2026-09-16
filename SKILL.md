@@ -1433,6 +1433,59 @@ do not write captions. And after the image, the prose picks up from what the
 image established rather than narrating it back. "As you can see in the figure
 above" is a tell that the setup sentence was not doing its job.
 
+### Prose, Code, and Figures Have To Agree
+
+An article is several artifacts telling one story: prose, code blocks, and
+images. Readers trust the whole thing only as far as the least consistent part,
+and a contradiction between them is the kind of error that survives every voice
+and rhythm check in this skill.
+
+When an image already exists rather than being a marker you are specifying,
+open it and read it. Confirm that every coordinate, count, label, position, and
+color named in the surrounding prose matches what is actually rendered. Saying
+a move proposes `(2, 2)` when the figure highlights `(3, 1)` sends the reader
+back to re-count a grid that was never wrong. Never infer a figure's contents
+from its filename.
+
+Do the same between prose and code. Confirm that any value the prose cites
+appears in the snippet it points at, and that described behavior matches the
+code's actual semantics. A helper named `isObstacle` returns `true` when an
+obstacle is present, so describing it as answering `false` inverts the function
+and breaks the parallel with the check beside it. When prose shows an
+abbreviated collection, every coordinate discussed in the paragraph has to be
+in the version the reader can see.
+
+Names of real people, products, and companies are facts, not prose. Verify the
+spelling rather than trusting recall: "Jon Collison" for John Collison is the
+same class of error as a wrong coordinate.
+
+### Third-Party Images Get Credited
+
+An image that is not yours needs a source link in the sentence that introduces
+it, written as a parenthetical before the colon:
+
+- "...in any static visual or moving scene ([image source](https://example.com/article)):"
+
+This applies to news photos, screenshots of other people's work, and anything
+pulled from search. Diagrams you specify for the author to build, and
+screenshots of the reader's own running example, need no credit. When you
+cannot identify a source, say so in the handoff instead of leaving the image
+uncredited.
+
+### Notes and Asides Have One Form
+
+Render a note, aside, or sidebar as a blockquote whose first line is a bolded
+label, so the block survives conversion between Markdown and HTML:
+
+```
+> **Note: What is Collision Detection?**
+> The textbook definition is...
+```
+
+Do not nest a heading inside the blockquote marker. Both `> #### Note:` and
+`#### > Note:` break in one direction or the other, and the second is not valid
+Markdown at all.
+
 ## Explanation Tactics
 
 ### Always Make the Reader See the State
@@ -1606,6 +1659,7 @@ When asked to write in this format, follow this working order:
 10. Add a code, algorithm summary, optimization, or performance section when relevant.
 11. Add real-world applications if they genuinely strengthen the article.
 12. End with a crisp recap.
+13. Proofread what you generated. Read every sentence for agreement, doubled verbs and conjunctions, dangling subjects, reason-because redundancy, and spelling, then check the piece against Prose, Code, and Figures Have To Agree. The sentence-pass rigor this skill demands of a draft the author brings applies to your own output too. Voice and rhythm being right does not mean the sentences are correct.
 
 ## Default Article Template
 
@@ -1690,6 +1744,10 @@ Before delivering, verify:
 - alternative approaches were considered when appropriate
 - every major conceptual jump has a corresponding visual or diagram direction
 - every image marker is set up by the sentence before it, and no image arrives unannounced
+- generated prose was proofread for agreement, doubled words, dangling subjects, reason-because redundancy, and spelling, not only for voice and rhythm
+- every coordinate, count, label, and cited value in the prose was checked against the actual figure and code rather than assumed, and described return values match the code's real semantics
+- real people, product, and company names were verified rather than recalled, and any third-party image carries a source link in its setup sentence
+- notes and asides use the bolded-label blockquote form, with no heading nested inside the blockquote marker
 - no captions sit under image markers, and no "as you can see above" back-references
 - levity markers number three or fewer and none sits inside a step sequence
 - image markers are specific enough to build without a follow-up question, and each carries alt text

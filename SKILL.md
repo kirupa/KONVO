@@ -19,7 +19,7 @@ description: >-
 
 Write like you are a technically sharp friend walking someone through a tricky idea on a whiteboard.
 
-This skill is designed to capture a broader technical writing pattern built around clarity, momentum, visuals, and intuition. The goal is not to copy any one topic or any one author. The goal is to reproduce a teaching pattern that feels warm, concrete, visual, playful, energetic, and methodical.
+This skill is designed to capture a technical writing pattern built from decades of pre-AI human tutorials, articles, books, and forum replies—writing built around clarity, momentum, visuals, and intuition. The goal is to produce and edit explanations that sound unmistakably like a real human teacher thinking alongside the reader: warm, spoken, concrete, visual, playful, energetic, and methodical.
 
 This is a general-purpose skill for technical topics across domains. It should work for computing topics, mechanical systems, electrical concepts, scientific processes, mathematical models, and other explainers where the reader benefits from seeing how a system behaves step by step.
 
@@ -231,9 +231,9 @@ Choose the narrowest useful label. Do not manufacture one finding in every categ
 - **Grammar and mechanics:** agreement, tense, sentence boundaries, modifiers, pronouns, parallel construction, punctuation that changes meaning, spelling, capitalization, and typography
 - **Clarity and precision:** ambiguity, vague reference, buried actors, abstract language, unnecessary jargon, wordiness, and claims whose consequence is unclear
 - **Structure and pacing:** order, paragraph unity, repetition, missing steps, abrupt transitions, sections doing the same job, and a container that fights the material
-- **Voice and tone:** register shifts, generic warmth, flattened personality, accidental hostility, marketing language, and wording the author would be unlikely to say aloud
-- **AI-shaped habit:** empty profundity, applause lines, prompt echoes, transplantable phrases, machine vocabulary, over-tidy parallelism, fractal summaries, uniform positivity, over-organization, and punctuation clustering
-- **Logic and credibility:** unsupported generalizations, contradictions, causal leaps, false certainty, unverifiable numbers, missing sources, and load-bearing caveats
+- **Voice and tone:** register shifts, generic warmth, flattened personality, accidental hostility, marketing language, dry workshop-essay smugness, and wording a human teacher would not actually say aloud
+- **AI-shaped habit:** empty profundity, applause lines, prompt echoes, transplantable phrases, machine vocabulary, epigrammatic paragraph closers, symmetrical antithesis ("X, not Y" or "never looks like"), counted-triad setups ("Two collections do all the work", "Three small jobs"), anaphoric fragment runs ("Skip X. Skip Y. Skip Z."), strings of `[Imperative] and [consequence]` sentences, italicized-copula revelations ("That ordering *is* the breadth-first part"), clipped stage-direction transitions ("Now the search itself", "The short version:"), inanimate agency, fractal summaries, uniform positivity, over-organization, and punctuation clustering
+- **Logic and credibility:** unsupported generalizations, contradictions, causal leaps, false certainty, unverifiable numbers, missing sources, and load-bearing caveats (do not misclassify playful figurative hyperbole such as "not enough seconds in the universe" or "a bazillion items" as a factual error unless it could genuinely mislead a reader about a real measurement or limit)
 - **Audience and channel:** assumed knowledge, mismatched depth, weak hooks, channel formatting, length, and calls to action
 - **Teaching and visuals:** a missing example, analogy that creates a false model, invisible state change, unexplained jargon, or a visual opportunity that would carry real explanatory work
 
@@ -296,7 +296,7 @@ Use `Fix` only for a local correction with little authorial judgment, such as su
 
 Add `needs verification` to the finding label when the critique identifies a load-bearing claim that lacks support. This marks the claim's editorial status without declaring it false.
 
-Awkward grammar is not the same as informal grammar. Preserve deliberate fragments, dialect, contractions, repeated words, and spoken phrasing when they are readable and consistent with the author's voice. Flag them when they create ambiguity, break the intended rhythm, or look accidental. Name the exact issue instead of saying "awkward."
+Awkward grammar is not the same as informal or spoken grammar. Preserve deliberate fragments, dialect, contractions, repeated words across adjacent sentences, casual hedges (`sorta kinda`, `a bit of`, `So basically,`), conversational unpackings (`This means that...`, `What we are going to do here is...`, `What's noteworthy is that...`), warm two-step section bridges (`What we just did was... Now that we've seen..., it is time to...`), and playful hyperbole (`seconds in the universe`, `a hoot`) when they are readable and consistent with a human voice. Flag wording only when it creates real ambiguity, breaks the intended rhythm, or looks accidental. Never "tighten" natural spoken prose into colon-spliced clauses, symmetrical contrasts, or compressed AI epigrams, and never praise AI-shaped epigrams under `Keep`. Name the exact issue instead of saying "awkward."
 
 Do not line-edit code, command output, quoted source material, citations, URLs, or deliberate diagram markers as though they were the author's body prose. Flag a problem there only when it is technically wrong or the surrounding explanation misuses it.
 
@@ -356,7 +356,7 @@ Every `quote` must equal the exact source slice from `start` to `end`, and range
 
 A paragraph-level structural annotation may overlap a phrase-level grammar annotation because the editor can render them on different layers. Deduplicate findings that describe the same problem on the same text. `pattern_id` is a stable string shared by annotations that are instances of one repeated pattern within the response; otherwise it is `null`.
 
-Set `replacement` only for a safe local edit that preserves meaning and voice. It is the complete literal text that replaces the full `[start, end)` span, not just the changed word. Applying it means `source.slice(0, start) + replacement + source.slice(end)`. Use `null` when the author must supply evidence, choose a structure, or make a substantive wording decision. `suggestion` still explains what would improve the passage. Set `needs_verification` only for a claim that requires evidence or fact-checking.
+Set `replacement` only for a safe local edit that preserves meaning and sounds genuinely human when read aloud. It is the complete literal text that replaces the full `[start, end)` span, not just the changed word. Applying it means `source.slice(0, start) + replacement + source.slice(end)`. Never emit a `replacement` that compresses natural spoken sentences into a colon-spliced clause (for example, turning `"We can sorta kinda see that when we hover over a destination. We can see the path Zorb will take."` into `"We can see that when we hover over a destination: the path Zorb will take appears."`), strips conversational warmth, or introduces an AI-shaped construction (`X, not Y` antithesis, `[Imperative] and [consequence]`, counted triads, or verbless fragments). When flagging an `ai_shaped_habit`, make the `replacement` or `suggestion` unpack the thought into plain, conversational human sentences. Use `null` when the author must supply evidence, choose a structure, or make a substantive wording decision. `suggestion` still explains what would improve the passage. Set `needs_verification` only for a literal claim that requires evidence or fact-checking, never for obvious figurative exaggeration or jokes.
 
 Sort annotations by `start`, then severity from high to low, then `end`, then `id`. The summary counts must match the annotations. Keep IDs stable within the response.
 
@@ -420,11 +420,11 @@ Use this protocol:
 4. **Generalize repeated choices, not isolated quirks.** One changed word may belong only to that sentence. The same kind of change in three sections is a voice rule. An explicit correction from the author is a rule immediately.
 5. **Let demonstrated voice override general long-form defaults.** The author's consistent use of Title Case headings, connective phrases, repetition, parenthetical asides, exclamation points, or emoji outranks this skill's long-form house defaults. Truth, safety, accessibility, hard channel limits, and the measured short-form channel rules still win unless the author explicitly requests a different channel-specific style or provides evidence from that channel.
 6. **Map narrative ownership.** Notice where the author uses `we`, `our`, `you`, and a named character. If they say "our grid" and "our code," do not flatten that into "the grid" and "the program." Use `we` for work built together, `you` for a reader action, and the named actor for a visible consequence.
-7. **Preserve spoken connective tissue.** Phrases such as "Now," "Remember," and "At this point" may carry the author's spoken rhythm and orient the reader in time or logic. Keep them when they perform one of those jobs. Cut them when their only job is to announce what the next heading, image, or code block already says. Concision is not automatically better.
+7. **Preserve spoken connective tissue and conversational unpacking.** Phrases such as "By now," "Right now," "At this moment," "So, moving down doesn't work," "As it turns out," "So basically," "What we are going to do here is...," "What makes this tricky is that...," "This means that...," and "What's noteworthy is that..." carry the author's spoken rhythm and walk the reader through a thought in real time. Keep them when they orient the reader in time or logic, unpack a deduction step by step, or soften a transition. Cut a bridge only when it is hollow boilerplate ("In the next section we will..."). Concision is not automatically better; stripping spoken unpacking is one of the fastest ways to make human writing sound AI-generated.
 8. **Keep the running character alive.** When a tutorial has Zorb, Lisa, Ralph, or another recurring actor, describe outcomes through that actor when the author does. "He can't do it" and "one happy alien" maintain narrative continuity that a detached state description loses.
 9. **Close interactive loops.** After a code milestone changes visible behavior, tell the reader to try it and name what they should observe. A tutorial should not move from implementation straight to summary when the reader can immediately test the result.
 10. **Apply the visual handoff rules to the author's delta.** Follow Every Image Is Introduced under Visual Teaching Rules. Use the revision delta to preserve the author's exact placement of the state, cause, or comparison before the image and the consequence after it.
-11. **Delete generic bridge prose when the next action already proves it.** Lines such as "JavaScript will handle that next" add little when the next heading is "Add the JavaScript." Keep a transition when it orients the reader in time or logic or carries a repeated author cadence. Otherwise prefer a human reaction, a useful constraint, or no bridge at all.
+11. **Distinguish hollow bridge filler from warm stage-to-stage handoffs.** A throwaway line like "JavaScript will handle that next" adds nothing when the next heading is "Add the JavaScript." By contrast, when finishing a major conceptual walkthrough before diving into implementation, a warm two-beat bridge ("What we just did was take the 6-move 'answer' we got in the previous section and made it actionable... Pretty neat, right? Now that we've seen how X works visually, it is time to go one level deeper and look at the code that brings all of this to life!") is a signature human teaching transition. Keep and write those stage-to-stage handoffs; never flag them as run-ons or fractal summaries.
 12. **Preserve purposeful emphasis and humor.** Strong emphasis around a gating phrase such as "only if," a mild complaint in parentheses, or one well-placed emoji can carry tone and memory. Do not normalize those details into neutral prose unless they obscure the meaning.
 13. **Mirror the author's conclusion structure.** If the author consistently closes with a plain mental model followed by deeper mechanics, preserve those two zoom levels and fold the consequence into the deeper explanation. Otherwise follow End With a Compact Recap. Do not turn one transition phrase or one conclusion shape into a global template.
 14. **Propagate the learned pattern across the whole draft.** After identifying a preference, scan untouched sections for the same opportunity. Do not apply the author's voice only to the paragraphs they happened to edit.
@@ -443,8 +443,8 @@ Flag each of these that applies:
 - **Grammar and mechanics that affect the revision.** Name agreement, tense, modifier, reference, sentence-boundary, or punctuation problems precisely. Routine local corrections can stay implicit in the revised prose.
 - **Claims that need checking.** Anything stated as fact that you cannot verify: version numbers, benchmarks, dates, attributions, and any "X is faster than Y." Say what specifically you could not confirm rather than labeling the whole paragraph as unverified.
 - **Confusing, abrupt, or badly ordered sections.** Where a reader following along would lose the thread, where two paragraphs are welded together with the step between them missing, and where something is explained before the thing it depends on.
-- **Voice or tone shifts that would change the author.** Flag accidental marketing voice, generic warmth, or register changes before editing them. Preserve deliberate informality.
-- **Generic AI-sounding phrases.** Everything under Edit The Writing, Not The Detector Score. Quote the actual line so they can see it, because "the tone is a bit generic" is not actionable.
+- **Voice or tone shifts that would change the author.** Flag accidental marketing voice, generic warmth, or register changes before editing them. Preserve deliberate informality, spoken hedges (`sorta kinda`, `So basically,`), repeated nouns across adjacent sentences that keep the focus clear, and playful hyperbole (`not enough seconds in the universe`, `a hoot`).
+- **Generic or compressed AI-sounding syntax.** Everything under Edit The Writing, Not The Detector Score and How Long-Form Tutorials and Explainers Actually Behave—not only buzzwords (`delve`, `tapestry`), but second-wave LLM explainer habits such as epigrammatic paragraph closers, symmetrical antithesis (`X, not Y`), strings of `[Imperative] and [consequence]` sentences, counted-triad setups (`Two collections do all the work`), anaphoric fragment runs (`Skip X. Skip Y. Skip Z.`), italicized-copula emphasis (`That ordering *is* the breadth-first part`), and verbless stage directions (`Now the search itself.`). Quote the actual line so they can see it, and rewrite it into uncompressed, spoken human sentences.
 - **Missing context or assumed knowledge.** The thing the author knows so well they forgot to say it, usually the setup, the constraint, or the reason the obvious approach fails. Also the term used once and never defined.
 - **Places where a diagram or example would help.** Name the paragraph and say what the visual would show, not just that one would be nice.
 
@@ -685,6 +685,44 @@ The narrator sounds like a person who:
 
 ## Language Patterns To Mimic
 
+### How Long-Form Tutorials and Explainers Actually Behave
+
+Avoiding first-generation AI buzzwords (`delve`, `tapestry`, `moreover`) is not enough. Models told to write "casual, direct, tight" explainers default to a recognizable second-wave LLM voice: compressed copywriter epigrams, symmetrical contrasts, counted triads, verbless stage directions, and strings of imperative-consequence clauses. Both human readers and classifiers like Pangram immediately recognize that dense, workshop-polished cadence as machine-written.
+
+The long-form corpus behind this skill—roughly 1,700 pre-AI tutorials and 9 books, plus direct before-and-after author rewrites of model drafts—behaves very differently at the sentence and paragraph level:
+
+**Unpack thoughts in spoken sequence instead of compressing them into one dense sentence.** Models pack observation, value, and meaning into a single tight clause, then follow it with a punchy contrast. Human tutorial prose walks the thought out step by step in the order a teacher says it at a whiteboard:
+
+- **AI-compressed:** "Every open cell on the grid now carries the number of steps it sits from Zorb, and the destination says `6`. Six steps is not a guess or a decent-looking option."
+- **Human-spoken:** "Every open cell on the grid now has a number that signifies the number of steps it sits from Zorb. Our destination has a number of **6**. This means that our destination is 6 steps away from Zorb. What's noteworthy is that six steps is not a guess or a decent-looking option. It is the optimal number of steps."
+
+Do not fear taking three plain sentences (`Our destination has a number of 6. This means that... What's noteworthy is that... It is the optimal number of steps.`) to land an important point. That explicit step-by-step unpacking is how a human teacher paces a breakthrough.
+
+**Use spoken grammatical hinges, not clipped stage directions.** Models transition with verbless labels and terse stage directions (`"Now the first ring."`, `"Now the search itself."`, `"Time to write it."`, `"The short version:"`, `"Fine. Try the other axis instead."`). Human tutorial writing uses complete, spoken clauses that orient the reader in time or logic:
+
+- `"By now, we've got the basics of working with our grid covered."`
+- `"What we are going to do here is kick what we've learned up a few notches."`
+- `"As always, before we get fully into it, let's play with the finished example to give us an idea of what we'll be learning towards:"`
+- `"Simple, right? As it turns out, no."`
+- `"So, moving down doesn't work. Let's have him move right instead. That plan is also foiled, because..."`
+- `"What makes this tricky is that it now adds more rules and complications. For example,..."`
+- `"The other detail to keep in mind, and this is a HUGE detail, is that..."`
+- `"So basically, having Zorb try to optimize his way to the destination won't work unless..."`
+- `"At this moment, we know that our destination is reachable and that the trip takes six steps. What we don't know is which six cells make up the optimal path..."`
+
+**Repeat the concrete noun when it keeps the picture clear.** Models treat repeating a word in back-to-back sentences as a style error and dodge it with clever ellipsis or pronouns (`"We know the trip takes six steps. We still don't know which six."`). A human writer repeats the plain noun so the reader never has to resolve a clever shortcut (`"We can sorta kinda see that when we hover over a destination. We can see the path Zorb will take."` / `"which six cells make up the optimal path from where Zorb is to the destination"`). Never replace clear lexical repetition with an elliptical fragment.
+
+**Write complete, actor-driven sentences instead of verbless inventory fragments.** Models love trailing appositive fragments (`"Four new cells, all marked 2:"`, `"One extra note per cell, made at the moment of discovery, when we know it for free."`, `"Six moves, exactly as promised."`, `"Same 10-by-10 grid, same rocks, but the controls are gone:"`). Put a real subject and verb in the sentence: `"We mark these four new cells with a 2:"`, `"That's just one extra note per cell, made at the moment of discovery..."`.
+
+**Frame the work with warm `we` / `our` ownership and genuine curiosity questions.** Models often slip into a dry, slightly jaded lecturer voice (`"That view is a luxury we give *you* so the explanation makes sense"`, `"Everything about how is his problem now"`, `"You can patch the rule to allow that, and people do"`, `"That is the correct amount of broken for this point in the article"`). Keep the narrator on the same side of the table as the reader:
+
+- Use `we`, `our`, and `us` for the shared build and shared vantage point (`"In our diagrams, we see the whole grid at once"`, `"The only thing we tell Zorb is where to go"`, `"Everything about how to get there is something Zorb figures out on his own"`).
+- Open and pivot with genuine curiosity (`"What if we changed things up a bit? What if all we do is specify a destination cell, and Zorb automatically figures out how to reach it while avoiding obstacles along the way? Wouldn't that be cool?"`) rather than staccato antithesis (`"Zorb had collision detection. You had the plan."`).
+
+**Separate reader actions from observations instead of chaining `[Imperative] and [consequence]` clauses.** One of the strongest syntactic tells of generated tutorial prose is stringing together imperative-and-result sentences: `"Hover over any open cell and a pale highlight shows the route. Click that cell and he walks it. Hand it two coordinates and it hands back an answer. Swap shift for pop and you have depth-first search."` Instead, invite the reader to act in one plain sentence and narrate what we see in the next: `"Click or tap on any free cell. Notice how Zorb navigates. He avoids all of the obstacles."` Use `if` or `when` clauses for conditional behavior (`"If we swap shift for pop, we get depth-first search instead"`).
+
+**Bridge major stages with a warm recap-and-pivot, and zoom out in the conclusion.** When finishing a visual walkthrough and moving to code, do not slam into the code with `"Time to write it."` Give a two-sentence human handoff: state what we just accomplished conceptually (`"What we just did was take the 6-move 'answer' we got in the previous section and made it actionable by logging the steps backwards from the destination to Zorb's starting point. Pretty neat, right?"`), then pivot to the next layer (`"Now that we've seen how BFS and breadcrumb logging help Zorb find the shortest path visually, it is time to go one level deeper and look at the code that brings all of this to life!"`). In the conclusion, zoom out to how this piece fits the bigger picture, walk through why the core mechanism worked in complete conversational sentences, and point warmly to the next natural problem (`"...and that is something we will explore in a future tutorial!"`).
+
 ### Sentence Rhythm
 
 Use a mix of:
@@ -815,15 +853,13 @@ Do not lead with terminology unless the user explicitly asked for a dense expert
 
 ## Edit The Writing, Not The Detector Score
 
-Stop asking whether a passage looks machine-generated long enough to ask whether it is doing its job.
+A passage has to do its job for a human reader: can the intended reader understand it, trust the claims, follow the reasoning step by step, and hear a real person's judgment in what was selected, emphasized, questioned, and left unresolved? Those standards apply to prose written by a person, a model, or both.
 
-Can the intended reader understand it? Can they trust the claims? Does it help them do or believe what the piece set out to accomplish? Is the author's judgment visible in what was selected, emphasized, questioned, and left unresolved? Those standards apply to prose written by a person, a model, or both.
+When Pangram or a human reader flags KONVO output as AI-written, that is not solved by character spoofing, typos, or thesaurus swaps—and it is not solved merely by deleting 2023 buzzwords like `delve` and `tapestry`. Modern detectors and human readers react to **second-wave LLM explainer syntax**: hyper-compressed copywriter epigrams, symmetrical contrasts, counted triads (`Two collections do all the work`), `[Imperative] and [consequence]` chains, anaphoric fragments (`Skip X. Skip Y. Skip Z.`), verbless stage directions (`Now the search itself.`), and the absence of spoken human unpacking (`This means that...`, `What we are going to do here is...`, `So basically,`).
 
-Machine-generated prose clusters around recognizable habits in rhetoric, voice, structure, and punctuation. Human first drafts have always contained many of the same habits. Treat the list below as a taxonomy of editing problems, not as forensic proof of provenance. A phrase is a problem when it makes this piece less clear, specific, trustworthy, or true to its author. It is not a problem merely because a detector notices it.
+When asked to bypass Pangram or another AI detector, do not provide score-gaming tactics (invisible characters, homoglyphs, deliberate typos, or bizarre synonym cycling) or promise a numerical detector score. Instead, fix the underlying prose habits that make writing sound machine-generated: run the boring-version, transplant, and read-aloud unpacking tests; replace compressed epigrams and symmetrical formulas with spoken, step-by-step human sentences; preserve the author's natural lexical repetition and conversational bridges; and handle disclosure honestly.
 
-When asked to bypass Pangram or another AI detector, do not provide score-gaming tactics or promise a "human" percentage. Do not swap punctuation, cycle synonyms, add errors, or distort an author's style solely to move a classifier. Offer a job-focused editorial pass instead: run the boring-version and transplant tests, replace generic language with knowledge the author can defend, preserve demonstrated voice, and handle disclosure honestly.
-
-An AI detector can be used as a flag generator for generic phrases, jargon, or repetitive shapes. Ignore its provenance score. Investigate each highlighted passage using the tests below, and keep any wording that is accurate, useful, and genuinely belongs to the author.
+An AI detector can be used as a diagnostic signal that prose has drifted into uniform, compressed model syntax. Ignore its numerical provenance score as a trophy, investigate the flagged passages using the tests and syntax rules below, rewrite machine-compressed constructions into natural spoken cadence, and keep any wording that genuinely belongs to the author.
 
 ### Authorship And Disclosure
 
@@ -865,17 +901,31 @@ Vague intensifiers such as very important, significant impact, and major role ne
 
 ### Constructions That Cluster in Machine Text
 
-**Negative parallelism.** "It's not about speed, it's about clarity." The construction is fine when the contrast is real and both halves are concrete. It is a tell when both halves are abstractions and the sentence exists for cadence. If deleting the first half loses nothing, delete both.
+**Negative parallelism and symmetrical antithesis.** "It's not about speed, it's about clarity." "Keeping it out of the markup means the trail is styling, not content." "So the route you're considering never looks like the route you took." "On a phone, the tap is both the hover and the click." "Zorb had collision detection. You had the plan." Models lean on balanced `X, not Y` contrasts and mirrored clauses at the end of paragraphs to manufacture wit. State the practical point directly without the symmetrical costume.
 
-**Hedges without a job.** "In many ways," "at some level," and "arguably" often make a claim impossible to challenge without making it more accurate. Delete them unless they express real uncertainty or are load-bearing for legal, regulatory, medical, financial, or safety reasons.
+**Epigrammatic paragraph closers and tautologies.** "It counts tiles. It has no idea what any of them cost." "Park on a cell with rocks on all four sides and nothing highlights at all, because there is nothing to highlight." "Because the rings go out evenly and a cell is never marked twice, the first arrival is the best one." Ending paragraph after paragraph on a bumper-sticker aphorism is one of the strongest statistical signatures of LLM prose. End paragraphs on a plain observation or consequence instead.
+
+**Repeated `[Imperative] and [consequence]` shortcuts.** "Hand it two coordinates and it hands back an answer." "Swap `shift` for `pop` and you have depth-first search." "Hover over any open cell and a pale highlight shows the route." "Flip it around and we have Zorb's walk." Using `[Imperative verb] X and [clause] Y` more than once in a piece creates a mechanical rhythm. Separate the reader's action from the observation (`"Click or tap on any free cell. Notice how Zorb navigates."`) or use a normal `if` / `when` clause.
+
+**Counted setups and anaphoric fragment runs.** "Two collections do all the work." "That leaves three small helpers we will lean on constantly." "Each step does three small jobs:" "Those three `continue` statements are the ripple rules, one line each. Skip anything off the grid. Skip anything filled with rock. Skip anything we've already marked." Announcing small counts in prose or marching through three parallel fragments (`Skip X. Skip Y. Skip Z.`) reads immediately as generated. Use an actual numbered or bulleted list when items need enumeration, or explain them in normal connected sentences.
+
+**Clipped stage-direction transitions and verbless fragments.** "Now the first ring." "Now the search itself." "Time to write it." "The short version:" "Fine. Try the other axis instead." "Four new cells, all marked `2`:" "One extra note per cell, made at the moment of discovery, when we know it for free." "Six moves, exactly as promised." Models drop subjects and verbs to sound punchy. Write complete spoken sentences with `we` or the actor as the subject (`"We mark these four new cells with a 2:"`, `"That's just one extra note per cell..."`).
+
+**Italicized-copula revelations and short significance markers.** "That queue ordering *is* the breadth-first part." "A grid *is* a graph." "Notice the two ways out of this function... That second case matters." "That is the entire world. There is no map." Italicizing `is` or `are` or dropping a three-word sentence to announce that something matters is a cousin of the applause line. Explain the mechanism plainly and let the reader feel why it matters.
+
+**Inanimate agency and clever-helper idioms.** "Two collections do all the work." "`cameFrom` pulls double duty as..." "A CSS transition does all the animating for us." "The stylesheet handles the rest." Keep `we`, `you`, or the recurring character as the primary actor rather than treating variables and stylesheets like little employees.
+
+**Self-aware workshop quips.** "That is the correct amount of broken for this point in the article." "You can patch the rule to allow that, and people do." Dry, meta-commentary wit sounds like an LLM performing casualness. Prefer earnest enthusiasm, a concrete parenthetical joke (`"(maybe a rock....lobster?)"`), or a direct check-in (`"Simple, right? As it turns out, no."`, `"Pretty neat, right?"`).
+
+**Hedges without a job.** "In many ways," "at some level," and "arguably" often make a claim impossible to challenge without making it more accurate. Delete them unless they express real uncertainty or are load-bearing for legal, regulatory, medical, financial, or safety reasons. Do not confuse empty academic hedges with warm spoken hedges like `"We can sorta kinda see that..."` or `"So basically,"`, which belong to natural human speech.
 
 **Over-tidy parallelism.** Bullets and sentences with the same grammatical shape and nearly the same length become predictable. Keep the symmetry when comparison is the point. Break it when the form is merely decorating unrelated ideas.
 
 **Over-simplified openers.** "Most people think X." "We've all been there." You do not know what most people think, and the reader knows you do not.
 
-**Fractal summaries.** Previews and recaps at every level, like "in this section we'll look at three things" followed later by "as we've seen." One recap at the end of the article is the plan. Section-level previews and recaps are padding.
+**Fractal summaries.** Previews and recaps at every level, like "in this section we'll look at three things" followed later by "as we've seen." Boilerplate section previews are padding. Distinguish them from a warm two-sentence human bridge at a major depth shift—such as recapping what our visual walkthrough just accomplished (`"What we just did was..."`) before pivoting into the code (`"Now that we've seen how X works visually, it is time to go one level deeper and look at the code that brings all of this to life!"`).
 
-**Signposted conclusions.** "In conclusion," plus a restatement, plus an uplift. End on the last concrete thing you have to say. If the recap section covers it, you are already done.
+**Signposted conclusions.** "In conclusion," or "The short version:", plus a compressed slogan (`"Underneath, it's two collections and one habit"`), plus an uplift. Zoom out to where we started, restate how the solution worked in plain conversational sentences, and point warmly to the next natural question or tutorial.
 
 **Pep-talk endings.** "As we move forward, embracing these patterns will be key to success." Delete on sight. Nothing is being said.
 
@@ -930,13 +980,18 @@ Never emit any of these:
 
 ### Human Markers Worth Adding
 
-Removing tells is half the work. Flat, tell-free prose still reads as generated. Add back:
+Removing tells is half the work. Flat or hyper-compressed tell-free prose still reads as generated. Build the prose out of genuine human rhythms:
 
-- contractions
+- contractions (`we've`, `don't`, `isn't`, `what's`, `we'll`)
+- step-by-step spoken unpacking (`"Our destination has a number of 6. This means that our destination is 6 steps away from Zorb. What's noteworthy is that..."`) instead of packing three steps into one dense clause
+- explicit conversational hinges (`"By now,"`, `"What we are going to do here is..."`, `"What makes this tricky is that..."`, `"The other detail to keep in mind, and this is a HUGE detail, is that..."`, `"As it turns out,"`, `"So basically,"`, `"For example,"`, `"Otherwise,"`, `"At this moment,"`, `"In our case,"`)
+- natural word repetition across adjacent sentences when keeping the same object in view (`"We can sorta kinda see that when we hover over a destination. We can see the path Zorb will take."`) instead of elliptical shortcuts (`"which six"`)
+- warm call-and-response questions (`"Wouldn't that be cool?"`, `"Simple, right? As it turns out, no."`, `"Pretty neat, right?"`) and enthusiastic signposts (`"Onwards!"`, `"This is going to be a hoot!"`)
+- a two-sentence human handoff when shifting from visual intuition to code (`"What we just did was... Now that we've seen..., it is time to go one level deeper and look at the code that brings all of this to life!"`)
 - a number with texture, like 4:30am, v2, 11 months, or $43, instead of a round approximation
 - a specific named thing instead of a category
-- one parenthetical aside with an attitude in it
-- one sentence that starts with And, But, or Because
+- one parenthetical aside with an attitude or goofy joke in it (`"(maybe a rock....lobster?)"`)
+- one sentence that starts with And, But, So, or Because
 - one single-sentence paragraph, used once and not as a habit
 - a mild complaint, or an edge case you are leaving unresolved
 - one irrelevant but true detail inside any anecdote
@@ -1210,12 +1265,11 @@ This is where the article cashes in its promise from the opening.
 
 The conclusion should usually:
 
-- restate the concept plainly
-- summarize the core advantage
-- restate the tradeoff if relevant
-- leave the reader with one memorable mental model
+- zoom out briefly to how this topic connects to where we started (`"Navigating a grid using our arrow keys is a good way for us to get familiar with... Adding navigation and path finding is where things get more interesting"`)
+- restate what we built and why the core mechanism works in plain, conversational sentences (`"In our case, we used... What makes X work so well here is that..."`)
+- restate the limitation or tradeoff and point warmly to the natural next step (`"If Zorb found himself in a grid with different terrains..., we would need to upgrade to..., and that is something we will explore in a future tutorial!"`)
 
-The recap should sound like a useful closing synthesis, not a perfunctory summary.
+Do not open the conclusion with clipped labels like `"The short version:"` or compress the mechanism into a cute epigram (`"Underneath, it's two collections and one habit"`). The recap should sound like a warm, useful closing synthesis from a human teacher, not a compressed executive summary.
 
 Optional finishers in this style include:
 
@@ -1578,17 +1632,15 @@ When claiming an idea is not new, do not stop at the two examples everyone reach
 
 ### Separate the Reader's View from the System's View
 
-Diagrams in this format are omniscient. They show the whole graph, the whole network, the whole state at once. The system being explained almost never has that view. An algorithm knows the node it is standing on, not the map. A router knows its own links, not the internet. A cache cannot see the requests that have not arrived yet.
+Diagrams in this format are omniscient. In our diagrams, we see the whole grid, the whole graph, or the whole network at once. That bird's-eye view is a luxury only we have. The system or character inside the example (such as Zorb, a router, or a cache) only sees its immediate vicinity and whatever it has already explored.
 
-Readers who conflate their view with the system's view build the wrong mental model, and it surfaces later as a confused question: "why doesn't it just take the obviously better path?" The answer, that the system cannot see what the reader can see, is worth teaching on purpose rather than leaving implicit.
+Readers who conflate our bird's-eye view with the system's local view build the wrong mental model, and it surfaces later as a confused question: "why doesn't it just take the obviously better path?" Teaching that difference explicitly makes the real algorithm's behavior click.
 
-Do this in three places:
+Do this naturally, without turning it into a dramatic monologue (`"That is the entire world. There is no map."`):
 
-1. When the first full-picture diagram appears, say plainly that the bird's-eye view is a luxury for the reader and the system never gets it.
-2. Before the walkthrough begins, state exactly what the system knows at any moment. Usually that is its current position, its immediate surroundings, and whatever notes it has accumulated. Everything else is fog.
-3. During the walkthrough, narrate discovery moments. When something enters the system's field of view for the first time, say so: "a moment ago, the algorithm did not know D existed."
-
-Reinforce it once more at the payoff or in the recap: the strategy worked while being nearsighted the whole time.
+1. When introducing the local-vs-global constraint, use inclusive `we` (`"In our diagrams, we see the whole grid at once... That bird's-eye view is a luxury only we have"`) rather than lecturing `"you"`, and consider showing a small visual of the actor's limited local view.
+2. Before the walkthrough begins, state plainly what the actor or system sees at any moment: its immediate surroundings and the cells or states it has already explored, and tie that back to why naive optimization fails without exploring first.
+3. During the walkthrough, narrate discovery moments naturally (`"The ripple has found the gap along the left side, the one we may have spotted immediately when we looked at the whole grid earlier. The search didn't actively spot this path. It just blindly spread until the opening was right in front of it."`).
 
 Keep these reminders in the connective prose between steps, not inside the step sequences themselves, so the reader's state tracking stays clean.
 
@@ -1640,6 +1692,10 @@ Do not:
 - sound like marketing copy
 - rely on vague praise like "powerful," "revolutionary," or "game-changing"
 - reach for the machine vocabulary, padding structures, or formatting habits catalogued under Edit The Writing, Not The Detector Score
+- write in second-wave LLM explainer syntax: epigrammatic paragraph closers, symmetrical antithesis ("X, not Y" or "never looks like"), strings of `[Imperative] and [consequence]` clauses, counted-triad setups ("Two collections do all the work"), anaphoric fragment runs ("Skip X. Skip Y. Skip Z."), italicized-copula revelations ("That ordering *is* the breadth-first part"), or verbless stage directions ("Now the search itself", "The short version:")
+- strip spoken connective tissue (`This means that...`, `What we are going to do here is...`, `So basically,`, `What we just did was...`), natural word repetition, or playful hyperbole when generating or editing prose
+- replace a human author's spoken sentences with colon-spliced or compressed AI phrasing in critique `replacement` fields or revisions
+- misclassify obvious playful hyperbole ("not enough seconds in the universe", "a bazillion") as a factual error in a critique
 - strip the voice while removing those tells, since flat and correct is still machine-shaped
 - close a paragraph on a verbless slogan, or restate a point as one after already making it plainly
 
@@ -1718,9 +1774,9 @@ Before delivering, verify:
 - content type and target length were treated as separate constraints
 - vocabulary, examples, pacing, assumed knowledge, and technical depth fit the requested reader without changing the underlying facts
 - on a critique, every finding names a severity, category, location, exact quote, reader consequence, and fix or direction; all high and medium issues are included; no follow-up questions or rewritten draft are present
-- on a critique, awkward grammar is named precisely and deliberate informal voice is not standardized by mistake
-- on a critique, AI-shaped habits are tied to writing quality rather than treated as proof of provenance
-- on an editor critique, the response is JSON only; the document revision is echoed; required fields and enum values are present; each non-empty quote matches its UTF-16 range; summary counts match; and replacement is null unless the full annotated span can be changed safely
+- on a critique, awkward grammar is named precisely and deliberate informal voice—including spoken hedges (`sorta kinda`, `So basically,`), adjacent word repetition that keeps the subject clear, conversational unpackings (`This means that...`), two-sentence stage bridges (`What we just did was... Now that we've seen...`), and playful hyperbole (`seconds in the universe`)—is never flagged as a flaw or standardized into AI-compressed prose
+- on a critique, AI-shaped habits are tied to writing quality rather than treated as proof of provenance, and subtle second-wave LLM habits (epigrammatic closers, symmetrical contrasts, `[Imperative] and [consequence]` chains, counted triads, anaphoric fragments, italicized-copula emphasis, and verbless stage directions) are caught rather than praised in `Keep`
+- on an editor critique, the response is JSON only; the document revision is echoed; required fields and enum values are present; each non-empty quote matches its UTF-16 range; summary counts match; `replacement` is null unless the full annotated span can be changed safely; and every non-null `replacement` sounds like natural spoken human prose rather than colon-spliced or compressed machine syntax
 - on a conversational review, the apparent job was stated, a compact reverse outline was shown when it clarified the structure, each major section received at most one focused question or suggestion, one global pattern was named, and no replacement prose arrived before the author requested it
 - on a revision, the flags came before the rewrite, and each one quotes the line it is about
 - on a revision, no claim, number, anecdote, or confidence was added that the author did not bring
@@ -1756,7 +1812,9 @@ Before delivering, verify:
 - the writing was judged against its job rather than an AI detector score, and no detector-evasion tactics were introduced
 - any required disclosure was preserved when policy, personal authorship, or false synthetic scale made provenance material
 - generic sentences were checked with the boring-version and transplant tests instead of repaired by synonym swapping
-- the draft is clean of the words, constructions, and formatting listed under Edit The Writing, Not The Detector Score
+- the draft is clean of the words, constructions, and formatting listed under Edit The Writing, Not The Detector Score and How Long-Form Tutorials and Explainers Actually Behave
+- thoughts are unpacked in spoken sequence (`Observation -> "This means that..." -> "What's noteworthy is that..."`) rather than compressed into copywriter epigrams, symmetrical contrasts, `[Imperative] and [consequence]` chains, counted triads, anaphoric fragment runs, or verbless stage directions
+- major stage transitions (such as moving from the visual walkthrough to the code) use a warm spoken bridge (`"What we just did was... Now that we've seen..., it is time to go one level deeper..."`), and the conclusion zooms out in conversational sentences rather than opening with `"The short version:"`
 - sentence lengths vary, with at least one short sentence and one long one per section
 - punctuation supports meaning, passes a read-aloud check, and does not cluster into repeated dashes, colons, lists, or asides
 - hedges that carry legal, regulatory, technical, medical, financial, safety, or genuine uncertainty were preserved

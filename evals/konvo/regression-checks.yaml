@@ -809,3 +809,58 @@ checks:
     preferred_fix:
       - let the requested output contract override the generic analyze or review verb
       - return the annotation schema directly without questions or surrounding prose
+
+  - id: konvo_reg_060
+    name: long_form_unpacks_deductions_step_by_step
+    priority: high
+    description: >-
+      Long-form tutorials and explainers must unpack observations and deductions
+      step by step in complete spoken sentences rather than compressing them into
+      copywriter epigrams, elliptical fragments, or verbless stage directions.
+    failure_signals:
+      - paragraphs ending with two-to-six-word mic-drop epigrams or punchy reversals such as Zorb had collision detection. You had the plan.
+      - verbless stage-direction sentences such as Now the first ring., Now the search itself., or The short version:
+      - elliptical noun drops such as We still don't know which six. where repeating the noun keeps the picture clear
+      - strings of [Imperative] and [consequence] sentences such as Hover over a cell and it highlights or Swap shift for pop and you have depth-first search
+      - inanimate code constructs given human agency, such as Two collections do all the work or pulls double duty as
+    preferred_fix:
+      - separate observation, deduction ("This means that..."), and significance ("What's noteworthy is that...") into explicit spoken sentences
+      - keep spoken grammatical hinges such as "By now,", "What we are going to do here is...", "So basically,", and "At this moment,"
+      - repeat plain nouns across adjacent sentences when needed to keep the reader's mental picture steady
+      - write complete sentences with human actors ("we", "you", or the named character) and end paragraphs on a plain factual outcome or warm check-in
+
+  - id: konvo_reg_061
+    name: no_second_wave_ai_explainer_syntax
+    priority: high
+    description: >-
+      Generated and revised prose must avoid second-wave LLM explainer syntax
+      even when first-wave buzzwords are absent.
+    failure_signals:
+      - symmetrical antithesis or mirrored clauses such as the route you're considering never looks like the route you took or styling, not content
+      - counted setups and triadic decomposition such as Two collections do all the work or Each step does three small jobs:
+      - anaphoric fragment runs such as Skip anything off the grid. Skip anything filled with rock. Skip anything we've already marked.
+      - italicized-copula revelations such as That queue ordering is the breadth-first part or A grid is a graph
+      - short significance-announcement clauses such as That second case matters or That is the entire world. There is no map.
+    preferred_fix:
+      - state what the thing is in one complete sentence without contrasting it against a strawman
+      - introduce helpers or steps one at a time as the walkthrough reaches them rather than pre-counting them
+      - explain why a property matters in a full sentence ("The other detail to keep in mind, and this is a HUGE detail, is that...") instead of italicizing a copula or appending "That matters."
+
+  - id: konvo_reg_062
+    name: critique_and_revision_protect_human_voice_and_avoid_ai_replacements
+    priority: high
+    description: >-
+      Critique, editor annotations, and revision must protect genuine spoken
+      human phrasing and playful hyperbole, and must never offer replacement
+      strings that introduce colon-spliced or compressed AI syntax.
+    failure_signals:
+      - flagging spoken hedges such as sorta kinda, warm exclamations, or intentional adjacent word repetition as clutter or repetition errors
+      - misclassifying playful hyperbole such as not enough seconds in the universe or a hoot as literal factual claims needing verification
+      - flagging a human two-sentence stage bridge ("What we just did was... Now that we've seen..., it is time to go one level deeper...") as redundant recap
+      - offering a replacement string that splices clauses with a dramatic colon or compresses spoken sentences into an [Imperative] and [consequence] shortcut
+      - praising or ignoring second-wave AI explainer syntax while nitpicking the author's conversational sentences
+    preferred_fix:
+      - treat spoken hedges, deliberate noun repetition for clarity, warm stage bridges, and obvious playful hyperbole as authorial voice to preserve
+      - ensure every replacement string unpacks thoughts into natural spoken sentences that sound more human than the span it replaces
+      - actively flag second-wave LLM explainer syntax under AI-shaped habit or ai_shaped_habit
+

@@ -939,3 +939,79 @@ cases:
       - a prose message saying no issues were found
       - manufacturing an annotation so the array is not empty
       - wrapping the JSON in a Markdown code fence
+
+  - id: konvo_gen_050
+    mode: walkthrough
+    title: Long-form tutorial with spoken human unpacking instead of LLM explainer syntax
+    prompt: |
+      Write a 1,200-word tutorial for intermediate web developers on how breadth-first
+      search finds the shortest path around obstacles on a 2D grid. Use a character
+      named Zorb moving across a 6x6 grid with rock obstacles, walk through the wave
+      of distance numbers and parent pointers before showing JavaScript code, and use
+      placeholder diagram markers.
+    should_demonstrate:
+      - unpacks observations and deductions step by step in explicit spoken sentences ("This means that...", "What's noteworthy is that...")
+      - uses conversational grammatical hinges ("By now,", "What we are going to do here is...", "So basically,", "At this moment,")
+      - repeats plain nouns across adjacent sentences when needed to keep the spatial picture clear
+      - uses a warm two-sentence bridge between the visual walkthrough and the code section ("What we just did was... Now that we've seen..., it is time to go one level deeper...")
+      - closes with a zoom-out conclusion that connects the grid intuition to general graphs before mentioning weighted grids as a natural next step
+    should_avoid:
+      - epigrammatic paragraph closers such as "Zorb had collision detection. You had the plan."
+      - symmetrical antithesis or mirrored clauses such as "styling, not content" or "the route you're considering never looks like the route you took"
+      - strings of "[Imperative] and [consequence]" shortcuts such as "Hover over any cell and..." or "Swap shift for pop and..."
+      - counted setups and triads such as "Two collections do all the work" or "Each step does three small jobs:"
+      - anaphoric fragment runs such as "Skip anything off the grid. Skip anything filled with rock. Skip anything we've already marked."
+      - verbless stage directions such as "Now the first ring.", "Now the search itself.", or "The short version:"
+
+  - id: konvo_gen_051
+    mode: draft_critique
+    title: Critique a mixed human-and-AI tutorial draft without attacking the human voice
+    prompt: |
+      Critique this two-paragraph tutorial excerpt. Flag meaningful writing problems,
+      including AI-shaped habits, and do not rewrite it:
+
+      We can sorta kinda see that when we hover over a destination. We can see the
+      path Zorb will take. If we tried brute-forcing every possible route on a huge
+      grid, there won't be enough seconds in the universe for Zorb to finish! What we
+      just did was build the intuition for how the ripple finds the shortest path.
+      Now that we've seen the numbers and arrows work together, it is time to go one
+      level deeper and look at the code that brings all of this to life!
+
+      Now the search itself. Two collections do all the work: `visited` pulls double
+      duty as our visited check and our parent map. Swap `shift` for `pop` and you
+      have depth-first search. That queue ordering *is* the breadth-first part. Those
+      three `continue` statements are the ripple rules, one line each. Skip anything
+      off the grid. Skip anything filled with rock. Skip anything we've already
+      marked.
+    should_demonstrate:
+      - protects Paragraph 1's spoken cadence, including "sorta kinda", the repeated "We can see", the playful hyperbole "seconds in the universe", and the two-sentence bridge into code
+      - flags Paragraph 2's second-wave AI explainer habits: the verbless stage direction ("Now the search itself."), counted setup and inanimate agency ("Two collections do all the work", "pulls double duty"), imperative-and-consequence shortcut ("Swap shift for pop and you have..."), italicized-copula revelation ("*is* the breadth-first part"), and anaphoric fragment triad ("Skip anything...")
+      - explains why Paragraph 2's compressed patterns hurt the tutorial's human voice and offers unpacked spoken directions
+    should_avoid:
+      - flagging "We can sorta kinda see" or the repeated "We can see" as wordiness or repetition to tighten into a colon splice
+      - flagging "there won't be enough seconds in the universe" as an unverified factual claim
+      - flagging "What we just did was..." as a redundant recap
+      - praising Paragraph 2 as punchy or clean while criticizing Paragraph 1
+
+  - id: konvo_gen_052
+    mode: draft_revision
+    title: Rewrite second-wave AI explainer prose into spoken human cadence
+    prompt: |
+      Revise this passage from my pathfinding tutorial so it sounds genuinely human
+      and matches a warm, spoken teaching voice instead of sounding AI-generated:
+
+      Zorb had collision detection. You had the plan. Hover over any open cell and a
+      pale highlight shows the shortest route from Zorb's current tile. Click that
+      cell and he walks it, one tile per step, with a subtle trail behind him so the
+      route you're considering never looks like the route you took. Keeping it out of
+      the markup means the trail is styling, not content. The short version:
+      breadth-first search counts tiles. It has no idea what any of them cost.
+    should_demonstrate:
+      - flags the epigrammatic closer, imperative-and-consequence chains, symmetrical antithesis ("never looks like...", "styling, not content"), and clipped recap opener ("The short version:") before the rewrite
+      - unpacks the ideas into complete, spoken sentences with human actors ("we", "you", "Zorb") and conversational hinges
+      - preserves all technical facts (hover preview, click movement, CSS trail, unweighted step counting) without inventing new ones
+    should_avoid:
+      - keeping any "X, not Y" contrast or mirrored clause
+      - keeping "The short version:" or two-sentence punchy epigrams
+      - replacing the passage with synonyms while leaving the compressed sentence skeletons intact
+

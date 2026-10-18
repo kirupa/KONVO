@@ -55,7 +55,9 @@ KONVO is not a writing style somebody guessed at over a weekend. It is distilled
 
 That is three decades of explaining technical things to people who did not understand them yet, then finding out in real time whether the explanation landed. Forum posts are especially good teachers here, because a confused reply is instant, unambiguous feedback that your explanation did not work.
 
-The point was never to clone one person's voice. It was to find the moves that kept working across all that material, then write them down so they can serve yours.
+Alongside the 809 measured forum replies, the long-form sentence and paragraph rules come from the pre-AI tutorial and book archive plus direct sentence-by-sentence diffs where Kirupa rewrote model-generated drafts into publishable tutorials. Those diffs expose the gap between how language models write "casual" explainers (compressed copywriter epigrams, symmetrical `X, not Y` contrasts, `[Imperative] and [consequence]` chains, counted triads like `"Two collections do all the work"`, anaphoric fragment runs like `"Skip X. Skip Y. Skip Z."`, and verbless stage directions like `"Now the search itself."`) and how a human teacher actually writes: unpacking deductions step by step (`"This means that..."`, `"What's noteworthy is that..."`), keeping spoken grammatical hinges (`"By now,"`, `"What we are going to do here is..."`, `"So basically,"`), repeating plain nouns across sentences to keep the mental picture steady, using warm `we`/`our` ownership, and bridging major transitions (like moving from the visual walkthrough to code) with a two-sentence human handoff (`"What we just did was... Now that we've seen..., it is time to go one level deeper..."`).
+
+The point is to capture the moves that make technical explanations and edits sound unmistakably human because they think at a human pace, then write them down so they can serve yours.
 
 ## 📦 What This Repo Holds
 
@@ -156,7 +158,7 @@ For a one-pass critique that flags what needs work without rewriting:
 
 KONVO returns a prioritized report. Every finding carries a severity, category, location, exact quote, explanation, and either a local fix or a direction for the author. It catches grammar and mechanics, clarity, structure and pacing, voice and tone, AI-shaped habits, logic and credibility, audience fit, and missing teaching or visual support. It also names the parts worth protecting so a later revision does not polish the author's voice away.
 
-The AI-shaped label describes a writing habit, not who wrote the draft. KONVO explains why the passage is generic, empty, repetitive, or overbuilt instead of treating punctuation or vocabulary as proof of AI authorship.
+Critique and revision are tuned for a human audience. KONVO protects natural spoken cadence—hedges like `"sorta kinda"`, repeated words across adjacent sentences that keep the subject clear, step-by-step unpackings (`"This means that..."`), warm stage-to-stage bridges (`"What we just did was..."`), and playful hyperbole (`"not enough seconds in the universe"`, `"a hoot"`)—rather than misclassifying human warmth as looseness or factual error. At the same time, its `AI-shaped habit` pass catches subtle second-wave LLM syntax (epigrammatic paragraph closers, symmetrical antithesis, `[Imperative] and [consequence]` chains, counted triads, anaphoric fragments, italicized-copula emphasis, and verbless stage directions), and its `replacement` strings unpack thoughts into natural spoken sentences rather than colon-spliced or compressed model prose.
 
 For a custom editor, ask for editor annotations instead of the prose report. KONVO returns JSON with zero-based UTF-16 `start` and `end` offsets, the exact quoted text, phrase/sentence/paragraph level, severity, category, explanation, suggestion, and an optional safe replacement. Echoed document revisions let the editor discard stale results after the author keeps typing.
 
@@ -223,18 +225,19 @@ The JSON file is the source of truth. The HTML file is the rendered report you c
 
 ## 🧭 Direction
 
-The measure of KONVO is not whether Pangram or another detector calls the output human. It is whether the writing does its job and whether you would put your name on it.
+The goal is writing and editing that a human reader enjoys reading and that you would proudly put your name on—without sounding like an LLM pretending to be casual.
 
-KONVO will not optimize a classifier score. It will use the useful part of the detection conversation: finding empty rhetoric, transplantable sentences, overbuilt structure, and repetitive punctuation, then fixing those because they weaken the writing. It also preserves disclosure when a rule requires it, personal human authorship is part of the promise, or automation would create a false impression of many independent people.
+Removing first-wave AI buzzwords (`delve`, `tapestry`, `moreover`) is not enough if the prose still defaults to second-wave LLM explainer syntax: bumper-sticker paragraph closers, symmetrical `X, not Y` contrasts, `[Imperative] and [consequence]` chains, counted-triad setups, anaphoric fragments, and verbless stage directions. Both human readers and detectors like Pangram flag that hyper-compressed, uniform cadence immediately because humans explaining technical ideas over decades of pre-AI writing never talked that way.
 
-That usually means the draft comes back with:
+KONVO will not use cheap detector-evasion gimmicks (homoglyphs, planted typos, or thesaurus synonym swapping). Instead, it treats AI-detection flags and "sounds generated" feedback as diagnostic signals that the prose has compressed away its human connective tissue, and fixes the writing at the sentence and paragraph level. It also preserves disclosure when a rule requires it, personal human authorship is part of the promise, or automation would create a false impression of many independent people.
 
-- less filler
-- fewer canned transitions
-- more specificity
-- better rhythm
-- clearer technical explanation
-- your voice intact, and your judgment visible in what got emphasized
+That means drafts and edits come back with:
+
+- step-by-step spoken unpacking (`"This means that..."`, `"What's noteworthy is that..."`) instead of compressed copywriter epigrams
+- warm conversational transitions (`"By now,"`, `"What we are going to do here is..."`, `"So basically,"`, `"What we just did was..."`) instead of verbless stage directions
+- natural noun repetition and complete actor-driven sentences instead of elliptical fragments and `[Imperative] and [consequence]` chains
+- clearer technical explanation grounded in `we`/`our` ownership and concrete state changes
+- your spoken voice, humor, and judgment intact—never "tightened" into machine-shaped syntax
 
 Then you edit it, because you are still the author. The skill is meant to hand you a strong draft and get out of the way, not to hand you something finished that you feel vaguely uneasy about publishing.
 

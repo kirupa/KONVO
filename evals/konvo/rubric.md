@@ -51,9 +51,9 @@ correctly runs light on visuals should not be penalized here.
 
 ### 6. Tone and Readability
 
-- `0`: stiff, generic, hypey, or obviously AI-sounding
-- `1`: readable, but uneven or too neutral
-- `2`: warm, human, precise, and easy to follow
+- `0`: stiff, generic, hypey, or obviously AI-sounding (including second-wave LLM explainer syntax: epigrammatic paragraph closers, symmetrical `X, not Y` contrasts, `[Imperative] and [consequence]` chains, counted triads, anaphoric fragments, or verbless stage directions)
+- `1`: readable, but uneven, overly compressed, or too neutral
+- `2`: warm, unmistakably human, precise, and easy to follow—unpacking deductions step by step, using spoken transitions and natural noun repetition for clarity, and preserving the author's spoken voice and humor in edits
 
 ### 7. Technical Precision
 
@@ -63,7 +63,7 @@ correctly runs light on visuals should not be penalized here.
 
 ### 8. Rule Compliance
 
-- `0`: breaks one or more hard constraints, such as literal double-hyphen punctuation in finished prose or detector-evasion guidance
+- `0`: breaks one or more hard constraints, such as literal double-hyphen punctuation in finished prose, detector-evasion guidance, or tightening spoken human phrasing into colon-spliced or compressed AI syntax during critique or revision
 - `1`: mostly compliant with small issues
 - `2`: fully compliant with the important skill rules
 

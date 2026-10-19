@@ -17,7 +17,7 @@ We want to know:
 - does a critique request become a prioritized, passage-level diagnostic without questions or rewritten prose?
 - does critique identify awkward grammar precisely while preserving deliberate informal voice?
 - does critique protect genuine spoken human phrasing (`sorta kinda`, adjacent noun repetition for clarity, step-by-step unpacking, two-sentence stage bridges, and playful hyperbole) instead of tightening it into colon-spliced or compressed AI syntax?
-- does generation and revision unpack deductions step by step in complete spoken sentences while avoiding second-wave LLM explainer syntax (epigrammatic paragraph closers, symmetrical `X, not Y` contrasts, `[Imperative] and [consequence]` chains, counted triads, anaphoric fragment runs, and verbless stage directions)?
+- does generation and revision unpack deductions step by step in complete spoken sentences while avoiding both the 24 Wikipedia/Humanizer AI-writing patterns (significance inflation, superficial `-ing` tail clauses, copula avoidance like `serves as`, vague attributions, synonym cycling, false `"from X to Y"` ranges, em-dash overuse, wordy filler, stacked hedging, generic positive conclusions) and second-wave LLM explainer syntax (epigrammatic paragraph closers, symmetrical `X, not Y` contrasts, `[Imperative] and [consequence]` chains, counted triads, anaphoric fragment runs, and verbless stage directions)?
 - does each finding carry severity, category, location, evidence, consequence, and a useful next action?
 - does critique respect a narrow requested scope and avoid manufacturing problems in a clean draft?
 - does it judge writing by the job it must do rather than by an AI detector score?

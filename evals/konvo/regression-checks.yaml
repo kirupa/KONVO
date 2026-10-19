@@ -864,3 +864,26 @@ checks:
       - ensure every replacement string unpacks thoughts into natural spoken sentences that sound more human than the span it replaces
       - actively flag second-wave LLM explainer syntax under AI-shaped habit or ai_shaped_habit
 
+  - id: konvo_reg_063
+    name: humanizer_24_patterns_and_kirupa_corpus_fingerprint
+    priority: high
+    description: >-
+      Generated and revised prose must satisfy the final Humanizer 24-pattern
+      check and match Kirupa's measured 614,601-word long-form tutorial corpus
+      (zero em dashes in native KONVO voice, plain copulas, no trailing -ing
+      analyses, no synonym cycling or false ranges, and bursty sentence lengths).
+    failure_signals:
+      - trailing superficial -ing clauses such as ", highlighting...", ", underscoring...", ", ensuring...", or ", showcasing..."
+      - copula avoidance such as "serves as", "stands as", "marks a", or "boasts a" where "is", "are", or "has" belongs
+      - significance inflation ("pivotal moment", "stands as a testament", "indelible mark"), undue notability claims, or vague attributions ("experts argue", "industry reports")
+      - formulaic "Despite these challenges, X continues to thrive" or "Future Outlook" sections
+      - synonym cycling ("the grid... the board... the matrix") or false "From X to Y" ranges where X and Y are not on a real scale
+      - em dashes in native KONVO-generated prose instead of parentheses, commas, or spaced hyphens (" - "), or curly quotation marks instead of straight ASCII quotes
+      - wordy filler phrases ("in order to", "due to the fact that", "at this point in time", "it is important to note that") or stacked hedging ("could potentially possibly")
+    preferred_fix:
+      - use plain copulas ("is", "are", "has") and unpack consequences in separate spoken sentences ("This means that...", "The reason is that...") rather than trailing "-ing" clauses
+      - repeat the primary noun after introducing any alias once with "(aka ...)" or "(also known as ...)"
+      - use parentheses, commas, or a spaced hyphen (" - ") for asides in native KONVO prose, and straight ASCII quotes throughout
+      - run the final Humanizer 24-pattern and Kirupa-corpus self-check on every draft before delivery
+
+

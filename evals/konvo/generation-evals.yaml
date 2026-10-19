@@ -1015,3 +1015,32 @@ cases:
       - keeping "The short version:" or two-sentence punchy epigrams
       - replacing the passage with synonyms while leaving the compressed sentence skeletons intact
 
+  - id: konvo_gen_053
+    mode: draft_revision
+    title: Eliminate Humanizer 24 AI patterns using Kirupa's measured tutorial voice
+    prompt: |
+      Revise this draft section from a tutorial on adjacency lists so it sounds
+      genuinely like Kirupa's human writing and passes every humanizer check:
+
+      Adjacency lists serve as a pivotal foundation in the evolving landscape of graph
+      algorithms, standing as a testament to efficient memory design. From social
+      networks to route planning, from compilers to recommendation engines, experts
+      argue that this approach boasts an intricate interplay between speed and
+      simplicity — ensuring seamless traversal and highlighting the crucial role of
+      hash maps. In order to represent neighbors — due to the fact that a vertex
+      could potentially possibly have many connections — the structure utilizes a
+      lookup container. The graph uses a Map. The network structure employs a table.
+      The node directory leverages a dictionary. Despite its memory overhead, the
+      adjacency list continues to thrive, and exciting times lie ahead for graph
+      processing!
+    should_demonstrate:
+      - flags the Humanizer AI patterns before the rewrite: banned vocabulary, significance inflation, false "From X to Y" ranges, vague attribution ("experts argue"), copula avoidance ("serve as", "boasts"), superficial "-ing" tail ("ensuring... and highlighting..."), em-dash overuse, wordy filler ("In order to", "due to the fact that"), stacked hedging ("could potentially possibly"), synonym cycling ("The graph... The network structure... The node directory..."), and the formulaic "Despite its... exciting times lie ahead" ending
+      - rewrites into Kirupa's spoken tutorial voice using plain copulas ("is", "are", "has"), consistent nouns with an optional "(aka ...)" introduction, parentheticals or commas instead of em dashes, and plain causal explanations ("Because a node can have a large number of neighbors, we want a data structure that...")
+      - preserves only the real technical content (representing a node's neighbors with a Map/Set or list for fast lookup and its memory tradeoff) without inventing benchmarks or citations
+    should_avoid:
+      - any remaining banned vocabulary, trailing "-ing" analysis clause, or "serves as" / "boasts" copula substitute
+      - any em dash ("—") or curly quotation marks in the revised KONVO prose
+      - synonym cycling for the graph or Map
+      - keeping the generic positive conclusion or vague "experts argue" attribution
+
+

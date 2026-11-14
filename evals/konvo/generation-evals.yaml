@@ -1043,7 +1043,7 @@ cases:
       - synonym cycling for the graph or Map
       - keeping the generic positive conclusion or vague "experts argue" attribution
 
-  - id: konvo_gen_054
+  - id: konvo_gen_059
     mode: draft_revision
     title: Say it simply after a figure
     prompt: |

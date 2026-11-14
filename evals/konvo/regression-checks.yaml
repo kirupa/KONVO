@@ -886,7 +886,7 @@ checks:
       - use parentheses, commas, or a spaced hyphen (" - ") for asides in native KONVO prose, and straight ASCII quotes throughout
       - run the final Humanizer 24-pattern and Kirupa-corpus self-check on every draft before delivery
 
-  - id: konvo_reg_064
+  - id: konvo_reg_067
     name: after_figure_prose_says_it_simply
     priority: high
     description: >-

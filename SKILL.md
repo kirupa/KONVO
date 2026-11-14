@@ -925,21 +925,21 @@ Vague intensifiers such as very important, significant impact, and major role ne
 
 **Formulaic `"Challenges and Future"` sections.** "Despite its X, [subject] faces challenges..." followed by "Despite these challenges, [subject] continues to thrive..." or a generic `"Future Outlook"` subsection. When a tool or algorithm has a limitation, show the concrete case where it breaks (`"If Zorb found himself in a grid with different terrains..."`) and name the specific alternative (`"Dijkstra's algorithm or A*"`), without the corporate hurdle-and-triumph formula.
 
-**Elegant variation (synonym cycling) and false `"from X to Y"` ranges.** Do not cycle through synonyms to avoid repeating a noun (`"The CEO... The business leader... The company head..."` or `"the grid... the board... the matrix... the arena..."`), and do not use false `"From X to Y"` ranges where the endpoints are not on a real scale (`"From content creation to audience engagement, from SEO to paid media..."`). Repeat the plain noun, or name the specific items without a fake spectrum.
+**Elegant variation (synonym cycling) and false `"from X to Y"` ranges.** Do not cycle through synonyms to avoid repeating a noun (`"The CEO... The business leader... The company head..."` or `"the grid... the board... the matrix... the arena..."`), and do not use false `"From X to Y"` ranges where the endpoints are not on a real scale (`"From content creation to audience engagement, from SEO to paid media..."`). Repeat the plain noun, or name the specific items without a fake spectrum. This includes renaming what a figure already labeled: if the figure says "filing issues from repeated errors", the prose should not call it "the intake that files issues".
 
-**Negative parallelism and symmetrical antithesis.** "Not only... but also..." "It's not just about X, it's about Y." "It's not merely X, it's Y." "It's not about speed, it's about clarity." "Keeping it out of the markup means the trail is styling, not content." "So the route you're considering never looks like the route you took." "On a phone, the tap is both the hover and the click." "Zorb had collision detection. You had the plan." Models lean on balanced `X, not Y` contrasts and mirrored clauses at the end of paragraphs to manufacture wit. State the practical point directly without the symmetrical costume.
+**Negative parallelism and symmetrical antithesis.** "Not only... but also..." "It's not just about X, it's about Y." "It's not merely X, it's Y." "It's not about speed, it's about clarity." "Keeping it out of the markup means the trail is styling, not content." "So the route you're considering never looks like the route you took." "On a phone, the tap is both the hover and the click." "Zorb had collision detection. You had the plan." "Menu copy, photos, and prices sit at the other end, because a wrong price or a bad photo is a decision about the business, not a bug." Watch especially for the reframe closer, `"...is a [noun], not a [noun]"`, parked at the end of a paragraph. Models lean on balanced `X, not Y` contrasts and mirrored clauses at the end of paragraphs to manufacture wit. State the practical point directly without the symmetrical costume.
 
 **Epigrammatic paragraph closers and tautologies.** "It counts tiles. It has no idea what any of them cost." "Park on a cell with rocks on all four sides and nothing highlights at all, because there is nothing to highlight." "Because the rings go out evenly and a cell is never marked twice, the first arrival is the best one." Ending paragraph after paragraph on a bumper-sticker aphorism is one of the strongest statistical signatures of LLM prose. End paragraphs on a plain observation or consequence instead.
 
 **Repeated `[Imperative] and [consequence]` shortcuts.** "Hand it two coordinates and it hands back an answer." "Swap `shift` for `pop` and you have depth-first search." "Hover over any open cell and a pale highlight shows the route." "Flip it around and we have Zorb's walk." Using `[Imperative verb] X and [clause] Y` more than once in a piece creates a mechanical rhythm. Separate the reader's action from the observation (`"Click or tap on any free cell. Notice how Zorb navigates."`) or use a normal `if` / `when` clause.
 
-**Rule-of-three overuse, counted setups, and anaphoric fragment runs.** Forcing ideas into groups of three (triple adjectives, triple nouns, triple parallel clauses), pre-counting small sets in prose (`"Two collections do all the work"`, `"That leaves three small helpers we will lean on constantly"`, `"Each step does three small jobs:"`), or marching through three parallel fragments (`"Those three continue statements are the ripple rules, one line each. Skip anything off the grid. Skip anything filled with rock. Skip anything we've already marked."`) reads immediately as generated. Let items come in pairs or whatever count reality requires, use an actual list when items need enumeration, or explain them in normal connected sentences.
+**Rule-of-three overuse, counted setups, and anaphoric fragment runs.** Forcing ideas into groups of three (triple adjectives, triple nouns, triple parallel clauses), pre-counting small sets in prose (`"Two collections do all the work"`, `"That leaves three small helpers we will lean on constantly"`, `"Each step does three small jobs:"`), or marching through three parallel fragments (`"Those three continue statements are the ripple rules, one line each. Skip anything off the grid. Skip anything filled with rock. Skip anything we've already marked."`) reads immediately as generated. Let items come in pairs or whatever count reality requires, use an actual list when items need enumeration, or explain them in normal connected sentences. The same reflex shows up as a crammed reason triad with broken parallelism, such as "because their mistakes are cheap, easy to undo, and they run constantly" (two adjectives and a clause jammed into one `because`). Split the reasons into short sentences, one idea each.
 
 **Clipped stage-direction transitions and verbless fragments.** "Now the first ring." "Now the search itself." "Time to write it." "The short version:" "Fine. Try the other axis instead." "Four new cells, all marked `2`:" "One extra note per cell, made at the moment of discovery, when we know it for free." "Six moves, exactly as promised." Models drop subjects and verbs to sound punchy. Write complete spoken sentences with `we` or the actor as the subject (`"We mark these four new cells with a 2:"`, `"That's just one extra note per cell..."`).
 
 **Italicized-copula revelations and short significance markers.** "That queue ordering *is* the breadth-first part." "A grid *is* a graph." "Notice the two ways out of this function... That second case matters." "That is the entire world. There is no map." Italicizing `is` or `are` or dropping a three-word sentence to announce that something matters is a cousin of the applause line. Explain the mechanism plainly and let the reader feel why it matters.
 
-**Inanimate agency and clever-helper idioms.** "Two collections do all the work." "`cameFrom` pulls double duty as..." "A CSS transition does all the animating for us." "The stylesheet handles the rest." Keep `we`, `you`, or the recurring character as the primary actor rather than treating variables and stylesheets like little employees.
+**Inanimate agency and clever-helper idioms.** "Two collections do all the work." "`cameFrom` pulls double duty as..." "A CSS transition does all the animating for us." "The stylesheet handles the rest." Keep `we`, `you`, or the recurring character as the primary actor rather than treating variables and stylesheets like little employees. The same goes for things in a figure: "the checks run with nobody watching" and "menu copy sits at the other end" become "Jules lets the checks run on their own" and "Jules writes the menu copy".
 
 **Self-aware workshop quips.** "That is the correct amount of broken for this point in the article." "You can patch the rule to allow that, and people do." Dry, meta-commentary wit sounds like an LLM performing casualness. Prefer earnest enthusiasm, a concrete parenthetical joke (`"(maybe a rock....lobster?)"`), or a direct check-in (`"Simple, right? As it turns out, no."`, `"Pretty neat, right?"`).
 
@@ -1515,6 +1515,35 @@ do not write captions. And after the image, the prose picks up from what the
 image established rather than narrating it back. "As you can see in the figure
 above" is a tell that the setup sentence was not doing its job.
 
+### After a Figure, Say It Simply
+
+The paragraph after a figure has one job. It tells the reader the thing the figure can't show, usually the why, in words a 12-year-old could follow if you read them aloud. It does not grade the picture, rename what the picture already labeled, or squeeze the picture back into a summary.
+
+Watch for these four habits right after an image:
+
+- **The verdict opener.** A short, abstract judgment about the picture, such as "Both ends are occupied.", "The pattern is clear.", "Notice the asymmetry.", "Both sides matter.", or "The middle is where it gets interesting." It sounds clever and says nothing the reader can use. Point at the concrete part instead ("Look at the two ends of the dial.") or start right away with the character doing something.
+- **Renamed labels.** If the figure says "filing issues from repeated errors", the prose says "issue filing" too. Do not invent a new noun phrase for it, like "the intake that files issues". The reader should never have to work out that two names mean the same box.
+- **Nobody in charge.** Things in the picture do not "run with nobody watching" or "sit at the other end" by themselves. Put the running example's character, or `we`, in charge of the sentence.
+- **Packed reasons.** One reason per sentence, in the order you would say them out loud. Never cram three reasons into a single "because" clause.
+
+Then read the paragraph aloud. If it sounds like a slide caption or a consultant's summary instead of something Kirupa would say to a friend sitting next to him, rewrite it.
+
+A worked example. This followed a figure of a trust dial with four settings, filled in for a bakery website run by a developer named Jules:
+
+> Both ends are occupied. The checks before every deploy and the intake that files issues run with nobody watching, because their mistakes are cheap, easy to undo, and they run constantly. Menu copy, photos, and prices sit at the other end, because a wrong price or a bad photo is a decision about the business, not a bug.
+
+The plain version:
+
+> Look at the two ends of the dial. On the fully automated end, Jules lets the checks and the issue filing run on their own. They run all the time, and when they get something wrong, it's cheap and easy to undo. On the other end, Jules writes the menu copy, picks the photos, and sets the prices. Those are decisions about the bakery, and Jules wants to make them personally.
+
+What changed, one line per problem:
+
+- "Both ends are occupied." became "Look at the two ends of the dial.", which points at the picture instead of grading it.
+- "The intake that files issues" became "the issue filing", the figure's own words.
+- Jules is now the subject of every sentence, so nothing runs or sits on its own.
+- The three crammed reasons became two short sentences, one idea each.
+- "A decision about the business, not a bug" became a plain statement with no "X, not Y" costume.
+
 ### Prose, Code, and Figures Have To Agree
 
 An article is several artifacts telling one story: prose, code blocks, and
@@ -1726,6 +1755,7 @@ Do not:
 - misclassify obvious playful hyperbole ("not enough seconds in the universe", "a bazillion") as a factual error in a critique
 - strip the voice while removing those tells, since flat and correct is still machine-shaped
 - close a paragraph on a verbless slogan, or restate a point as one after already making it plainly
+- follow a figure with a verdict opener ("Both ends are occupied."), renamed labels, sentences with no actor, or reasons crammed into one clause (see After a Figure, Say It Simply)
 
 ## Output Recipe
 
@@ -1746,6 +1776,7 @@ When asked to write in this format, follow this working order:
 13. Run a final proofreading and humanizer pass before delivering. This is the last check before any draft or revision is finalized:
     - **Mechanical and artifact check:** Read every sentence for agreement, doubled verbs and conjunctions, dangling subjects, reason-because redundancy, and spelling, then check the piece against Prose, Code, and Figures Have To Agree.
     - **Humanizer 24-pattern and Kirupa-corpus check:** Scan every paragraph for banned machine vocabulary, significance inflation, undue notability claims, superficial `-ing` tail clauses (`, highlighting...`, `, underscoring...`, `, ensuring...`), promotional language, vague attributions (`experts argue`), formulaic `"Despite these challenges"` sections, copula avoidance (`serves as` instead of `is`), negative parallelisms (`not only... but`, `it's not just about X, it's Y`), rule-of-three reflexes, synonym cycling, false `"from X to Y"` ranges, em dashes in native KONVO prose, mechanical boldface, `**Bold:**` inline-header bullets, decorative emoji, curly quotes, collaborative/sycophantic artifacts, wordy filler (`in order to`, `due to the fact that`), stacked hedging, generic positive conclusions, and second-wave LLM explainer syntax (epigrammatic paragraph closers, `[Imperative] and [consequence]` chains, counted triads, anaphoric fragments, and verbless stage directions). Rewrite any flagged sentence into Kirupa's unpacked, spoken cadence before returning the output.
+    - **After-figure check:** Reread the paragraph right after every figure. Rewrite it if it opens with a verdict about the picture ("Both ends are occupied."), renames what the figure already labeled, has no actor in charge, crams several reasons into one clause, or ends on an "X, not Y" reframe. It should add the why in words you would say aloud to a friend.
 
 ## Default Article Template
 
@@ -1858,6 +1889,7 @@ Before delivering, verify:
 - every branch the article depends on later is planted at first mention
 - no summary paragraph promises more than a later caveat allows
 - walkthroughs distinguish what the reader can see from what the system can see
+- every paragraph after a figure points at the concrete part or starts with an actor, reuses the figure's own labels, gives one reason per sentence, and has no verdict opener or "X, not Y" closer
 
 ## Litmus Test
 

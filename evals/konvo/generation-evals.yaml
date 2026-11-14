@@ -1043,4 +1043,31 @@ cases:
       - synonym cycling for the graph or Map
       - keeping the generic positive conclusion or vague "experts argue" attribution
 
+  - id: konvo_gen_054
+    mode: draft_revision
+    title: Say it simply after a figure
+    prompt: |
+      This paragraph follows a figure of a trust dial with four settings (Human
+      does it, Human approves, Human spot-checks, Fully automated), filled in for
+      a bakery website run by a developer named Jules. The fully automated end
+      lists "running the checks before every deploy" and "filing issues from
+      repeated errors". The human end lists "menu copy, photos, and prices".
+      Revise the paragraph so it is very simple:
 
+      Both ends are occupied. The checks before every deploy and the intake that
+      files issues run with nobody watching, because their mistakes are cheap,
+      easy to undo, and they run constantly. Menu copy, photos, and prices sit at
+      the other end, because a wrong price or a bad photo is a decision about the
+      business, not a bug.
+    should_demonstrate:
+      - opens by pointing at the concrete part of the figure ("Look at the two ends of the dial.") or with Jules doing something, not with a verdict
+      - keeps Jules as the subject of the sentences about each end
+      - reuses the figure's own words such as "issue filing" instead of "the intake that files issues"
+      - splits the reasons into short sentences, one idea each
+      - states that menu copy, photos, and prices are decisions Jules makes personally, in plain words
+    should_avoid:
+      - opening with Both ends are occupied or any other verdict about the picture
+      - an X-not-Y reframe such as calling prices a decision about the business, not a bug
+      - a single "because" clause carrying three reasons
+      - inventing a new noun phrase for something the figure already labeled
+      - any em dash or curly quotation marks

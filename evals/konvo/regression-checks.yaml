@@ -886,4 +886,22 @@ checks:
       - use parentheses, commas, or a spaced hyphen (" - ") for asides in native KONVO prose, and straight ASCII quotes throughout
       - run the final Humanizer 24-pattern and Kirupa-corpus self-check on every draft before delivery
 
-
+  - id: konvo_reg_064
+    name: after_figure_prose_says_it_simply
+    priority: high
+    description: >-
+      The paragraph right after a figure must add the why in plain spoken
+      words. It must not grade the picture, rename its labels, drop the actor,
+      cram reasons into one clause, or end on an "X, not Y" reframe.
+    failure_signals:
+      - opening the post-figure paragraph with a verdict about the picture such as "Both ends are occupied.", "The pattern is clear.", or "Notice the asymmetry."
+      - renaming something the figure already labeled, such as calling "filing issues from repeated errors" "the intake that files issues"
+      - sentences where things in the figure act on their own ("run with nobody watching", "sit at the other end") instead of the running example's character or "we"
+      - several reasons crammed into one "because" clause with broken parallelism ("because their mistakes are cheap, easy to undo, and they run constantly")
+      - ending the paragraph on a reframe closer such as "a decision about the business, not a bug"
+    preferred_fix:
+      - point at the concrete part of the figure ("Look at the two ends of the dial.") or start with the actor doing something
+      - reuse the figure's own labels and the running example's concrete nouns
+      - keep the recurring character or "we" as the subject of each sentence
+      - give one reason per sentence, in the order you would say them aloud
+      - state the point plainly, and read the paragraph aloud to check it sounds like Kirupa talking to a friend

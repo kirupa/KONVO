@@ -1071,3 +1071,27 @@ cases:
       - a single "because" clause carrying three reasons
       - inventing a new noun phrase for something the figure already labeled
       - any em dash or curly quotation marks
+
+  - id: konvo_gen_060
+    mode: draft_revision
+    title: Introduce a quote without an invented reading habit
+    prompt: |
+      This paragraph sets up a callout quote in an article about context
+      engineering. Revise it so it introduces the quote plainly and still ends
+      with a colon lead-in:
+
+      The name caught on in June 2025, when Shopify's CEO, Tobi Lütke, said he
+      preferred it to prompt engineering, and Andrej Karpathy agreed a few days
+      later. Karpathy's description is the one I keep coming back to:
+
+      The callout that follows quotes Karpathy's post on X: "[C]ontext
+      engineering is the delicate art and science of filling the context window
+      with just the right information for the next step."
+    should_demonstrate:
+      - introduces the quote with who said it and when ("A few days later, Andrej Karpathy agreed and described context engineering like this:")
+      - keeps a colon at the end of the lead-in so the callout still has an introducing sentence
+      - names context engineering outright instead of using a pronoun that could point back at prompt engineering
+    should_avoid:
+      - claiming a reading habit such as "the one I keep coming back to" or "the line that stuck with me"
+      - a vague "the one" or "my favorite" pick with no alternatives shown
+      - any em dash or curly quotation marks

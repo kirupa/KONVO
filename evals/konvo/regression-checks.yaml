@@ -905,3 +905,20 @@ checks:
       - keep the recurring character or "we" as the subject of each sentence
       - give one reason per sentence, in the order you would say them aloud
       - state the point plainly, and read the paragraph aloud to check it sounds like Kirupa talking to a friend
+
+  - id: konvo_reg_068
+    name: no_invented_reading_habits
+    priority: high
+    description: >-
+      A quote or source must be introduced by who said it, when, and what they
+      were responding to. The prose must not claim a reading habit or a lasting
+      attachment the writer never had, such as "the one I keep coming back to".
+    failure_signals:
+      - lead-ins such as "X's description is the one I keep coming back to:", "the best way I've heard it put", "the line that stuck with me", or "a framing I find myself returning to"
+      - a vague "the one" or "my favorite" pick that points at alternatives the reader never saw
+      - announcing a feeling about a source instead of saying what the source adds
+    preferred_fix:
+      - name who said it, when, and what they were responding to ("A few days later, Andrej Karpathy agreed and described context engineering like this:")
+      - follow the quote with a concrete sentence about what it adds
+      - keep a plain present-tense opinion about a specific part ("The part I like is the next step.") when the author has one
+      - show real evidence of a habit ("I've sent this post to three teammates this year") instead of announcing one

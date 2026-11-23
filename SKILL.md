@@ -937,6 +937,15 @@ Vague intensifiers such as very important, significant impact, and major role ne
 
 **Clipped stage-direction transitions and verbless fragments.** "Now the first ring." "Now the search itself." "Time to write it." "The short version:" "Fine. Try the other axis instead." "Four new cells, all marked `2`:" "One extra note per cell, made at the moment of discovery, when we know it for free." "Six moves, exactly as promised." Models drop subjects and verbs to sound punchy. Write complete spoken sentences with `we` or the actor as the subject (`"We mark these four new cells with a 2:"`, `"That's just one extra note per cell..."`).
 
+**Label-and-rate setups.** "The name is the part that sticks around." "That second row is where the real savings are." "The phrase that matters in that table is *the unwritten rules*." "The rounds are the real win." "Two more habits keep it honest." "A design system writes those explanations down once." Each of these names a part of the example and hands it a rating (the part that matters, where the real savings are, the real win, what keeps it honest) instead of saying what is actually there. The general shape is `[The X / That Y] is [the part / where / what] [the real / that matters / that sticks / that wins]`, or a short abstract sentence that ranks or summarizes before anything is explained. It reads like a slide caption, and it is one of the fastest ways to make Kirupa's prose sound generated. The fix is to point at the concrete thing, say what we see in it, and then say what that means, in the order Kirupa would say it out loud, even when that takes two or three plain sentences instead of one tidy one:
+
+- Before: "The name is the part that sticks around. IBM's Carbon design system describes a token as a role that gets a value per theme."
+- After: "What's noteworthy here is that the name `--bodyText` never changes. Whether we are in light mode or dark mode, our page asks for the same name, and only the value behind it is different. IBM's Carbon design system works the same way."
+- Before: "That second row is where the real savings are. Tokens are cheap, and they keep getting cheaper. My attention is a lot harder to come by."
+- After: "Take a look at the second row. Every speech bubble in it is a round where I had to stop what I was doing, open the page, figure out what was wrong, and type up a correction. The tokens those rounds use are cheap, and they keep getting cheaper. My time and attention are not, and that's why cutting down the number of rounds matters more to me than any of the token savings."
+
+Wordier is fine here. A rule of thumb: if a sentence would make sense as a heading over the paragraph it sits in, it is probably a label, not a sentence. Replace it with what the reader should look at and what happens because of it.
+
 **Italicized-copula revelations and short significance markers.** "That queue ordering *is* the breadth-first part." "A grid *is* a graph." "Notice the two ways out of this function... That second case matters." "That is the entire world. There is no map." Italicizing `is` or `are` or dropping a three-word sentence to announce that something matters is a cousin of the applause line. Explain the mechanism plainly and let the reader feel why it matters.
 
 **Inanimate agency and clever-helper idioms.** "Two collections do all the work." "`cameFrom` pulls double duty as..." "A CSS transition does all the animating for us." "The stylesheet handles the rest." Keep `we`, `you`, or the recurring character as the primary actor rather than treating variables and stylesheets like little employees. The same goes for things in a figure: "the checks run with nobody watching" and "menu copy sits at the other end" become "Jules lets the checks run on their own" and "Jules writes the menu copy".
@@ -1523,7 +1532,7 @@ The paragraph after a figure has one job. It tells the reader the thing the figu
 
 Watch for these four habits right after an image:
 
-- **The verdict opener.** A short, abstract judgment about the picture, such as "Both ends are occupied.", "The pattern is clear.", "Notice the asymmetry.", "Both sides matter.", or "The middle is where it gets interesting." It sounds clever and says nothing the reader can use. Point at the concrete part instead ("Look at the two ends of the dial.") or start right away with the character doing something.
+- **The verdict opener.** A short, abstract judgment about the picture, such as "Both ends are occupied.", "The pattern is clear.", "Notice the asymmetry.", "Both sides matter.", "The middle is where it gets interesting.", or "That second row is where the real savings are." (see Label-and-rate setups) It sounds clever and says nothing the reader can use. Point at the concrete part instead ("Look at the two ends of the dial.") or start right away with the character doing something.
 - **Renamed labels.** If the figure says "filing issues from repeated errors", the prose says "issue filing" too. Do not invent a new noun phrase for it, like "the intake that files issues". The reader should never have to work out that two names mean the same box.
 - **Nobody in charge.** Things in the picture do not "run with nobody watching" or "sit at the other end" by themselves. Put the running example's character, or `we`, in charge of the sentence.
 - **Packed reasons.** One reason per sentence, in the order you would say them out loud. Never cram three reasons into a single "because" clause.
@@ -1757,6 +1766,7 @@ Do not:
 - misclassify obvious playful hyperbole ("not enough seconds in the universe", "a bazillion") as a factual error in a critique
 - strip the voice while removing those tells, since flat and correct is still machine-shaped
 - close a paragraph on a verbless slogan, or restate a point as one after already making it plainly
+- rate a part of the example instead of describing it ("The name is the part that sticks around.", "That second row is where the real savings are.", "The rounds are the real win."); point at the concrete thing and say what it means in plain spoken sentences, even if wordier (see Label-and-rate setups)
 - follow a figure with a verdict opener ("Both ends are occupied."), renamed labels, sentences with no actor, or reasons crammed into one clause (see After a Figure, Say It Simply)
 
 ## Output Recipe
@@ -1891,6 +1901,7 @@ Before delivering, verify:
 - every branch the article depends on later is planted at first mention
 - no summary paragraph promises more than a later caveat allows
 - walkthroughs distinguish what the reader can see from what the system can see
+- no sentence names a part and rates it ("X is the part that sticks around", "that's where the real Y is", "Z is the real win"); each one says what is there and what it means
 - every paragraph after a figure points at the concrete part or starts with an actor, reuses the figure's own labels, gives one reason per sentence, and has no verdict opener or "X, not Y" closer
 
 ## Litmus Test

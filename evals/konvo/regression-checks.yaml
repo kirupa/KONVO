@@ -922,3 +922,21 @@ checks:
       - follow the quote with a concrete sentence about what it adds
       - keep a plain present-tense opinion about a specific part ("The part I like is the next step.") when the author has one
       - show real evidence of a habit ("I've sent this post to three teammates this year") instead of announcing one
+
+  - id: konvo_reg_069
+    name: no_label_and_rate_setups
+    priority: high
+    description: >-
+      Prose must not name a part of the example and hand it a rating instead
+      of saying what is there, such as "The name is the part that sticks
+      around." or "That second row is where the real savings are." Point at the
+      concrete thing and say what it means in Kirupa's spoken voice, even when
+      that takes more words.
+    failure_signals:
+      - '"[The X] is the part that [Y]" or "[That Y] is where the real [Z] is/are" setups'
+      - '"X is the real win", "the phrase that matters is", "two more habits keep it honest", or a similar short sentence that ranks or summarizes before explaining'
+      - a sentence that would work as a heading over its own paragraph
+    preferred_fix:
+      - point at the concrete part ("Take a look at the second row.") and say what we see in it
+      - follow with the consequence in a plain sentence ("This means that...", "What's noteworthy here is that...")
+      - accept two or three plain sentences instead of one tidy label

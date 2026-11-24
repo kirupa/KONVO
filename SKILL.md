@@ -235,7 +235,7 @@ Choose the narrowest useful label. Do not manufacture one finding in every categ
 - **AI-shaped habit:** empty profundity, significance inflation ("stands as a testament", "pivotal moment", "indelible mark"), undue notability claims, superficial `-ing` tail clauses (", highlighting...", ", underscoring...", ", ensuring...", ", showcasing..."), promotional brochure language ("boasts a", "vibrant", "profound"), vague attributions ("experts argue", "industry reports"), formulaic "Despite these challenges... Future Outlook" sections, copula avoidance ("serves as", "stands as", "boasts" instead of "is/are/has"), applause lines, prompt echoes, transplantable phrases, machine vocabulary, negative parallelisms ("not only... but", "it's not just about X, it's Y"), rule-of-three reflexes, synonym cycling (elegant variation), false `"from X to Y"` ranges, epigrammatic paragraph closers, symmetrical antithesis ("X, not Y" or "never looks like"), counted-triad setups ("Two collections do all the work", "Three small jobs"), anaphoric fragment runs ("Skip X. Skip Y. Skip Z."), strings of `[Imperative] and [consequence]` sentences, italicized-copula revelations ("That ordering *is* the breadth-first part"), clipped stage-direction transitions ("Now the search itself", "The short version:"), inanimate agency, figurative stand-ins for a plain fact ("design questions have a habit of turning into a line outside the design team's door" instead of "the bottleneck is a designer's time"), wordy filler ("in order to", "due to the fact that", "at this point in time"), stacked hedging ("could potentially possibly"), generic positive conclusions ("the future looks bright", "exciting times lie ahead"), fractal summaries, uniform positivity, invented reading habits ("the one I keep coming back to"), over-organization, inline-header `**Bold:**` vertical lists, mechanical boldface, decorative emoji, curly quotes, and punctuation clustering
 - **Logic and credibility:** unsupported generalizations, contradictions, causal leaps, false certainty, unverifiable numbers, missing sources, and load-bearing caveats (do not misclassify playful figurative hyperbole such as "not enough seconds in the universe" or "a bazillion items" as a factual error unless it could genuinely mislead a reader about a real measurement or limit)
 - **Audience and channel:** assumed knowledge, mismatched depth, weak hooks, channel formatting, length, and calls to action
-- **Teaching and visuals:** a missing example, analogy that creates a false model, invisible state change, unexplained jargon, or a visual opportunity that would carry real explanatory work
+- **Teaching and visuals:** a missing example, analogy that creates a false model, invisible state change, unexplained jargon, the piece's star term named before it is described (high severity when it is the term in the title), or a visual opportunity that would carry real explanatory work
 
 Call something an **AI-shaped habit**, not proof that AI wrote it. Explain the writing problem the pattern creates. "This sounds AI-generated" is not a critique.
 
@@ -445,7 +445,7 @@ Flag each of these that applies:
 - **Confusing, abrupt, or badly ordered sections.** Where a reader following along would lose the thread, where two paragraphs are welded together with the step between them missing, and where something is explained before the thing it depends on.
 - **Voice or tone shifts that would change the author.** Flag accidental marketing voice, generic warmth, or register changes before editing them. Preserve deliberate informality, spoken hedges (`sorta kinda`, `So basically,`), repeated nouns across adjacent sentences that keep the focus clear, and playful hyperbole (`not enough seconds in the universe`, `a hoot`).
 - **Generic or compressed AI-sounding syntax.** Everything under Edit The Writing, Not The Detector Score and How Long-Form Tutorials and Explainers Actually Behave—not only buzzwords (`delve`, `tapestry`), but second-wave LLM explainer habits such as epigrammatic paragraph closers, symmetrical antithesis (`X, not Y`), strings of `[Imperative] and [consequence]` sentences, counted-triad setups (`Two collections do all the work`), anaphoric fragment runs (`Skip X. Skip Y. Skip Z.`), italicized-copula emphasis (`That ordering *is* the breadth-first part`), and verbless stage directions (`Now the search itself.`). Quote the actual line so they can see it, and rewrite it into uncompressed, spoken human sentences.
-- **Missing context or assumed knowledge.** The thing the author knows so well they forgot to say it, usually the setup, the constraint, or the reason the obvious approach fails. Also the term used once and never defined.
+- **Missing context or assumed knowledge.** The thing the author knows so well they forgot to say it, usually the setup, the constraint, or the reason the obvious approach fails. Also the term used once and never defined, and the star term the whole piece is about named before it is described.
 - **Places where a diagram or example would help.** Name the paragraph and say what the visual would show, not just that one would be nice.
 
 Quote the line, say what is wrong in a sentence, and move on. A flag pass longer than the draft it reviews is its own failure.
@@ -865,6 +865,30 @@ Example pattern:
 
 Do not lead with terminology unless the user explicitly asked for a dense expert treatment.
 
+### Describe the Star Term Before You Name It
+
+The term a piece is built around (the one in its title, like "design system", "context engineering", or "Merkle tree") is the term the reader most needs to understand, so it gets described in plain words before it is named. This holds for every artifact that carries the piece: the article body, the TL;DR or summary above it, slide text, speaker notes, video scripts, figure labels, and social copy. A title or H1 can name the term, because a title has to. The first time the term shows up anywhere the reader reads or hears it as a sentence, it should arrive as a name for something we just described.
+
+Assume the reader doesn't know the term, even when it is common in the field, unless the user says the audience already uses it every day. "Design system" sounds obvious to the person writing about design systems. To someone who has never worked with a design team, it is a strange phrase.
+
+The move looks like this:
+
+1. Describe the problem or need in everyday terms, using the running example. ("Every new page needs a designer to look at it. The bottleneck is a designer's time.")
+2. Describe the thing that solves it with generic words a newcomer already knows, like shared guidelines, a written-down set of answers, or a list of rules everyone follows. ("What if the designer wrote down the answers to the questions that keep coming up? If those answers lived in one set of shared guidelines, people and agents could look most of them up on their own.")
+3. Only then name it. ("That set of shared guidelines has a name, and it's called a **design system**.")
+
+Before:
+
+> This is where a **design system** comes in. It writes down the answers a designer would give, so people and agents can find most of them on their own.
+
+After:
+
+> So, what if Hollis wrote down the answers to the questions that keep coming up? If all of those answers lived in one set of shared guidelines, people and agents could look most of them up on their own. That set of shared guidelines has a name, and it's called a **design system**.
+
+The before version names the term and defines it a sentence later, which forces the reader to hold a strange phrase in their head without knowing what it means. "This is where X comes in" is fine as a rescue line (see Introduce the Real Solution as a Rescue) only after X has already been described.
+
+Watch the other places the term sneaks in early. A figure labeled "Without a design system / With a design system" that appears before the description names the term first, so move the figure after the description or relabel it. In a deck, the narration on the title slide and the text on the slides leading up to the reveal follow the same rule as the article intro. In a TL;DR, open with a plain description ("A design system is a shared set of guidelines for how a site should look, sound, and behave.") before using the term in a claim.
+
 ## Edit The Writing, Not The Detector Score
 
 A passage has to do its job for a human reader: can the intended reader understand it, trust the claims, follow the reasoning step by step, and hear a real person's judgment in what was selected, emphasized, questioned, and left unresolved? Those standards apply to prose written by a person, a model, or both.
@@ -1134,12 +1158,14 @@ Follow this article architecture unless the topic strongly resists it.
 
 The introduction should usually do four things quickly:
 
-- name the concept
+- describe the concept in plain words, then name it
 - give a human-scale reason it matters
 - hint at where it shows up in real life
 - promise what the article will explain
 
 An optional joke or light aside can appear here.
+
+Never name the article's star term before the reader knows what it is. Describe it with generic words first (shared guidelines, a written-down set of answers), then hand over the name. See Describe the Star Term Before You Name It.
 
 Do not start with a dictionary definition alone.
 
@@ -1229,6 +1255,8 @@ Language should signal relief and momentum:
 - "This is where X comes in."
 - "X solves this by..."
 - "The best way to see why is to keep using the same example."
+
+If this is the first time the reader meets the concept's name, describe what it does in plain words before the rescue line, so the name lands on something the reader already understands. See Describe the Star Term Before You Name It.
 
 ### 7. Break the Core Explanation Into Named Stages
 
@@ -1749,6 +1777,7 @@ Do not:
 
 - open with a stiff encyclopedia definition
 - dump jargon before intuition exists
+- name the piece's star term (in the intro, TL;DR, slide text, speaker notes, or a figure label) before describing it in plain words; describe it first with generic words like "shared guidelines", then name it (see Describe the Star Term Before You Name It)
 - bounce between unrelated metaphors
 - explain only the correct approach without showing why it is needed when the topic benefits from tradeoffs or contrast
 - use punctuation as camouflage for AI assistance, or remove a useful mark solely because a detector currently notices it
@@ -1792,6 +1821,7 @@ When asked to write in this format, follow this working order:
     - **Mechanical and artifact check:** Read every sentence for agreement, doubled verbs and conjunctions, dangling subjects, reason-because redundancy, and spelling, then check the piece against Prose, Code, and Figures Have To Agree.
     - **Humanizer 24-pattern and Kirupa-corpus check:** Scan every paragraph for banned machine vocabulary, significance inflation, undue notability claims, superficial `-ing` tail clauses (`, highlighting...`, `, underscoring...`, `, ensuring...`), promotional language, vague attributions (`experts argue`), formulaic `"Despite these challenges"` sections, copula avoidance (`serves as` instead of `is`), negative parallelisms (`not only... but`, `it's not just about X, it's Y`), rule-of-three reflexes, synonym cycling, false `"from X to Y"` ranges, em dashes in native KONVO prose, mechanical boldface, `**Bold:**` inline-header bullets, decorative emoji, curly quotes, collaborative/sycophantic artifacts, invented reading habits (`the one I keep coming back to`), wordy filler (`in order to`, `due to the fact that`), stacked hedging, generic positive conclusions, figurative stand-ins for a plain fact (lines outside doors, gates, and personified abstract nouns), and second-wave LLM explainer syntax (epigrammatic paragraph closers, `[Imperative] and [consequence]` chains, counted triads, anaphoric fragments, and verbless stage directions). Rewrite any flagged sentence into Kirupa's unpacked, spoken cadence before returning the output.
     - **After-figure check:** Reread the paragraph right after every figure. Rewrite it if it opens with a verdict about the picture ("Both ends are occupied."), renames what the figure already labeled, has no actor in charge, crams several reasons into one clause, or ends on an "X, not Y" reframe. It should add the why in words you would say aloud to a friend.
+    - **Star-term check:** Find the first place the piece's star term appears outside the title, across the TL;DR, intro, figure labels, slide text, and speaker notes. Confirm a plain-words description comes before it. If the term shows up first, rewrite that spot so the description leads and the name follows.
 
 ## Default Article Template
 
@@ -1898,6 +1928,7 @@ Before delivering, verify:
 - headings follow the author's established capitalization, or sentence case when no author pattern exists; bullets do not open with bolded labels; decorative emoji were not added
 - personality is intact, with humor and warmth left in rather than sanded to neutral
 - jargon appears after intuition, not before
+- the star term is described in plain words before it is first named in every artifact (TL;DR, intro, figure labels, slide text, speaker notes), with only the title exempt
 - the conclusion reconnects to the main mental model
 - the tone has some personality without turning into a bit
 - recurring actors in the running example have names, not labels

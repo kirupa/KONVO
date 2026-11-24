@@ -940,3 +940,20 @@ checks:
       - point at the concrete part ("Take a look at the second row.") and say what we see in it
       - follow with the consequence in a plain sentence ("This means that...", "What's noteworthy here is that...")
       - accept two or three plain sentences instead of one tidy label
+
+  - id: konvo_reg_070
+    name: no_figurative_stand_ins_for_plain_facts
+    priority: high
+    description: >-
+      Prose must not dress a plain fact up as a little scene, such as "Those are
+      design questions, and design questions have a habit of turning into a line
+      outside the design team's door." State the fact directly ("The bottleneck
+      is a designer's time.") and explain it in plain spoken sentences.
+    failure_signals:
+      - decorative imagery (a line outside a door, a gate, a bite, a shelf) standing in for a claim the reader could be told directly
+      - a personified abstract noun ("design questions have a habit of", "problems like to")
+      - the same decorative metaphor called back in the summary, body, and conclusion ("without waiting in line", "We started with a line outside the designer's door")
+    preferred_fix:
+      - say the fact in about five plain words ("The bottleneck is a designer's time.")
+      - follow with the concrete consequence ("Every new page needs a designer to look at it.")
+      - keep analogies that teach a mechanism, such as the running example or a toy model

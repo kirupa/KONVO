@@ -887,6 +887,8 @@ After:
 
 The before version names the term and defines it a sentence later, which forces the reader to hold a strange phrase in their head without knowing what it means. "This is where X comes in" is fine as a rescue line (see Introduce the Real Solution as a Rescue) only after X has already been described.
 
+This description does not have to happen in the introduction, and usually it shouldn't. Describing and naming the term takes a few sentences, and those sentences make an intro long. The simpler move is to keep the term out of the intro entirely. The intro states the problem and promises the outcome in plain words, and the first body section does the describe-then-name work. See Keep the Intro Short.
+
 Watch the other places the term sneaks in early. A figure labeled "Without a design system / With a design system" that appears before the description names the term first, so move the figure after the description or relabel it. In a deck, the narration on the title slide and the text on the slides leading up to the reveal follow the same rule as the article intro. In a TL;DR, open with a plain description ("A design system is a shared set of guidelines for how a site should look, sound, and behave.") before using the term in a claim.
 
 ## Edit The Writing, Not The Detector Score
@@ -1156,16 +1158,32 @@ Follow this article architecture unless the topic strongly resists it.
 
 ### 1. Open With Context and a Tiny Hook
 
-The introduction should usually do four things quickly:
+The introduction should usually do these things quickly:
 
-- describe the concept in plain words, then name it
-- give a human-scale reason it matters
+- give a human-scale reason the topic matters
 - hint at where it shows up in real life
-- promise what the article will explain
+- state the problem plainly
+- promise what the article will help the reader do, in one sentence
 
 An optional joke or light aside can appear here.
 
-Never name the article's star term before the reader knows what it is. Describe it with generic words first (shared guidelines, a written-down set of answers), then hand over the name. See Describe the Star Term Before You Name It.
+Never name the article's star term before the reader knows what it is. The easiest way to follow that rule is to leave the term out of the intro and describe-then-name it in the first body section. See Describe the Star Term Before You Name It.
+
+#### Keep the Intro Short
+
+An intro is usually two short paragraphs, then a handoff like "Onwards!" into the first heading. It sets up the problem and promises the outcome. It doesn't define the concept, introduce the running example's backstory, tour the article section by section, or show the first diagram. All of that belongs in the body, where the reader has already decided to keep going.
+
+Here is the shape Kirupa uses, from the design system article:
+
+> Every AI factory we've looked at in this series ends the same way. Something it made lands in front of a person... They care whether it looks like it belongs, whether they can read it, and whether it works for them.
+>
+> Those are design questions, and answering them usually means asking someone with the right UX background, which is usually a designer. As agents create more and more user-facing content, a major bottleneck is a designer's time. In this article, we'll talk about how we can ensure our agents create high-quality output at a rapid pace without overwhelming our designer(s).
+>
+> Onwards!
+
+Notice that the promise names the outcome the reader wants (high-quality output, fast, without overwhelming the designer), not the term that delivers it. The term shows up in the first body section, after it has been described.
+
+If an intro runs past about 150 words, or past two paragraphs before "Onwards!", find what can move into the body. A section-by-section roadmap ("We'll walk through X, then measure Y, then build Z, and that last part includes...") almost always can be cut, because the headings already do that job. The same goes for a deck: the title slide's narration states the problem and the outcome in a sentence or two, and the definition waits for its own slides.
 
 Do not start with a dictionary definition alone.
 
@@ -1777,6 +1795,7 @@ Do not:
 
 - open with a stiff encyclopedia definition
 - dump jargon before intuition exists
+- write a long intro that defines the concept, tells the running example's backstory, or tours the article section by section; keep it to about two short paragraphs that state the problem and promise the outcome, then "Onwards!" (see Keep the Intro Short)
 - name the piece's star term (in the intro, TL;DR, slide text, speaker notes, or a figure label) before describing it in plain words; describe it first with generic words like "shared guidelines", then name it (see Describe the Star Term Before You Name It)
 - bounce between unrelated metaphors
 - explain only the correct approach without showing why it is needed when the topic benefits from tradeoffs or contrast
@@ -1928,6 +1947,7 @@ Before delivering, verify:
 - headings follow the author's established capitalization, or sentence case when no author pattern exists; bullets do not open with bolded labels; decorative emoji were not added
 - personality is intact, with humor and warmth left in rather than sanded to neutral
 - jargon appears after intuition, not before
+- the intro is about two short paragraphs (roughly 150 words or less) before the handoff, states the problem and promises the outcome in plain words, and leaves definitions, backstory, roadmaps, and the first diagram to the body
 - the star term is described in plain words before it is first named in every artifact (TL;DR, intro, figure labels, slide text, speaker notes), with only the title exempt
 - the conclusion reconnects to the main mental model
 - the tone has some personality without turning into a bit

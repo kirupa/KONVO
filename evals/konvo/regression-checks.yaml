@@ -957,3 +957,22 @@ checks:
       - say the fact in about five plain words ("The bottleneck is a designer's time.")
       - follow with the concrete consequence ("Every new page needs a designer to look at it.")
       - keep analogies that teach a mechanism, such as the running example or a toy model
+
+  - id: konvo_reg_071
+    name: describe_star_term_before_naming_it
+    priority: high
+    description: >-
+      The term a piece is built around must be described in plain words before
+      it is first named, everywhere outside the title: TL;DR, intro, figure
+      labels, slide text, and speaker notes. "This is where a design system
+      comes in." as the first mention fails. Describing shared guidelines that
+      answer a designer's recurring questions, then saying "That set of shared
+      guidelines has a name, and it's called a design system." passes.
+    failure_signals:
+      - the star term appears in the intro, TL;DR, slide text, or narration before any plain-words description of it
+      - '"This is where [term] comes in." used as the first mention, with the definition arriving afterward'
+      - a figure labeled with the star term ("Without a design system / With a design system") shown before the term is described
+    preferred_fix:
+      - describe the need in the running example first ("The bottleneck is a designer's time.")
+      - describe the solution with generic words a newcomer knows, such as "shared guidelines" or "a written-down set of answers"
+      - then name it ("That set of shared guidelines has a name, and it's called a design system.")

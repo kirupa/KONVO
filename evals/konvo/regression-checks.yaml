@@ -976,3 +976,23 @@ checks:
       - describe the need in the running example first ("The bottleneck is a designer's time.")
       - describe the solution with generic words a newcomer knows, such as "shared guidelines" or "a written-down set of answers"
       - then name it ("That set of shared guidelines has a name, and it's called a design system.")
+
+  - id: konvo_reg_072
+    name: keep_the_intro_short
+    priority: high
+    description: >-
+      A long-form intro is about two short paragraphs before a handoff like
+      "Onwards!". It states the problem and promises the outcome in plain words
+      ("how we can ensure our agents create high-quality output at a rapid pace
+      without overwhelming our designer(s)"). Defining the star term, the
+      running example's backstory, a section-by-section roadmap, and the first
+      diagram all wait for the body.
+    failure_signals:
+      - an intro of three or more paragraphs, or well past 150 words, before the first heading
+      - the intro defines and names the star term instead of leaving that to the first body section
+      - a roadmap sentence that lists the article's sections ("We'll walk through X, then measure Y, then build Z")
+      - a diagram placed inside the intro
+    preferred_fix:
+      - keep a hook paragraph and a problem-plus-promise paragraph, then "Onwards!"
+      - move the describe-then-name passage and its diagram into the first body section
+      - let the headings do the roadmap's job
